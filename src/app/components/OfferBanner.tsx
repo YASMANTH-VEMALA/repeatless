@@ -23,7 +23,7 @@ export default function OfferBanner() {
         <div
           className="w-full h-60 sm:h-[382px] rounded-[12px] bg-contain bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('/images/offer.png')",
+            backgroundImage: "url('/images/banner.png')",
           }}
         ></div>
 
@@ -31,7 +31,7 @@ export default function OfferBanner() {
         <div className="flex flex-col items-center gap-4 sm:gap-6 px-2 sm:px-0 max-w-3xl mx-auto">
           {/* Main Heading */}
           <h3 className="text-white/80 font-poppins font-medium text-[22px] sm:text-[32px] leading-[28px] sm:leading-[48px] text-center">
-            Unlock Limitless Potential
+           The Repeatless Grand Slam Offer
           </h3>
 
           {/* Features / Description */}
