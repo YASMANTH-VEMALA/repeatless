@@ -411,6 +411,135 @@ export const blogs: Blog[] = [
   }
 },
 {
+  slug: "ai-video-ad-automation",
+  title: "AI-Powered Video Ad Creative Automation",
+  category: "Case Study",
+  date: "2025-11-05",
+  excerpt:
+    "We automated a New York ad-creative agency — turning product photos into high-end video ads in hours instead of weeks. No photoshoots. No studios. Just AI-powered creative production at scale.",
+  image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1762263083/repeatless/newyork_casestudy_h0knjf.png",
+  hero: {
+    title: "AI-Powered Video Ad Creative System",
+    description:
+      "A New York creative agency needed to scale ad production without photography teams, studios, or long edit cycles. We built an AI system that turns a single product image into photorealistic scenes and fully-edited video ads — in hours, not weeks.",
+    meta: { solution: "CREATIVE AUTOMATION", stat: "5 Ad Variants • 1-Day Production" },
+    image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1762263083/repeatless/newyork_casestudy_h0knjf.png"
+  },
+  body: {
+    sections: [
+      {
+        title: "Challenge",
+        text:
+          "The agency produced high-end product videos for e-commerce brands, often spending days scheduling photo shoots, hiring models, setting up lighting, and editing multiple versions. As their client base grew, deadlines got tighter and budgets got squeezed — but quality couldn’t drop. They needed a faster, scalable way to create premium ad creatives without relying on expensive production workflows."
+      },
+      {
+        title: "Solution",
+        text: [
+          "Seamless Upload: Client uploads a raw product image.",
+          "AI Photoreal Transformation: We convert it into stunning, cinematic, photoreal images — nano-detail, seed-rim lighting, ultra-realistic look.",
+          "Creative Control: Agency selects motion style, scene feel, and visual promise (motion graphics, textures, angles, pacing).",
+          "Multi-Model Generation: System generates 5 unique video ads using different scenes, models, and creative angles.",
+          "Smart Storage: All assets stored in a secure cloud library organized by client & campaign.",
+          "Clip Selection + Final Render: Agency picks best moments, stitches them in app, and exports a ready-to-run paid-ad video."
+        ],
+        image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1762263083/repeatless/newyork_casestudy_h0knjf.png"
+      },
+      {
+        title: "Why It Works",
+        iconList: [
+          "Photoreal AI — no physical shoot needed",
+          "Full creative direction controls",
+          "5-variant ad generation per product",
+          "Cloud media hub for fast retrieval",
+          "Hours to final ads — not weeks",
+          "Scales with demand without extra staff"
+        ]
+      },
+      {
+        text:
+          "This automation turned a traditional creative pipeline into an AI-driven production engine. The agency can now produce dozens of ad variations in a single day. No camera crews. No studios. Just creativity, direction, and automation doing the heavy lifting — while their clients get premium ad videos faster than ever.",
+        image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1762263083/repeatless/newyork_casestudy_h0knjf.png"
+      },
+      {
+        title: "Impact",
+        bullets: [
+          "Ad production time reduced from 7-10 days to under 24 hours",
+          "Cost per creative cut by ~90% (no studios, gear, models)",
+          "5 + variants ready instantly for A/B testing",
+          "Agency now closes more clients and delivers faster",
+          "Thousands in revenue generated daily, fully automated"
+        ]
+      }
+    ]
+  }
+},
+{
+  slug: "seo-blog-automation",
+  title: "Full-Stack SEO Blog Automation System",
+  category: "Case Study",
+  date: "2025-11-06",
+  excerpt:
+    "We built an AI-powered SEO content engine for a Canadian client — auto-researching keywords, writing SEO-optimized blogs, generating branded images, and publishing directly to WordPress.",
+  image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1762323483/seo_omnsuv.png",
+  hero: {
+    title: "AI-Driven SEO Content Automation",
+    description:
+      "A Canada-based business needed a way to rank faster, publish more content, and dominate high-intent search keywords — without hiring writers or SEO experts. We automated their entire SEO content pipeline end-to-end.",
+    meta: { solution: "SEO CONTENT AUTOMATION", stat: "1-Click Publishing • Fully Optimized" },
+    image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1762323483/seo_omnsuv.png"
+  },
+  body: {
+    sections: [
+      {
+        title: "Challenge",
+        text:
+          "The client operated in a competitive niche in Canada and struggled to publish consistent, high-quality SEO content. Hiring writers was expensive, keyword research was slow, and posts often lacked SEO structure or optimization. They needed a scalable way to publish search-optimized blogs with correct keywords, images, and metadata — without manual work or paying for large content teams."
+      },
+      {
+        title: "Solution",
+        text: [
+          "Keyword Research Automation: Perplexity pulls primary & secondary keywords based on search trends.",
+          "Competitor Keyword Extraction: SEMrush fetches competition keyword insights and difficulty scores.",
+          "SEO-Structured Blog Generation: AI writes long-form blogs with H1/H2/H3, internal links, FAQs, schema-ready structure.",
+          "Photoreal Images via AI: We generate featured images using AI with narrow-banana realism and brand consistency.",
+          "SEO Image Meta-Tags: Each image gets alt text, title tag, caption, and keyword-optimized metadata.",
+          "Auto-Publishing to WordPress: Blog + image + SEO tags + slug + meta description are posted directly via API.",
+          "Continuous Schedule: System runs daily/weekly publishing schedule to stay ahead in rankings."
+        ],
+        image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1762323483/seo_omnsuv.png"
+      },
+      {
+        title: "Why It Works",
+        iconList: [
+          "Human-grade SEO blogs with proper keyword placement",
+          "Perplexity + SEMrush keyword intelligence",
+          "Relevant AI images with correct alt/meta tags",
+          "Plug-and-publish to WordPress",
+          "Consistent content cadence for ranking",
+          "Massive cost savings vs hiring writers"
+        ]
+      },
+      {
+        text:
+          "Once we set up the pipeline, the client only inputs their topic or product name. The system researches the niche, finds keywords worth ranking for, writes a polished SEO blog, generates a branded image, inserts keywords + meta data, and publishes directly to their WordPress site — all automatically.",
+        image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1762323483/seo_omnsuv.png"
+      },
+      {
+        title: "Impact",
+        bullets: [
+          "Content output increased from 4 blogs/month → 30 blogs/month",
+          "Ranking keywords increased by 5x in 90 days",
+          "Organic traffic grew consistently without ads",
+          "Zero dependency on content writers or SEO agencies",
+          "Client saved ~200+ hours/month and thousands in costs"
+        ]
+      }
+    ]
+  }
+}
+
+,
+{
   slug: "qr-event-attendance-automation",
   title: "QR-Based Event Attendance Automation",
   category: "Case Study",
