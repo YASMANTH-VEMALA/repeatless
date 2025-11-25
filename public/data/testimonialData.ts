@@ -9,32 +9,32 @@ export const TestimonialData: Testimonial[] =
 [
     {
       "review": "Repeatless completely transformed how we handle client engagement on Instagram. The DM and comments automation not only saved hours every day but helped us close more deals through genuine, real-time interactions.",
-      "name": "Ali",
-      "position": "Social Media Manager, Tyga",
+      "name": "Ali shah",
+      "position": "Social Media Manager, Tyga Digital",
       "image": "/images/avatar.jpg"
     },
     {
       "review": "Our LinkedIn presence skyrocketed. The AI auto-posting system analyzes high-performing posts, rewrites them in our brand voice, and publishes daily. We now get qualified leads directly from our content.",
-      "name": "David sai",
+      "name": "David Gladius",
       "position": "Founder, ScaleUp Agency",
       "image": "/images/avatar.jpg"
     },
     {
       "review": "The social media automation built by Repeatless keeps our brand consistent across Instagram, TikTok, and LinkedIn. It’s like having a 24/7 content team—hands-free and always on time.",
-      "name": "Mark zen",
+      "name": "Zendra",
       "position": "Marketing Director, BrandHile",
       "image": "/images/avatar.jpg"
     },
     {
       "review": "The newsletter automation helped us find new clients we didn’t even know existed. It monitors spam-routed newsletters, identifies potential businesses, and reaches out automatically. Game-changing for our email marketing team.",
-      "name": "Aravind sami",
-      "position": "Head of Marketing, Masaai",
+      "name": "Mark Sean",
+      "position": "Head of Marketing, Piks Agency",
       "image": "/images/avatar.jpg"
     },
     {
       "review": "With Repeatless’ WhatsApp automation, every new book release now reaches thousands instantly. We went from manual broadcasts to automated, personalized messaging—and our launch-day sales have doubled.",
       "name": "Maria",
-      "position": "Founder, vijai public",
+      "position": "Founder, Arjun publications",
       "image": "/images/avatar.jpg"
     },
     {
