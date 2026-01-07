@@ -84,7 +84,7 @@ export const blogs: Blog[] = [
         image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1762263083/repeatless/newyork_casestudy_h0knjf.png"
       },
       {
-        title: "Impact",
+        title: "Impact ",
         bullets: [
           "Ad production time reduced from 7-10 days to under 24 hours",
           "Cost per creative cut by ~90% (no studios, gear, models)",
