@@ -97,6 +97,70 @@ export const blogs: Blog[] = [
   }
 },
 {
+  slug: "short-video-reels-automation",
+  title: "Short Video (Reels) Automation",
+  category: "Case Study",
+  date: "2025-11-10",
+  excerpt:
+    "We built a fully automated short-video content engine for a Toronto client — auto-creating and auto-publishing Reels every 2 days, with an optional manual trigger for custom topics.",
+  image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1767760008/shorts_pi1oti.png",
+  hero: {
+    title: "Short Video (Reels) Content Automation",
+    description:
+      "A Toronto content brand needed a way to maintain consistent short video presence without manual effort. We built an automation that generates and publishes video content every 2 days — with a manual override option for custom stories.",
+    meta: { solution: "SOCIAL VIDEO AUTOMATION", stat: "Auto-Published Every 2 Days" },
+    image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1767760008/shorts_pi1oti.png"
+  },
+  body: {
+    sections: [
+      {
+        title: "Challenge",
+        text:
+          "The Toronto client wanted a regular short video presence (Reels, Shorts, TikTok) but lacked the internal capacity to plan, shoot, edit, and upload consistently. Sporadic posting led to fluctuating reach, loss of audience engagement momentum, and missed growth opportunities. They needed a solution that could both generate content automatically and allow custom storytelling when needed."
+      },
+      {
+        title: "Solution",
+        text: [
+          "Automated Content Production: Every 2 days, the system auto-generates a short video based on trending hooks, relevant keywords, and evergreen content themes tied to the client’s niche.",
+          "Custom Trigger: The client can manually input a topic or story idea at any time — and the system will prioritize and generate a short video on demand.",
+          "Multi-Platform Publishing: The automation posts the video directly to Instagram Reels, TikTok, YouTube Shorts, Facebook Short Video, and LinkedIn.",
+          "Consistent Visual Identity: Each video features brand guidelines (fonts, colors, logo), auto-captioning, and engaging hooks to maximize retention.",
+          "Smart Scheduling: Two publishing modes — automated cadence (every 2 days) and manual immediate publish — both with optimized time slots for peak engagement.",
+          "Cloud Library & Tracking: All generated videos are saved to a cloud drive with metadata (topic, keywords, publish date) for easy reuse, analytics, or A/B testing."
+        ],
+        image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1767760008/shorts_pi1oti.png"
+      },
+      {
+        title: "Why It Works",
+        iconList: [
+          "Fully autonomous video generation",
+          "Manual override for custom topics",
+          "Multi-platform publishing in one workflow",
+          "Consistent posting cadence boosts reach",
+          "Brand-matched visuals & metadata",
+          "Auto-archived content library"
+        ]
+      },
+      {
+        text:
+          "This automation turns short-video content from a bottleneck into a growth engine. Whether running on schedule or triggered manually, each video is crafted with sound hooks, optimized captions, and platform-native format. The client now maintains a reliable presence without the grind of editing, uploading, or planning twice a week.",
+        image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1767760008/shorts_pi1oti.png"
+      },
+      {
+        title: "Impact",
+        bullets: [
+          "Auto-publishes short videos every 2 days without human intervention",
+          "Manual topic override gives creative flexibility",
+          "Consistent audience engagement and growth",
+          "Saved 8–15+ hours per week on video production",
+          "Brand presence on Reels, TikTok, Shorts, and more"
+        ]
+      }
+    ]
+  }
+}
+,
+{
   slug: "seo-blog-automation",
   title: "Full-Stack SEO Blog Automation System",
   category: "Case Study",
