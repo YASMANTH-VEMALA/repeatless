@@ -3,17 +3,18 @@ import BlogHero from "../components/Header";
 import BlogBody from "../components/body1";
 import CTASection from "../components/CTA";
 import { getBlogBySlug, blogs } from "../../../../public/data/blogs";
-import { AppRoutes } from "../../../../.next/types/routes";
 
-
-type Params = { params: { slug: string } } & PageProps<AppRoutes>; // Updated Params type with valid type argument
+type Props = {
+  params: Promise<{ slug: string }>;
+};
 
 export function generateStaticParams() {
   return blogs.map((b) => ({ slug: b.slug }));
 }
 
-export default function BlogPage({ params }: Params) {
-  const blog = getBlogBySlug(params.slug);
+export default async function BlogPage({ params }: Props) {
+  const { slug } = await params;
+  const blog = getBlogBySlug(slug);
   if (!blog) return notFound();
 
   return (
