@@ -81,7 +81,7 @@ const SolutionsSection: FC = () => {
       >
         <span className="w-3 h-3 rounded-full bg-[#8400FF] shadow-[0_0_16px_#6D21F0,0_0_8px_#1C76FD]" />
         <span className="text-[#8400FF] text-lg">
-          Tailored Solutions / Services
+          n8n Automation Experts
         </span>
       </motion.div>
 
@@ -107,12 +107,12 @@ const SolutionsSection: FC = () => {
         className="mt-16 grid md:grid-cols-2 gap-6 relative z-10"
       >
         {topSolutions.map((s, i) => (
-          <motion.div key={i} 
-          variants={{
-            hidden: { opacity: 0, y: 60 },
-            show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.4, 0, 0.2, 1] } },
-          }} 
-          className={styles.cardBorder}>
+          <motion.div key={i}
+            variants={{
+              hidden: { opacity: 0, y: 60 },
+              show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.4, 0, 0.2, 1] } },
+            }}
+            className={styles.cardBorder}>
             <div className={`${styles.cardInner} p-6 flex flex-col`}>
               <div
                 className="h-40 w-full bg-cover bg-center rounded-lg mb-6"
@@ -134,11 +134,11 @@ const SolutionsSection: FC = () => {
       >
         {bottomSolutions.map((s, i) => (
           <motion.div key={i}
-          variants={{
-            hidden: { opacity: 0, y: 60 },
-            show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.4, 0, 0.2, 1] } },
-          }}
-           className={styles.cardBorder}>
+            variants={{
+              hidden: { opacity: 0, y: 60 },
+              show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.4, 0, 0.2, 1] } },
+            }}
+            className={styles.cardBorder}>
             <div className={`${styles.cardInner} p-6 flex flex-col`}>
               <div
                 className="h-40 w-full bg-cover bg-center rounded-lg mb-6"

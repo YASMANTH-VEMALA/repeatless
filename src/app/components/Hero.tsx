@@ -23,7 +23,7 @@ const fadeUpStagger = {
 
 const Hero = () => {
   const stats = [
-    { value: "1+", label: "Years Of Experience" },
+    { value: "3+", label: "Years of n8n Experience" },
     { value: "200+", label: "Client Rating" },
     { value: "1K+", label: "Customer Interactions" },
   ];
@@ -97,8 +97,8 @@ const Hero = () => {
             className="font-dmSans text-xs sm:text-base md:text-lg mt-3 sm:mt-5 max-w-sm sm:max-w-xl mx-auto leading-relaxed"
             variants={fadeUp as Variants}
           >
-            We help businesses eliminate repetitive tasks with AI-driven automation—
-            boosting efficiency, saving costs, and scaling faster.
+            We help businesses eliminate repetitive tasks with custom <span className="text-purple-400">n8n automation</span>—
+            boosting efficiency as your dedicated <span className="text-purple-400">automation expert</span>.
           </motion.p>
 
           {/* CTA Button */}
@@ -118,68 +118,67 @@ const Hero = () => {
         </motion.div>
 
         {/* Stats Section */}
-     {/* Stats Section */}
-<motion.div
-  className="relative flex flex-col sm:flex-row flex-wrap justify-center sm:justify-between items-center w-full max-w-6xl mx-auto px-4 sm:px-6 gap-4 sm:gap-6 pb-20 sm:pb-10" 
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true }}
-  variants={fadeUpStagger}
->
-  {/* Left Stats */}
-  <div className="flex flex-row justify-center sm:justify-start items-center gap-4 sm:gap-10 w-full sm:w-auto">
-    {stats.map((stat, idx) => (
-      <motion.div
-        key={idx}
-        className="flex flex-col items-center sm:items-start gap-1 flex-1 min-w-[70px] max-w-[120px]"
-        variants={fadeUp as Variants}
-      >
-        <div className="font-dmSans font-medium text-lg sm:text-3xl">{stat.value}</div>
-        <div className="font-dmSans text-[10px] sm:text-sm text-[#F2F2F2] text-center sm:text-left">
-          {stat.label}
-        </div>
-      </motion.div>
-    ))}
-  </div>
-
-  {/* Right Automation Build Card */}
-  <motion.div
-    className="relative w-full max-w-[280px] sm:max-w-[323px] p-[1px] rounded-[30px] bg-gradient-to-r from-white/80 via-white/40 to-white/10 mt-6 sm:mt-0"
-    variants={fadeUp as Variants}
-  >
-    <div className="flex items-center gap-3 relative z-10 bg-[rgba(77,0,255,0.15)] backdrop-blur-[6px] rounded-[30px] px-3 py-2 sm:px-4 sm:py-3">
-      {/* Avatars */}
-      <div className="relative w-[130px] h-[40px] sm:w-[160px] sm:h-[56px]">
-        {avatars.map((src, idx) => (
-          <div
-            key={idx}
-            className={`absolute w-[40px] h-[40px] sm:w-[56px] sm:h-[56px] rounded-full overflow-hidden ${
-              idx === 0
-                ? "bg-gradient-to-br from-pink-400 to-red-500 left-0 z-30"
-                : idx === 1
-                ? "bg-gradient-to-br from-purple-400 to-blue-500 left-[25px] sm:left-[35px] z-20"
-                : idx === 2
-                ? "bg-gradient-to-br from-blue-400 to-cyan-500 left-[50px] sm:left-[70px] z-10"
-                : "bg-gradient-to-br from-green-400 to-teal-500 left-[75px] sm:left-[105px] z-0"
-            }`}
-          >
-            <Image src={src} alt={`Avatar ${idx}`} width={56} height={56} className="rounded-full object-cover" />
+        {/* Stats Section */}
+        <motion.div
+          className="relative flex flex-col sm:flex-row flex-wrap justify-center sm:justify-between items-center w-full max-w-6xl mx-auto px-4 sm:px-6 gap-4 sm:gap-6 pb-20 sm:pb-10"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUpStagger}
+        >
+          {/* Left Stats */}
+          <div className="flex flex-row justify-center sm:justify-start items-center gap-4 sm:gap-10 w-full sm:w-auto">
+            {stats.map((stat, idx) => (
+              <motion.div
+                key={idx}
+                className="flex flex-col items-center sm:items-start gap-1 flex-1 min-w-[70px] max-w-[120px]"
+                variants={fadeUp as Variants}
+              >
+                <div className="font-dmSans font-medium text-lg sm:text-3xl">{stat.value}</div>
+                <div className="font-dmSans text-[10px] sm:text-sm text-[#F2F2F2] text-center sm:text-left">
+                  {stat.label}
+                </div>
+              </motion.div>
+            ))}
           </div>
-        ))}
-      </div>
 
-      {/* Text */}
-      <div className="flex flex-col items-start justify-center">
-        <div className="font-jakarta font-medium text-base sm:text-xl text-white">
-          100+
-        </div>
-        <div className="font-jakarta text-[10px] sm:text-sm text-white">
-          Automation Build
-        </div>
-      </div>
-    </div>
-  </motion.div>
-</motion.div>
+          {/* Right Automation Build Card */}
+          <motion.div
+            className="relative w-full max-w-[280px] sm:max-w-[323px] p-[1px] rounded-[30px] bg-gradient-to-r from-white/80 via-white/40 to-white/10 mt-6 sm:mt-0"
+            variants={fadeUp as Variants}
+          >
+            <div className="flex items-center gap-3 relative z-10 bg-[rgba(77,0,255,0.15)] backdrop-blur-[6px] rounded-[30px] px-3 py-2 sm:px-4 sm:py-3">
+              {/* Avatars */}
+              <div className="relative w-[130px] h-[40px] sm:w-[160px] sm:h-[56px]">
+                {avatars.map((src, idx) => (
+                  <div
+                    key={idx}
+                    className={`absolute w-[40px] h-[40px] sm:w-[56px] sm:h-[56px] rounded-full overflow-hidden ${idx === 0
+                      ? "bg-gradient-to-br from-pink-400 to-red-500 left-0 z-30"
+                      : idx === 1
+                        ? "bg-gradient-to-br from-purple-400 to-blue-500 left-[25px] sm:left-[35px] z-20"
+                        : idx === 2
+                          ? "bg-gradient-to-br from-blue-400 to-cyan-500 left-[50px] sm:left-[70px] z-10"
+                          : "bg-gradient-to-br from-green-400 to-teal-500 left-[75px] sm:left-[105px] z-0"
+                      }`}
+                  >
+                    <Image src={src} alt={`Avatar ${idx}`} width={56} height={56} className="rounded-full object-cover" />
+                  </div>
+                ))}
+              </div>
+
+              {/* Text */}
+              <div className="flex flex-col items-start justify-center">
+                <div className="font-jakarta font-medium text-base sm:text-xl text-white">
+                  100+
+                </div>
+                <div className="font-jakarta text-[10px] sm:text-sm text-white">
+                  Automation Build
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* Features Section with an id for scroll target */}

@@ -8,9 +8,9 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 
 // SEO Metadata 
 export const metadata: Metadata = {
-  title: "Repeatless - AI Automation Solutions",
-  description: "Transform your business with Repeatless AI automation solutions, boosting efficiency and growth through intelligent automation.",
-  keywords: ["AI Automation", "Business Efficiency", "Productivity Solutions", "Repeatless", "Automation Software"],
+  title: "Repeatless | n8n Automation Expert & AI Agency",
+  description: "Transform your business with Repeatless. I am an n8n automation expert with 3+ years of experience building custom AI automation systems for scaling businesses.",
+  keywords: ["n8n Automation Expert", "Make.com Expert", "AI Automation Agency", "Business Process Automation", "Repeatless"],
   openGraph: {
     title: "Repeatless - AI Automation Solutions",
     description: "Transform your business with Repeatless AI automation solutions, boosting efficiency and growth through intelligent automation.",

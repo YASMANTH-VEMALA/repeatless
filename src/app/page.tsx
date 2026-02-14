@@ -1,5 +1,6 @@
 
 import HeroSection from "./components/AUtomation";
+import ContentSystem from "./components/ContentSystem";
 
 import CaseStudies from "./components/casestudies";
 import CTASection from "./components/CTASection";
@@ -13,19 +14,20 @@ import TestimonialsSection from "./components/Testimonials";
 import VideoSection from "./components/Video";
 export default function Home() {
   return (
-    <main className="relative"> 
+    <main className="relative">
       <Hero />
       {/* <LogoMarquee/> */}
 
-     
-      <SolutionsSection/>
-      <VideoSection/>
-      <HeroSection/>
-      <CaseStudies/>
-      <TestimonialsSection/>
-      <CTASection/>
-      <OfferBanner/>
-      
+
+      <SolutionsSection />
+      <VideoSection />
+      <HeroSection />
+      <ContentSystem />
+      <CaseStudies />
+      <TestimonialsSection />
+      <CTASection />
+      <OfferBanner />
+
     </main>
   );
 }
