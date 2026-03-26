@@ -161,7 +161,7 @@ const SolutionsSection: FC = () => {
         }}
         className="mt-16 flex flex-col items-center gap-5 relative z-10"
       >
-        <a href="https://calendly.com/chandannetha/30min" target="_blank" rel="noopener noreferrer">
+        <a href="https://cal.com/chandan-kumar-zhrofj/30min" target="_blank" rel="noopener noreferrer">
           <button className="flex items-center gap-2 px-6 py-2 bg-[#4D00FF] rounded-full text-sm hover:bg-[#5E1FFF] transition-all">
             <FiPhoneCall size={16} />
             Book a Demo

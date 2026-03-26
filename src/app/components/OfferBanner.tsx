@@ -11,7 +11,7 @@ export default function OfferBanner() {
 
   return (
     <motion.section
-    id="contact"
+      id="contact"
       className="w-full bg-[#04051B] py-8 sm:py-12 flex justify-center"
       initial="hidden"
       whileInView="show"
@@ -31,7 +31,7 @@ export default function OfferBanner() {
         <div className="flex flex-col items-center gap-4 sm:gap-6 px-2 sm:px-0 max-w-3xl mx-auto">
           {/* Main Heading */}
           <h3 className="text-white/80 font-poppins font-medium text-[22px] sm:text-[32px] leading-[28px] sm:leading-[48px] text-center">
-           The Repeatless Grand Slam Offer
+            The Repeatless Grand Slam Offer
           </h3>
 
           {/* Features / Description */}
@@ -50,7 +50,7 @@ export default function OfferBanner() {
 
           {/* CTA Button */}
           <a
-            href="https://calendly.com/chandannetha/30min"
+            href="https://cal.com/chandan-kumar-zhrofj/30min"
             className="relative flex items-center justify-center gap-2 px-4 py-2 sm:px-[19px] sm:py-[8px] bg-[#4D00FF] rounded-[38px] text-white font-poppins text-[15px] sm:text-[17px] leading-[25px] sm:leading-[31px] shadow-[0_0_16px_#6D21F0,0_0_8.1px_#1C76FD] hover:brightness-110 transition-all"
           >
             Book a 20-min Demo

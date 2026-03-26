@@ -103,7 +103,7 @@ const Hero = () => {
 
           {/* CTA Button */}
           <motion.a
-            href="https://calendly.com/chandannetha/30min"
+            href="https://cal.com/chandan-kumar-zhrofj/30min"
 
             target="_blank"
             rel="noopener noreferrer"

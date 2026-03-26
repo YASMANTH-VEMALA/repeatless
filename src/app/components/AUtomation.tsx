@@ -167,36 +167,36 @@ const HeroSection: React.FC = () => {
       <svg className="hidden lg:block absolute left-[237px] top-[363.5px]" width="921" height="125" viewBox="0 0 921 125" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M1 112C60.9571 112 62.5923 10.0001 144.352 0.499268M341.665 0.499268C399.442 0.499268 398.897 124 485.562 124M711.764 124C812.056 121.001 827.339 0.499039 920 0.499271" stroke="white" strokeLinecap="round" strokeDasharray="15 15" />
       </svg>
-{/* CTA Button */}
-<div className="flex justify-center lg:absolute lg:bottom-4 lg:left-1/2 lg:-translate-x-1/2 pt-10">
-<a
-  href="https://calendly.com/chandannetha/30min"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="flex items-center justify-center gap-2 px-4 py-2 md:px-5 md:py-3 bg-[#4D00FF] rounded-[40px] hover:bg-[#3700cc] transition"
->
-  <span className="text-white font-poppins text-[12px] sm:text-[14px] md:text-[14px]">
-    Get Free Consultation
-  </span>
-  <svg
-    width="18"
-    height="18"
-    viewBox="0 0 22 22"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    className="rotate-90"
-  >
-    <path
-      d="M6 9L11 14L16 9"
-      stroke="white"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-</a>
+      {/* CTA Button */}
+      <div className="flex justify-center lg:absolute lg:bottom-4 lg:left-1/2 lg:-translate-x-1/2 pt-10">
+        <a
+          href="https://cal.com/chandan-kumar-zhrofj/30min"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-center gap-2 px-4 py-2 md:px-5 md:py-3 bg-[#4D00FF] rounded-[40px] hover:bg-[#3700cc] transition"
+        >
+          <span className="text-white font-poppins text-[12px] sm:text-[14px] md:text-[14px]">
+            Get Free Consultation
+          </span>
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 22 22"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="rotate-90"
+          >
+            <path
+              d="M6 9L11 14L16 9"
+              stroke="white"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </a>
 
-</div>
+      </div>
 
 
     </section>

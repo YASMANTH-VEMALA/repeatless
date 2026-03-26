@@ -33,7 +33,7 @@ export default function CTASection() {
 
         {/* CTA Button */}
         <motion.a
-          href="https://calendly.com/chandannetha/30min"
+          href="https://cal.com/chandan-kumar-zhrofj/30min"
           className="flex items-center justify-center gap-2 px-5 py-3 bg-[#4D00FF] rounded-full shadow-[0_0_16px_#6D21F0,0_0_8.1px_#1C76FD] text-white font-poppins font-medium text-sm whitespace-nowrap"
           initial="hidden"
           whileInView="show"

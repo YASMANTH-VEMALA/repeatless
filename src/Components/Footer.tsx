@@ -67,7 +67,7 @@ export default function Footer() {
           <Link href="#testimonials" className="text-white/80 hover:text-white transition">About Us</Link>
           <Link href="#solutions" className="text-white/80 hover:text-white transition">Solutions</Link>
           <Link href="/casestudies" className="text-white/80 hover:text-white transition">Case Studies</Link>
-          <Link href="https://calendly.com/chandannetha/30min" className="text-white/80 hover:text-white transition">Book a Demo</Link>
+          <Link href="https://cal.com/chandan-kumar-zhrofj/30min" className="text-white/80 hover:text-white transition">Book a Demo</Link>
         </div>
 
         {/* Contact Us */}
