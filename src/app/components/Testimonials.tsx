@@ -39,7 +39,7 @@ const TestimonialsSection = () => {
 
         {/* Section Heading */}
         <h2 className="text-white text-[2rem] leading-[40px] md:text-[3.375rem] md:leading-[69px] text-center font-poppins font-medium tracking-[-0.04em] max-w-[633px]">
-          Real Results from Our AI Automation Solutions
+          What Clients Say About Working With Me
         </h2>
       </motion.div>
 

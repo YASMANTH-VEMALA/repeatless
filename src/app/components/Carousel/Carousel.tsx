@@ -7,9 +7,19 @@ import {
   EmblaOptionsType,
 } from "embla-carousel";
 import useEmblaCarousel from "embla-carousel-react";
-import Image from "next/image";
 
 import { MdOutlineArrowBack, MdOutlineArrowForward } from "react-icons/md";
+
+const avatarColors = [
+  "bg-purple-600", "bg-blue-600", "bg-indigo-600",
+  "bg-violet-600", "bg-fuchsia-600", "bg-pink-600", "bg-cyan-600",
+];
+
+const getInitials = (name: string) =>
+  name.split(" ").map((n) => n[0]).join("").toUpperCase().slice(0, 2);
+
+const getAvatarColor = (name: string) =>
+  avatarColors[name.charCodeAt(0) % avatarColors.length];
 
 const TWEEN_FACTOR_BASE = 0.84;
 
@@ -126,14 +136,8 @@ const Carousel: React.FC<PropType> = ({ testimonials, options }) => {
                 <div className="flex flex-col items-center justify-center gap-2 w-full">
                   <span className="w-full h-[1px] bg-white/20"></span>
                   <div className="flex flex-col md:flex-row gap-4 items-center">
-                    <div className="h-11 w-11 rounded-full">
-                      <Image
-                        src={testimonial.image}
-                        alt={testimonial.name}
-                        width={44}
-                        height={44}
-                        className="w-full h-full object-cover rounded-full"
-                      />
+                    <div className={`h-11 w-11 rounded-full flex items-center justify-center text-white font-semibold text-sm shrink-0 ${getAvatarColor(testimonial.name)}`}>
+                      {getInitials(testimonial.name)}
                     </div>
                     <div className="flex flex-col text-left">
                       <p

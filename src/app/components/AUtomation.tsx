@@ -4,10 +4,10 @@ import { Variants, motion } from "framer-motion";
 
 const HeroSection: React.FC = () => {
   const mobileCards = [
-    { title: "Discover", desc: "We analyze your current workflows and pain points.", img: "/images/a1.png" },
-    { title: "Design", desc: "Build a tailored AI automation blueprint for your business.", img: "/images/a2.png" },
-    { title: "Deploy", desc: "Implement and integrate solutions with minimal disruption.", img: "/images/a3.png" },
-    { title: "Scale", desc: "Monitor, optimize, and expand automation as you grow.", img: "/images/a4.png" },
+    { title: "Discover", desc: "I analyze your current workflows, pain points, and growth goals in a 1:1 strategy session.", img: "/images/a1.png" },
+    { title: "Design", desc: "I build a custom automation blueprint tailored to your tools, team, and business model.", img: "/images/a2.png" },
+    { title: "Deploy", desc: "I implement and integrate everything with minimal disruption to your operations.", img: "/images/a3.png" },
+    { title: "Scale", desc: "I monitor, optimize, and expand your automation systems as your business grows.", img: "/images/a4.png" },
   ];
 
   const cardVariant = {
@@ -62,7 +62,7 @@ const HeroSection: React.FC = () => {
             max-w-full break-words
           "
         >
-          Automation, Made Simple
+          How I Work With You
         </motion.h1>
       </div>
 
@@ -78,7 +78,7 @@ const HeroSection: React.FC = () => {
             <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/70 font-roboto font-medium text-[18px] leading-[24px]">
               Discover
             </span>
-            <p className="text-[#9B96B0] font-roboto text-[16px] leading-[24px] w-[153px]">We analyze your current workflows and pain points.</p>
+            <p className="text-[#9B96B0] font-roboto text-[16px] leading-[24px] w-[153px]">I analyze your current workflows, pain points, and growth goals in a 1:1 strategy session.</p>
           </div>
         </motion.div>
 
@@ -86,7 +86,7 @@ const HeroSection: React.FC = () => {
         <motion.div custom={1} variants={cardVariant as Variants} className="md:absolute md:left-[367px] md:top-[330px] w-[211px] h-[228px] flex flex-col items-center gap-2">
           <div className="flex flex-col items-center gap-2 text-center pb-5">
             <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/70 font-roboto font-medium text-[18px] leading-[24px]">Design</span>
-            <p className="text-[#9B96B0] font-roboto text-[16px] leading-[24px] w-[191px]">Build a tailored AI automation blueprint for your business.</p>
+            <p className="text-[#9B96B0] font-roboto text-[16px] leading-[24px] w-[191px]">I build a custom automation blueprint tailored to your tools, team, and business model.</p>
           </div>
           <div
             className="w-[100px] h-[98px] rounded-[25px] border border-[rgba(255,255,255,0.1)] shadow-[0_0_16px_#6D21F0,0_0_8.1px_#1C76FD] bg-cover bg-center pt-5"
@@ -109,7 +109,7 @@ const HeroSection: React.FC = () => {
             style={{ backgroundImage: "url('/images/a3.png')" }}
           />
           <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/70 font-roboto font-medium text-[18px] leading-[24px]">Deploy</span>
-          <p className="text-[#9B96B0] font-roboto text-[16px] leading-[24px] w-[191px] text-center">Implement and integrate solutions with minimal disruption.</p>
+          <p className="text-[#9B96B0] font-roboto text-[16px] leading-[24px] w-[191px] text-center">I implement and integrate everything with minimal disruption to your operations.</p>
         </motion.div>
 
         {/* Scale */}
@@ -123,7 +123,7 @@ const HeroSection: React.FC = () => {
           }),
         }} className="md:absolute md:left-[1200px] md:top-[330px] w-[191px] h-[254px] flex flex-col items-center gap-2">
           <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/70 font-roboto font-medium text-[18px] leading-[24px]">Scale</span>
-          <p className="text-[#9B96B0] font-roboto text-[16px] leading-[24px] w-[191px] text-center">Monitor, optimize, and expand automation as you grow.</p>
+          <p className="text-[#9B96B0] font-roboto text-[16px] leading-[24px] w-[191px] text-center">I monitor, optimize, and expand your automation systems as your business grows.</p>
           <div
             className="w-[100px] h-[98px] rounded-[25px] border border-[rgba(255,255,255,0.1)] shadow-[0_0_16px_#6D21F0,0_0_8.1px_#1C76FD] bg-cover bg-center"
             style={{ backgroundImage: "url('/images/a4.png')" }}
@@ -176,7 +176,7 @@ const HeroSection: React.FC = () => {
           className="flex items-center justify-center gap-2 px-4 py-2 md:px-5 md:py-3 bg-[#4D00FF] rounded-[40px] hover:bg-[#3700cc] transition"
         >
           <span className="text-white font-poppins text-[12px] sm:text-[14px] md:text-[14px]">
-            Get Free Consultation
+            Book a Free Strategy Call
           </span>
           <svg
             width="18"

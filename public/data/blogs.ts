@@ -84,13 +84,13 @@ export const blogs: Blog[] = [
         image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1762263083/repeatless/newyork_casestudy_h0knjf.png"
       },
       {
-        title: "Impact ",
+        title: "Impact",
         bullets: [
-          "Ad production time reduced from 7-10 days to under 24 hours",
-          "Cost per creative cut by ~90% (no studios, gear, models)",
-          "5 + variants ready instantly for A/B testing",
-          "Agency now closes more clients and delivers faster",
-          "Thousands in revenue generated daily, fully automated"
+          "Ad production time reduced from 7–10 days to 1–2 days",
+          "Significant reduction in per-creative cost — no studios, gear, or models needed",
+          "5 ad variants generated per product for A/B testing",
+          "Agency able to take on more clients without increasing production headcount",
+          "Faster turnaround became a key selling point in new client pitches"
         ]
       }
     ]
@@ -214,11 +214,11 @@ export const blogs: Blog[] = [
       {
         title: "Impact",
         bullets: [
-          "Content output increased from 4 blogs/month → 30 blogs/month",
-          "Ranking keywords increased by 5x in 90 days",
-          "Organic traffic grew consistently without ads",
-          "Zero dependency on content writers or SEO agencies",
-          "Client saved ~200+ hours/month and thousands in costs"
+          "Content output increased from ~4 blogs/month to 15–20 blogs/month",
+          "Improved keyword coverage and organic visibility over 3–4 months",
+          "Consistent organic traffic growth without paid ads",
+          "No longer dependent on freelance writers or external SEO agencies",
+          "Meaningful time and cost savings on content production each month"
         ]
       }
     ]
@@ -274,9 +274,9 @@ export const blogs: Blog[] = [
       {
         title: "Impact",
         bullets: [
-          "62% increase in replies initiated from comments",
-          "41% lift in qualified leads captured",
-          "50% faster resolution time",
+          "Noticeably more replies initiated from comments — faster and more consistent",
+          "More qualified leads captured through automated DM conversations",
+          "Faster resolution time for common questions and inquiries",
           "24/7 coverage with consistent brand voice",
           "Lower support load; team focuses on high-value cases",
         ],
@@ -481,10 +481,10 @@ export const blogs: Blog[] = [
   category: "Case Study",
   date: "2025-10-10",
   excerpt:
-    "$700 AI + auto-posting system that publishes daily across Instagram, TikTok, X, YouTube & LinkedIn—turning local discovery into DMs and foot traffic.",
+    "An always-on content automation system that publishes daily across Instagram, TikTok, X, YouTube & LinkedIn for a Chicago luxury bike shop — turning local discovery into DMs and foot traffic.",
   image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1760271382/social_media_yusuf_pceijg.png",
   hero: {
-    title: "$700 Social Media Automation for a Chicago Luxury Bike Shop",
+    title: "Social Media Automation for a Chicago Luxury Bike Shop",
     description:
       "We built an always-on content engine: AI generates on-brand posts + images, adds Chicago-local hashtags, and auto-publishes daily across five platforms—no manual work.",
     meta: { solution: "CONTENT + DISTRIBUTION", stat: "Daily Posting • 7 Categories" },
@@ -528,11 +528,11 @@ export const blogs: Blog[] = [
       {
         title: "Impact",
         bullets: [
-          "Consistent daily presence across 5 platforms for a $700 setup",
-          "DMs surged with first-time Chicago inquiries (organic discovery)",
-          "Zero manual resizing/copy-pasting; owner focuses on builds",
-          "On-brand premium tone maintained across posts",
-          "Evergreen queue maintained 2–3 weeks ahead"
+          "Consistent daily presence across 5 platforms with no manual effort",
+          "Increase in DMs from Chicago-area customers discovering the shop organically",
+          "Zero manual resizing or copy-pasting — owner focuses entirely on builds",
+          "On-brand premium tone maintained consistently across all posts",
+          "Content queue maintained 2–3 weeks ahead automatically"
         ]
       }
     ]
@@ -673,7 +673,7 @@ export const blogs: Blog[] = [
   category: "Case Study",
   date: "2025-10-16",
   excerpt:
-    "We built an N8N workflow that auto-replies to every YouTube comment in the creator’s tone — saving 10+ hours weekly and tripling engagement, all with zero third-party tools.",
+    "We built an n8n workflow that auto-replies to every YouTube comment in the creator’s tone — saving hours weekly and improving engagement, all with zero third-party tools.",
   image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1760554512/repeatless/youtube_qa6uvx.png",
   hero: {
     title: "Automating YouTube Engagement with N8N",

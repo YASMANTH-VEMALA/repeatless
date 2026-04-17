@@ -1,33 +1,26 @@
 
 import HeroSection from "./components/AUtomation";
-import ContentSystem from "./components/ContentSystem";
-
 import CaseStudies from "./components/casestudies";
 import CTASection from "./components/CTASection";
-import Hero from "./components/Hero"; // Updated import path
-import LogoMarquee from "./components/Logo";
+import Hero from "./components/Hero";
 import OfferBanner from "./components/OfferBanner";
-// import FeaturesSection from "./components/Scroll";
-// import AutomationSection from "./components/shero";
+import PackagesSection from "./components/Packages";
 import SolutionsSection from "./components/Solutions";
 import TestimonialsSection from "./components/Testimonials";
 import VideoSection from "./components/Video";
+
 export default function Home() {
   return (
     <main className="relative">
       <Hero />
-      {/* <LogoMarquee/> */}
-
-
       <SolutionsSection />
       <VideoSection />
       <HeroSection />
-      <ContentSystem />
+      <PackagesSection />
       <CaseStudies />
       <TestimonialsSection />
       <CTASection />
       <OfferBanner />
-
     </main>
   );
 }

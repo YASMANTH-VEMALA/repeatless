@@ -24,8 +24,8 @@ const fadeUpStagger = {
 const Hero = () => {
   const stats = [
     { value: "3+", label: "Years of n8n Experience" },
-    { value: "200+", label: "Client Rating" },
-    { value: "1K+", label: "Customer Interactions" },
+    { value: "200+", label: "Businesses Helped" },
+    { value: "1K+", label: "Automations Delivered" },
   ];
 
   const avatars = ["/images/1.svg", "/images/2.svg", "/images/4.svg", "/images/3.svg"];
@@ -75,13 +75,13 @@ const Hero = () => {
               className="font-poppins font-medium text-[26px] sm:text-5xl md:text-6xl lg:text-7xl drop-shadow-lg"
               variants={fadeUp as Variants}
             >
-              Automate Your
+              Your AI
             </motion.h1>
             <motion.h1
               className="font-poppins italic font-light text-[26px] sm:text-5xl md:text-6xl lg:text-7xl underline drop-shadow-lg"
               variants={fadeUp as Variants}
             >
-              Workflows
+              Automation
             </motion.h1>
           </motion.div>
 
@@ -89,7 +89,7 @@ const Hero = () => {
             className="font-poppins font-medium text-[22px] sm:text-4xl md:text-5xl lg:text-6xl mt-2 sm:mt-4"
             variants={fadeUp as Variants}
           >
-            Accelerate Your <span className="text-purple-400">Growth.</span>
+            Consultant for <span className="text-purple-400">Business Growth.</span>
           </motion.h2>
 
           {/* Subtext */}
@@ -97,14 +97,12 @@ const Hero = () => {
             className="font-dmSans text-xs sm:text-base md:text-lg mt-3 sm:mt-5 max-w-sm sm:max-w-xl mx-auto leading-relaxed"
             variants={fadeUp as Variants}
           >
-            We help businesses eliminate repetitive tasks with custom <span className="text-purple-400">n8n automation</span>—
-            boosting efficiency as your dedicated <span className="text-purple-400">automation expert</span>.
+            I help businesses across the <span className="text-purple-400">USA, Canada, and India</span> eliminate repetitive tasks with custom <span className="text-purple-400">n8n automation</span> — as your dedicated <span className="text-purple-400">AI automation consultant</span>.
           </motion.p>
 
           {/* CTA Button */}
           <motion.a
             href="https://cal.com/chandan-kumar-zhrofj/30min"
-
             target="_blank"
             rel="noopener noreferrer"
             className="mt-6 flex items-center justify-center bg-[#4D00FF] rounded-full px-6 py-2 sm:px-8 sm:py-3 gap-2 shadow-lg hover:bg-[#3700cc] transition-all duration-300"
@@ -112,7 +110,7 @@ const Hero = () => {
             whileTap={{ scale: 0.95 }}
             variants={fadeUp as Variants}
           >
-            <span className="font-poppins text-sm sm:text-base">Get Started</span>
+            <span className="font-poppins text-sm sm:text-base">Book a Free Strategy Call</span>
             <FiArrowUpRight className="w-4 h-4 sm:w-6 sm:h-6 rotate-45" />
           </motion.a>
         </motion.div>

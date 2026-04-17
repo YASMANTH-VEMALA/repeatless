@@ -27,7 +27,7 @@ export default function CTASection() {
             Ready to Repeat Less &amp; <br /> Grow More?
           </h2>
           <p className="text-white/80 text-lg leading-7">
-            Let’s map your automation journey together. Book your personalized demo today.
+            Let&apos;s map your automation journey together. Book a free strategy call — serving businesses in the USA, Canada &amp; India.
           </p>
         </motion.div>
 
@@ -41,7 +41,7 @@ export default function CTASection() {
           variants={fadeUpVariants}
         >
           <FiPhoneCall size={16} />
-          Book a Demo
+          Book a Free Strategy Call
         </motion.a>
       </div>
     </section>

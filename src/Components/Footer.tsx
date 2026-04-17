@@ -51,12 +51,12 @@ export default function Footer() {
 
           {/* Description */}
           <p className="text-base leading-6 text-white/80 font-poppins">
-            Transforming businesses through intelligent AI automation solutions.
+            AI Automation Consultant helping businesses in the USA, Canada &amp; India eliminate repetitive tasks and grow faster with custom n8n automation.
           </p>
 
           {/* Copyright */}
           <p className="text-sm leading-5 text-white/60 font-poppins mt-6">
-            © 2025 Repeatless. All rights reserved.
+            © 2026 Repeatless. All rights reserved.
           </p>
         </div>
 

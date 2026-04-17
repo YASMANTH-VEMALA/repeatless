@@ -81,7 +81,7 @@ const SolutionsSection: FC = () => {
       >
         <span className="w-3 h-3 rounded-full bg-[#8400FF] shadow-[0_0_16px_#6D21F0,0_0_8px_#1C76FD]" />
         <span className="text-[#8400FF] text-lg">
-          n8n Automation Experts
+          AI Automation Consultant
         </span>
       </motion.div>
 
@@ -94,10 +94,10 @@ const SolutionsSection: FC = () => {
         className="mt-10 flex flex-col md:flex-row md:justify-between gap-6 relative z-10"
       >
         <h2 className="text-4xl md:text-6xl font-medium tracking-tight max-w-lg">
-          Solutions Tailored for Modern Businesses
+          Automation Solutions Built for Your Business
         </h2>
         <p className="text-lg max-w-xl text-white/80">
-          From startups to enterprises, we simplify your workflows with AI-driven automation.
+          From startups to enterprises across the USA, Canada, and India — I design, build, and manage custom automation systems tailored to your business goals.
         </p>
       </motion.div>
 
@@ -164,7 +164,7 @@ const SolutionsSection: FC = () => {
         <a href="https://cal.com/chandan-kumar-zhrofj/30min" target="_blank" rel="noopener noreferrer">
           <button className="flex items-center gap-2 px-6 py-2 bg-[#4D00FF] rounded-full text-sm hover:bg-[#5E1FFF] transition-all">
             <FiPhoneCall size={16} />
-            Book a Demo
+            Book a Free Strategy Call
             <FiArrowRight size={18} />
           </button>
         </a>
