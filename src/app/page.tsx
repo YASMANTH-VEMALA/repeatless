@@ -6,6 +6,7 @@ import Hero from "./components/Hero";
 import OfferBanner from "./components/OfferBanner";
 import PackagesSection from "./components/Packages";
 import SolutionsSection from "./components/Solutions";
+import ToolsSection from "./components/Tools";
 import TestimonialsSection from "./components/Testimonials";
 import VideoSection from "./components/Video";
 
@@ -17,6 +18,7 @@ export default function Home() {
       <VideoSection />
       <HeroSection />
       <PackagesSection />
+      <ToolsSection />
       <CaseStudies />
       <TestimonialsSection />
       <CTASection />

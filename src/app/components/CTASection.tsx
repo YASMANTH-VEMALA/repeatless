@@ -27,7 +27,7 @@ export default function CTASection() {
             Ready to Repeat Less &amp; <br /> Grow More?
           </h2>
           <p className="text-white/80 text-lg leading-7">
-            Let&apos;s map your automation journey together. Book a free strategy call — serving businesses in the USA, Canada &amp; India.
+            Let&apos;s map your automation journey together. Book a free strategy call — serving businesses across the USA, Canada &amp; Europe.
           </p>
         </motion.div>
 

@@ -97,7 +97,7 @@ const SolutionsSection: FC = () => {
           Automation Solutions Built for Your Business
         </h2>
         <p className="text-lg max-w-xl text-white/80">
-          From startups to enterprises across the USA, Canada, and India — I design, build, and manage custom automation systems tailored to your business goals.
+          From startups to enterprises across the USA, Canada, and Europe — I design, build, and manage custom automation systems tailored to your business goals.
         </p>
       </motion.div>
 

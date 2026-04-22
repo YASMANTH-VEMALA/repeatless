@@ -23,9 +23,9 @@ const fadeUpStagger = {
 
 const Hero = () => {
   const stats = [
-    { value: "3+", label: "Years of n8n Experience" },
-    { value: "200+", label: "Businesses Helped" },
-    { value: "1K+", label: "Automations Delivered" },
+    { value: "3+", label: "Years of Experience" },
+    { value: "80+", label: "Businesses Automated" },
+    { value: "300+", label: "Automations Built" },
   ];
 
   const avatars = ["/images/1.svg", "/images/2.svg", "/images/4.svg", "/images/3.svg"];
@@ -97,7 +97,7 @@ const Hero = () => {
             className="font-dmSans text-xs sm:text-base md:text-lg mt-3 sm:mt-5 max-w-sm sm:max-w-xl mx-auto leading-relaxed"
             variants={fadeUp as Variants}
           >
-            I help businesses across the <span className="text-purple-400">USA, Canada, and India</span> eliminate repetitive tasks with custom <span className="text-purple-400">n8n automation</span> — as your dedicated <span className="text-purple-400">AI automation consultant</span>.
+            I help businesses across the <span className="text-purple-400">USA, Canada, and Europe</span> eliminate repetitive tasks with custom <span className="text-purple-400">Claude AI &amp; n8n</span> automations — as your dedicated <span className="text-purple-400">AI automation consultant</span>.
           </motion.p>
 
           {/* CTA Button */}
@@ -171,7 +171,7 @@ const Hero = () => {
                   100+
                 </div>
                 <div className="font-jakarta text-[10px] sm:text-sm text-white">
-                  Automation Build
+                  Automation Builds
                 </div>
               </div>
             </div>
