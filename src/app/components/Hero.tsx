@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { FiArrowDown } from "react-icons/fi";
 import { FiArrowUpRight } from "react-icons/fi";
 import { Variants, motion } from "framer-motion";
 import StarsCanvas from "@/Components/ShootingStars";
@@ -23,9 +22,9 @@ const fadeUpStagger = {
 
 const Hero = () => {
   const stats = [
-    { value: "3+", label: "Years of Experience" },
-    { value: "80+", label: "Businesses Automated" },
-    { value: "300+", label: "Automations Built" },
+    { value: "30+", label: "Businesses Automated" },
+    { value: "100+", label: "Automations Built" },
+    { value: "100K+", label: "Followers Trust My Work" },
   ];
 
   const avatars = ["/images/1.svg", "/images/2.svg", "/images/4.svg", "/images/3.svg"];
@@ -42,7 +41,7 @@ const Hero = () => {
     <>
       <section
         id="home"
-        className="relative h-screen w-full overflow-hidden text-white flex flex-col justify-between"
+        className="relative h-screen w-full overflow-hidden text-white flex flex-col"
       >
         {/* Background Image */}
         <Image
@@ -59,122 +58,80 @@ const Hero = () => {
         </div>
 
         {/* Hero Content */}
-        <motion.div
-          className="flex flex-col items-center justify-center text-center w-full px-4 sm:px-6 md:px-8 max-w-4xl mx-auto pt-48 sm:pt-36 md:pt-36"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeUpStagger}
-        >
-          {/* Headline */}
+        <div className="flex-1 flex flex-col items-center justify-center text-center w-full px-4 sm:px-6 md:px-8 max-w-5xl mx-auto gap-5 sm:gap-7">
+
+          {/* Trust badge */}
           <motion.div
-            className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4"
-            variants={fadeUpStagger}
+            className="flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-1.5 text-xs sm:text-sm text-white/80 font-dmSans"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <motion.h1
-              className="font-poppins font-medium text-[26px] sm:text-5xl md:text-6xl lg:text-7xl drop-shadow-lg"
-              variants={fadeUp as Variants}
-            >
-              Your AI
-            </motion.h1>
-            <motion.h1
-              className="font-poppins italic font-light text-[26px] sm:text-5xl md:text-6xl lg:text-7xl underline drop-shadow-lg"
-              variants={fadeUp as Variants}
-            >
-              Automation
-            </motion.h1>
+            <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
+            100K+ followers · 30+ businesses automated · USA, Canada &amp; Europe
           </motion.div>
 
-          <motion.h2
-            className="font-poppins font-medium text-[22px] sm:text-4xl md:text-5xl lg:text-6xl mt-2 sm:mt-4"
-            variants={fadeUp as Variants}
+          {/* Headline */}
+          <motion.h1
+            className="text-white font-poppins font-semibold text-4xl sm:text-6xl md:text-7xl leading-tight tracking-tight drop-shadow-lg"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.25 }}
           >
-            Consultant for <span className="text-purple-400">Business Growth.</span>
-          </motion.h2>
+            We Build AI That{" "}
+            <span className="italic font-light underline decoration-purple-400 underline-offset-4">
+              Runs Your Business.
+            </span>
+          </motion.h1>
 
           {/* Subtext */}
           <motion.p
-            className="font-dmSans text-xs sm:text-base md:text-lg mt-3 sm:mt-5 max-w-sm sm:max-w-xl mx-auto leading-relaxed"
-            variants={fadeUp as Variants}
+            className="font-dmSans text-sm sm:text-lg text-white/70 max-w-2xl mx-auto leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
           >
-            I help businesses across the <span className="text-purple-400">USA, Canada, and Europe</span> eliminate repetitive tasks with custom <span className="text-purple-400">Claude AI &amp; n8n</span> automations — as your dedicated <span className="text-purple-400">AI automation consultant</span>.
+            Hi, I&apos;m <span className="text-white font-medium">Chandan Kumar</span> — AI automation consultant trusted by{" "}
+            <span className="text-purple-400">100,000+ business owners</span> on Instagram &amp; YouTube.
+            I build custom <span className="text-purple-400">Claude AI &amp; n8n</span> systems that eliminate
+            repetitive work and free your team to focus on growth.
           </motion.p>
 
           {/* CTA Button */}
           <motion.a
-            href="https://cal.com/chandan-kumar-zhrofj/30min"
+            href="https://calendly.com/chandannetha/30min"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 flex items-center justify-center bg-[#4D00FF] rounded-full px-6 py-2 sm:px-8 sm:py-3 gap-2 shadow-lg hover:bg-[#3700cc] transition-all duration-300"
+            className="flex items-center justify-center bg-[#4D00FF] rounded-full px-8 py-3 sm:px-10 sm:py-4 gap-2 shadow-[0_0_32px_rgba(77,0,255,0.5)] hover:bg-[#3700cc] transition-all duration-300"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.55 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            variants={fadeUp as Variants}
           >
-            <span className="font-poppins text-sm sm:text-base">Book a Free Strategy Call</span>
-            <FiArrowUpRight className="w-4 h-4 sm:w-6 sm:h-6 rotate-45" />
+            <span className="font-poppins font-medium text-sm sm:text-base text-white">Get a Free Automation Audit</span>
+            <FiArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
           </motion.a>
-        </motion.div>
+        </div>
 
-        {/* Stats Section */}
-        {/* Stats Section */}
+        {/* Stats Bar */}
         <motion.div
-          className="relative flex flex-col sm:flex-row flex-wrap justify-center sm:justify-between items-center w-full max-w-6xl mx-auto px-4 sm:px-6 gap-4 sm:gap-6 pb-20 sm:pb-10"
+          className="w-full max-w-4xl mx-auto px-6 sm:px-8 pb-10 sm:pb-12"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeUpStagger}
         >
-          {/* Left Stats */}
-          <div className="flex flex-row justify-center sm:justify-start items-center gap-4 sm:gap-10 w-full sm:w-auto">
-            {stats.map((stat, idx) => (
-              <motion.div
-                key={idx}
-                className="flex flex-col items-center sm:items-start gap-1 flex-1 min-w-[70px] max-w-[120px]"
-                variants={fadeUp as Variants}
-              >
-                <div className="font-dmSans font-medium text-lg sm:text-3xl">{stat.value}</div>
-                <div className="font-dmSans text-[10px] sm:text-sm text-[#F2F2F2] text-center sm:text-left">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Right Automation Build Card */}
           <motion.div
-            className="relative w-full max-w-[280px] sm:max-w-[323px] p-[1px] rounded-[30px] bg-gradient-to-r from-white/80 via-white/40 to-white/10 mt-6 sm:mt-0"
+            className="flex flex-row items-center justify-center sm:justify-between gap-6 sm:gap-10 border-t border-white/10 pt-6"
             variants={fadeUp as Variants}
           >
-            <div className="flex items-center gap-3 relative z-10 bg-[rgba(77,0,255,0.15)] backdrop-blur-[6px] rounded-[30px] px-3 py-2 sm:px-4 sm:py-3">
-              {/* Avatars */}
-              <div className="relative w-[130px] h-[40px] sm:w-[160px] sm:h-[56px]">
-                {avatars.map((src, idx) => (
-                  <div
-                    key={idx}
-                    className={`absolute w-[40px] h-[40px] sm:w-[56px] sm:h-[56px] rounded-full overflow-hidden ${idx === 0
-                      ? "bg-gradient-to-br from-pink-400 to-red-500 left-0 z-30"
-                      : idx === 1
-                        ? "bg-gradient-to-br from-purple-400 to-blue-500 left-[25px] sm:left-[35px] z-20"
-                        : idx === 2
-                          ? "bg-gradient-to-br from-blue-400 to-cyan-500 left-[50px] sm:left-[70px] z-10"
-                          : "bg-gradient-to-br from-green-400 to-teal-500 left-[75px] sm:left-[105px] z-0"
-                      }`}
-                  >
-                    <Image src={src} alt={`Avatar ${idx}`} width={56} height={56} className="rounded-full object-cover" />
-                  </div>
-                ))}
+            {stats.map((stat, idx) => (
+              <div key={idx} className="flex flex-col items-center gap-1">
+                <div className="font-poppins font-semibold text-2xl sm:text-4xl text-white">{stat.value}</div>
+                <div className="font-dmSans text-[10px] sm:text-sm text-white/50 text-center leading-tight">{stat.label}</div>
               </div>
-
-              {/* Text */}
-              <div className="flex flex-col items-start justify-center">
-                <div className="font-jakarta font-medium text-base sm:text-xl text-white">
-                  100+
-                </div>
-                <div className="font-jakarta text-[10px] sm:text-sm text-white">
-                  Automation Builds
-                </div>
-              </div>
-            </div>
+            ))}
           </motion.div>
         </motion.div>
       </section>

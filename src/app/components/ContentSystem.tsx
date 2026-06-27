@@ -56,7 +56,7 @@ const ContentSystem: React.FC = () => {
 
           <div className="pt-4">
             <a
-              href="https://cal.com/chandan-kumar-zhrofj/30min"
+              href="https://calendly.com/chandannetha/30min"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#4D00FF] rounded-full text-white font-medium hover:bg-[#3d00cc] transition-all group"

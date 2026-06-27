@@ -3,6 +3,8 @@ import HeroSection from "./components/AUtomation";
 import CaseStudies from "./components/casestudies";
 import CTASection from "./components/CTASection";
 import Hero from "./components/Hero";
+import FounderSection from "./components/Founder";
+// import VideoTestimonials from "./components/VideoTestimonials";
 import OfferBanner from "./components/OfferBanner";
 import PackagesSection from "./components/Packages";
 import SolutionsSection from "./components/Solutions";
@@ -21,6 +23,8 @@ export default function Home() {
       <ToolsSection />
       <CaseStudies />
       <TestimonialsSection />
+      {/* <VideoTestimonials /> */}
+      <FounderSection />
       <CTASection />
       <OfferBanner />
     </main>

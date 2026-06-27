@@ -3,180 +3,109 @@
 import Image from "next/image";
 import Link from "next/link";
 import { blogs } from "../../../public/data/blogs";
-import { useRef } from "react";
-import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import { motion, Variants } from "framer-motion";
+import { motion } from "framer-motion";
+import { FiArrowUpRight } from "react-icons/fi";
+
+const FEATURED = blogs.slice(0, 6);
 
 export default function CaseStudies() {
-  const scrollRef = useRef<HTMLDivElement>(null);
-
-  const scrollLeft = () => {
-    scrollRef.current?.scrollBy({ left: -300, behavior: "smooth" });
-  };
-  const scrollRight = () => {
-    scrollRef.current?.scrollBy({ left: 300, behavior: "smooth" });
-  };
-
-  // Properly typed variants
-  const containerVariants: Variants = {
-    hidden: {},
-    show: {
-      transition: { staggerChildren: 0.2 },
-    },
-  };
-
-  const cardVariants: Variants = {
-    hidden: { opacity: 0, y: 30 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-  };
-
   return (
-    <motion.section
-    id="case-studies"
-      className="flex flex-col items-center justify-center px-6 md:px-20 py-12 gap-12 bg-black"
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.2 }}
-      variants={containerVariants}
-    >
-      {/* Heading */}
-      <motion.div
-        className="max-w-[934px] mx-auto text-center flex flex-col items-center gap-4"
-        variants={cardVariants}
-      >
-        <h2 className="text-white font-inter font-normal text-[48px] leading-[52px] tracking-[-1px]">
-          Proven Results. Real Impact.
-        </h2>
-        <p className="text-white/70 font-poppins font-light text-[18.4748px] leading-[150%] text-center max-w-[578.26px]">
-          Discover how we have helped businesses across industries automate their
-          operations, improve efficiency, and drive growth through innovative AI
-          solutions.
-        </p>
-      </motion.div>
+    <section id="case-studies" className="w-full bg-[#04051B] py-20 sm:py-28 px-4 sm:px-10">
+      <div className="max-w-6xl mx-auto flex flex-col gap-14">
 
-      {/* ---------- DESKTOP: Centered cards (top 3 from blogs) ---------- */}
-      <motion.div
-        className="hidden lg:flex justify-center gap-6 w-full"
-        variants={containerVariants}
-      >
-        {blogs.slice(0, 3).map((item) => (
-          <motion.div
-            key={item.slug}
-            className="flex flex-col items-start gap-4 w-[364px]"
-            variants={cardVariants}
+        {/* Heading */}
+        <motion.div
+          className="flex flex-col items-center text-center gap-4"
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="flex items-center gap-2 px-4 py-1.5 bg-[rgba(77,0,255,0.1)] border border-white/10 rounded-full">
+            <span className="w-2.5 h-2.5 rounded-full bg-[#8400FF] shadow-[0_0_10px_#6D21F0]" />
+            <span className="text-[#8400FF] text-sm font-dmSans">Real Work. Real Results.</span>
+          </div>
+
+          <h2 className="text-white font-poppins font-semibold text-3xl sm:text-5xl leading-tight tracking-tight max-w-2xl">
+            Businesses I&apos;ve Automated Across the West
+          </h2>
+          <p className="text-white/50 font-dmSans text-base sm:text-lg max-w-xl leading-relaxed">
+            From New York ad agencies to Toronto content brands — every system built, every result real.
+          </p>
+        </motion.div>
+
+        {/* Cards grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {FEATURED.map((item, idx) => (
+            <motion.div
+              key={item.slug}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.08 }}
+            >
+              <Link
+                href={`/casestudies/${item.slug}`}
+                className="group flex flex-col gap-4 bg-white/[0.03] border border-white/10 rounded-2xl overflow-hidden hover:border-purple-500/40 hover:bg-white/[0.05] transition-all duration-300"
+              >
+                {/* Image */}
+                <div className="relative w-full h-48 overflow-hidden">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  {/* Category badge */}
+                  <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm border border-white/10 rounded-full px-3 py-1 text-[11px] text-white/70 font-dmSans">
+                    {item.category}
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div className="flex flex-col gap-3 px-5 pb-5">
+                  {/* Result stat */}
+                  <div className="text-purple-400 font-dmSans text-xs font-medium tracking-wide uppercase">
+                    {item.hero.meta.stat}
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-white font-poppins font-medium text-base leading-snug">
+                    {item.title}
+                  </h3>
+
+                  {/* Excerpt */}
+                  <p className="text-white/50 font-dmSans text-sm leading-relaxed line-clamp-2">
+                    {item.excerpt}
+                  </p>
+
+                  {/* Read more */}
+                  <div className="flex items-center gap-1 text-purple-400 font-dmSans text-sm mt-1 group-hover:gap-2 transition-all duration-200">
+                    Read case study <FiArrowUpRight className="w-3.5 h-3.5" />
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* View all CTA */}
+        <motion.div
+          className="flex justify-center"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+        >
+          <Link
+            href="/casestudies"
+            className="flex items-center gap-2 border border-white/20 hover:border-purple-500/60 text-white font-poppins text-sm font-medium px-7 py-3 rounded-full hover:bg-white/5 transition-all duration-300"
           >
-            <Link href={`/casestudies/${item.slug}`} className="block w-full">
-              <div className="relative w-full h-[190px] rounded-[8px] overflow-hidden">
-                <Image src={item.image} alt={item.title} fill className="object-cover" />
-              </div>
-            </Link>
+            View All Case Studies <FiArrowUpRight className="w-4 h-4" />
+          </Link>
+        </motion.div>
 
-            <div className="flex flex-col items-start gap-2 w-full">
-              <Link href={`/casestudies/${item.slug}`} className="hover:underline">
-                <h3 className="font-poppins text-[18px] font-normal text-white">{item.title}</h3>
-              </Link>
-              <p className="font-roboto text-[16px] text-white/60">{item.excerpt}</p>
-            </div>
-          </motion.div>
-        ))}
-      </motion.div>
-
-      {/* ---------- TABLET: Horizontal scroll with arrows (top 3 from blogs) ---------- */}
-      <div className="hidden md:flex lg:hidden relative items-center w-full">
-        <button
-          className="absolute left-0 z-10 bg-black/50 p-2 rounded-full hover:bg-black/70"
-          onClick={scrollLeft}
-        >
-          <FiChevronLeft className="text-white w-6 h-6" />
-        </button>
-
-        <div
-          ref={scrollRef}
-          className="flex overflow-x-auto gap-6 scrollbar-hide scroll-smooth py-2"
-        >
-          {blogs.slice(0, 3).map((item) => (
-            <motion.div
-              key={item.slug}
-              className="flex-shrink-0 w-[300px] flex flex-col gap-4"
-              variants={cardVariants}
-            >
-              <Link href={`/casestudies/${item.slug}`} className="block w-full">
-                <div className="relative w-full h-[190px] rounded-[8px] overflow-hidden">
-                  <Image src={item.image} alt={item.title} fill className="object-cover" />
-                </div>
-              </Link>
-
-              <div className="flex flex-col items-start gap-2">
-                <Link href={`/casestudies/${item.slug}`} className="hover:underline">
-                  <h3 className="font-poppins text-[18px] font-normal text-white">{item.title}</h3>
-                </Link>
-                <p className="font-roboto text-[16px] text-white/60">{item.excerpt}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        <button
-          className="absolute right-0 z-10 bg-black/50 p-2 rounded-full hover:bg-black/70"
-          onClick={scrollRight}
-        >
-          <FiChevronRight className="text-white w-6 h-6" />
-        </button>
       </div>
-
-      {/* ---------- MOBILE: Horizontal scroll without arrows (top 3 from blogs) ---------- */}
-      <div className="md:hidden relative w-full">
-        <div
-          ref={scrollRef}
-          className="flex overflow-x-auto gap-4 scroll-smooth snap-x snap-mandatory px-4 py-2 scrollbar-hide"
-        >
-          {blogs.slice(0, 3).map((item) => (
-            <motion.div
-              key={item.slug}
-              className="flex-shrink-0 w-[90vw] snap-start flex flex-col gap-4"
-              variants={cardVariants}
-            >
-              <Link href={`/casestudies/${item.slug}`} className="block w-full">
-                <div className="relative w-full h-[160px] rounded-[8px] overflow-hidden">
-                  <Image src={item.image} alt={item.title} fill className="object-cover" />
-                </div>
-              </Link>
-
-              <div className="flex flex-col items-start gap-2">
-                <Link href={`/casestudies/${item.slug}`} className="hover:underline">
-                  <h3 className="font-poppins text-[16px] font-normal text-white">{item.title}</h3>
-                </Link>
-                <p className="font-roboto text-[14px] text-white/60">{item.excerpt}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-
-      {/* Learn more */}
-      <motion.a
-        href="/casestudies"
-        className="relative flex items-center gap-2 w-[117.61px] h-[26px] text-white font-poppins font-medium text-[16px] leading-[26px] hover:underline"
-        variants={cardVariants}
-      >
-        Learn more
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="12"
-          height="12"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          className="w-[12px] h-[12px]"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M9 5l7 7-7 7"
-          />
-        </svg>
-      </motion.a>
-    </motion.section>
+    </section>
   );
 }

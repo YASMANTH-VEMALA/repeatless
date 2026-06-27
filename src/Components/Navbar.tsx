@@ -72,7 +72,7 @@ const Navbar: React.FC = () => {
 
         {/* Book a Demo Button (Desktop) */}
         <a
-          href="https://cal.com/chandan-kumar-zhrofj/30min"
+          href="https://calendly.com/chandannetha/30min"
           target="_blank"
           rel="noopener noreferrer"
           className="hidden md:flex items-center gap-2 w-40 h-12 rounded-full bg-[#4D00FF] hover:bg-[#3700cc] transition text-white text-poppins font-medium text-sm shadow-lg justify-center"
@@ -113,7 +113,7 @@ const Navbar: React.FC = () => {
             ))}
 
             <a
-              href="https://cal.com/chandan-kumar-zhrofj/30min"
+              href="https://calendly.com/chandannetha/30min"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 w-40 h-12 rounded-full bg-[#4D00FF] hover:bg-[#3700cc] transition text-white text-poppins font-medium text-sm justify-center"

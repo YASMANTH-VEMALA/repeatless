@@ -24,16 +24,16 @@ export default function CTASection() {
           variants={fadeUpVariants}
         >
           <h2 className="font-poppins font-medium text-[50px] leading-[60px] tracking-[-1px]">
-            Ready to Repeat Less &amp; <br /> Grow More?
+            Ready to Stop Doing Work <br /> <span className="text-purple-400">AI Should Handle?</span>
           </h2>
           <p className="text-white/80 text-lg leading-7">
-            Let&apos;s map your automation journey together. Book a free strategy call — serving businesses across the USA, Canada &amp; Europe.
+            Book a free automation audit — I&apos;ll map exactly what to automate in your business first. No pitch. No commitment. Serving businesses across the USA, Canada &amp; Europe.
           </p>
         </motion.div>
 
         {/* CTA Button */}
         <motion.a
-          href="https://cal.com/chandan-kumar-zhrofj/30min"
+          href="https://calendly.com/chandannetha/30min"
           className="flex items-center justify-center gap-2 px-5 py-3 bg-[#4D00FF] rounded-full shadow-[0_0_16px_#6D21F0,0_0_8.1px_#1C76FD] text-white font-poppins font-medium text-sm whitespace-nowrap"
           initial="hidden"
           whileInView="show"
@@ -41,7 +41,7 @@ export default function CTASection() {
           variants={fadeUpVariants}
         >
           <FiPhoneCall size={16} />
-          Book a Free Strategy Call
+          Get a Free Automation Audit
         </motion.a>
       </div>
     </section>

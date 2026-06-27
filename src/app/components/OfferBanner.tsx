@@ -1,63 +1,123 @@
 "use client";
-import { FiArrowUpRight } from "react-icons/fi";
-import { motion, Variants } from "framer-motion";
+
+import { motion } from "framer-motion";
+import { FiArrowUpRight, FiCheck } from "react-icons/fi";
+
+const deliverables = [
+  {
+    title: "Done-For-You Build",
+    desc: "Your automation is fully built, tested, and deployed by me — not handed to a junior. Ready in 7–10 days.",
+  },
+  {
+    title: "1 Month Free Support",
+    desc: "Every system I build comes with 1 month of free support — bug fixes, tweaks, and questions included. No extra charge.",
+  },
+  {
+    title: "Full Maintenance Included",
+    desc: "Monitoring, alerts, fixes, optimizations, and updates — all handled as part of maintenance. One less thing to worry about.",
+  },
+  {
+    title: "ROI Dashboard",
+    desc: "A live dashboard showing hours saved, tasks automated, and real business impact — every single week.",
+  },
+  {
+    title: "30-Day Guarantee",
+    desc: "If your automation doesn't deliver measurable results within 30 days, I fix or rebuild it at no charge.",
+  },
+  {
+    title: "$499 Template Pack — Free",
+    desc: "Every client gets my personal library of pre-built n8n templates. Plug in, customize, and launch in minutes.",
+  },
+];
 
 export default function OfferBanner() {
-  // Variants for fade-up
-  const fadeUpVariants: Variants = {
-    hidden: { opacity: 0, y: 30 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-  };
-
   return (
-    <motion.section
-      id="contact"
-      className="w-full bg-[#04051B] py-8 sm:py-12 flex justify-center"
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.2 }}
-      variants={fadeUpVariants}
-    >
-      <div className="bg-[rgba(115,0,255,0.15)] rounded-[9px] max-w-6xl w-full flex flex-col gap-6 p-4 sm:p-7">
-        {/* Banner Top */}
-        <div
-          className="w-full h-60 sm:h-[382px] rounded-[12px] bg-contain bg-center bg-no-repeat"
-          style={{
-            backgroundImage: "url('/images/banner.png')",
-          }}
-        ></div>
+    <section id="contact" className="w-full bg-[#04051B] py-20 sm:py-28 px-4 sm:px-10">
+      <div className="max-w-6xl mx-auto">
 
-        {/* Content */}
-        <div className="flex flex-col items-center gap-4 sm:gap-6 px-2 sm:px-0 max-w-3xl mx-auto">
-          {/* Main Heading */}
-          <h3 className="text-white/80 font-poppins font-medium text-[22px] sm:text-[32px] leading-[28px] sm:leading-[48px] text-center">
-            The Repeatless Grand Slam Offer
-          </h3>
+        {/* Card */}
+        <motion.div
+          className="relative rounded-3xl overflow-hidden border border-purple-500/20 bg-gradient-to-br from-[#0d0630] via-[#08021f] to-[#04051B] p-8 sm:p-14"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          {/* Glow accents */}
+          <div className="absolute -top-20 -left-20 w-80 h-80 bg-purple-600 opacity-20 blur-[100px] rounded-full pointer-events-none" />
+          <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-blue-600 opacity-10 blur-[120px] rounded-full pointer-events-none" />
 
-          {/* Features / Description */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-12 text-white/80 text-[14px] sm:text-[16px] leading-[20px] sm:leading-[24px] pb-4 sm:pb-5">
-            <ul className="list-disc list-inside flex flex-col gap-2">
-              <li>Done-For-You Setup (7–10 days)</li>
-              <li>24/7 Monitoring + Alerts</li>
-              <li>Monthly Optimization Sprints</li>
-            </ul>
-            <ul className="list-disc list-inside flex flex-col gap-2">
-              <li>ROI Dashboard & Reports</li>
-              <li>60-Day Hours-Saved Guarantee</li>
-              <li>Bonus: $499 Template Pack</li>
-            </ul>
+          <div className="relative flex flex-col gap-10">
+
+            {/* Header */}
+            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
+              <div className="flex flex-col gap-3 max-w-xl">
+                <span className="text-purple-400 font-dmSans text-sm font-medium tracking-widest uppercase">
+                  What You Get When You Work With Me
+                </span>
+                <h2 className="text-white font-poppins font-semibold text-3xl sm:text-5xl leading-tight tracking-tight">
+                  Everything to Automate,<br className="hidden sm:block" /> Scale &amp; Stay Ahead.
+                </h2>
+                <p className="text-white/50 font-dmSans text-base leading-relaxed">
+                  Not a template. Not an offshore team. You get me — building, running, and optimizing
+                  your systems personally.
+                </p>
+              </div>
+
+              {/* CTA — desktop */}
+              <a
+                href="https://calendly.com/chandannetha/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden sm:flex items-center gap-2 bg-[#4D00FF] hover:bg-[#3700cc] text-white font-poppins font-medium text-sm px-8 py-4 rounded-full shadow-[0_0_32px_rgba(77,0,255,0.4)] transition-all duration-300 whitespace-nowrap shrink-0 self-start"
+              >
+                Book a Free Audit <FiArrowUpRight className="w-4 h-4" />
+              </a>
+            </div>
+
+            {/* Divider */}
+            <div className="w-full h-px bg-white/8" />
+
+            {/* Deliverables grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {deliverables.map((item, idx) => (
+                <motion.div
+                  key={idx}
+                  className="flex flex-col gap-3 p-5 rounded-2xl bg-white/[0.03] border border-white/8 hover:border-purple-500/30 transition-all duration-300"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: idx * 0.07 }}
+                >
+                  <div className="flex items-center gap-2">
+                    <div className="w-5 h-5 rounded-full bg-purple-500/20 flex items-center justify-center shrink-0">
+                      <FiCheck className="w-3 h-3 text-purple-400" />
+                    </div>
+                    <h3 className="text-white font-poppins font-medium text-sm">{item.title}</h3>
+                  </div>
+                  <p className="text-white/45 font-dmSans text-sm leading-relaxed">{item.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* CTA — mobile */}
+            <a
+              href="https://calendly.com/chandannetha/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="sm:hidden flex items-center justify-center gap-2 bg-[#4D00FF] hover:bg-[#3700cc] text-white font-poppins font-medium text-sm px-8 py-4 rounded-full shadow-[0_0_32px_rgba(77,0,255,0.4)] transition-all duration-300"
+            >
+              Book a Free Audit <FiArrowUpRight className="w-4 h-4" />
+            </a>
+
+            {/* Trust line */}
+            <p className="text-center text-white/25 font-dmSans text-xs">
+              No contracts. No retainer required to start. 1 month free support on every build. 30-day results guarantee.
+            </p>
+
           </div>
-
-          {/* CTA Button */}
-          <a
-            href="https://cal.com/chandan-kumar-zhrofj/30min"
-            className="relative flex items-center justify-center gap-2 px-4 py-2 sm:px-[19px] sm:py-[8px] bg-[#4D00FF] rounded-[38px] text-white font-poppins text-[15px] sm:text-[17px] leading-[25px] sm:leading-[31px] shadow-[0_0_16px_#6D21F0,0_0_8.1px_#1C76FD] hover:brightness-110 transition-all"
-          >
-            Book a 20-min Demo
-            <FiArrowUpRight className="rotate-45 w-5 h-5 sm:w-[21px] sm:h-[21px]" />
-          </a>
-        </div>
+        </motion.div>
       </div>
-    </motion.section>
+    </section>
   );
 }

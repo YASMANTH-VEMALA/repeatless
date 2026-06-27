@@ -111,7 +111,7 @@ const PackagesSection: FC = () => {
 
               <div className="mt-auto pt-4 border-t border-white/10 flex justify-center">
                 <a
-                  href="https://cal.com/chandan-kumar-zhrofj/30min"
+                  href="https://calendly.com/chandannetha/30min"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 px-6 py-3 bg-[#4D00FF] rounded-full text-sm hover:bg-[#5E1FFF] transition-all"

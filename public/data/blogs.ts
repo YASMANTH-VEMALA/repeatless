@@ -796,6 +796,393 @@ export const blogs: Blog[] = [
   }
 }
 
+,
+{
+  slug: "automate-real-estate-lead-followup-usa",
+  title: "How to Automate Lead Follow-Up for Real Estate Agents (USA)",
+  category: "Blog",
+  date: "2025-12-01",
+  excerpt: "Most real estate leads go cold within 5 minutes of contact. Here's the exact n8n + Claude AI system that follows up instantly — 24/7 — without you lifting a finger.",
+  image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1759668522/repeatless/serviceprovider_srwmjd.png",
+  hero: {
+    title: "Automate Real Estate Lead Follow-Up with AI",
+    description: "Real estate agents in the USA lose deals every day because follow-up is slow or inconsistent. This guide shows you the exact automation system that responds to every lead in under 60 seconds — using n8n and Claude AI.",
+    meta: { solution: "REAL ESTATE AUTOMATION", stat: "60-Second Lead Response · 24/7" },
+    image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1759668522/repeatless/serviceprovider_srwmjd.png"
+  },
+  body: {
+    sections: [
+      {
+        title: "The Problem: Speed to Lead",
+        text: "Studies show that leads contacted within 5 minutes are 21x more likely to convert than those contacted after 30 minutes. Most real estate agents follow up hours later — or forget entirely. Manual CRM updates, missed notifications, and busy schedules mean deals go cold before they even start."
+      },
+      {
+        title: "The Automation System",
+        text: [
+          "Lead Capture: New lead comes in from Zillow, Realtor.com, Facebook Ads, or your website form.",
+          "Instant Personalized Text + Email: Claude AI generates a personalized message using the lead's name, property interest, and location — sent within 60 seconds via SMS and email.",
+          "CRM Auto-Update: Lead details, source, and timestamp are logged to your CRM (HubSpot, Follow Up Boss, or Google Sheets) automatically.",
+          "Follow-Up Sequence: If no reply after 24 hours, a second message goes out. After 72 hours, a third. All written by AI in your voice.",
+          "Hot Lead Alert: If the lead replies, you get an instant push notification so you can jump in personally.",
+          "Qualification Filter: Claude AI reads the reply and scores the lead — serious buyer, just browsing, or wrong fit — so you only call the ones worth your time."
+        ],
+        image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1759668522/repeatless/serviceprovider_srwmjd.png"
+      },
+      {
+        title: "Why It Works",
+        iconList: [
+          "Sub-60-second response beats every competitor",
+          "AI personalizes every message — not a generic template",
+          "Multi-channel: SMS + email simultaneously",
+          "Automated follow-up sequence runs without you",
+          "Only surface hot leads to your phone",
+          "Works 24/7 — even weekends and holidays"
+        ]
+      },
+      {
+        title: "Results You Can Expect",
+        bullets: [
+          "3–5x improvement in lead response rate",
+          "Significant reduction in leads going cold",
+          "2–4 hours saved daily on manual follow-up",
+          "Higher conversion rate from inquiry to showing",
+          "Never miss a lead again — regardless of how busy you are"
+        ]
+      }
+    ]
+  }
+},
+{
+  slug: "n8n-vs-zapier-small-business-2025",
+  title: "n8n vs Zapier: Which Is Better for Small Business Automation in 2025?",
+  category: "Blog",
+  date: "2025-12-05",
+  excerpt: "Both tools automate your workflows — but one costs 10x more and locks you in. Here's an honest breakdown for small business owners in the USA and Canada.",
+  image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1762323483/seo_omnsuv.png",
+  hero: {
+    title: "n8n vs Zapier for Small Business Automation",
+    description: "If you're a small business owner looking to automate operations, you've probably seen both n8n and Zapier. This is the honest comparison — cost, power, ease of use — so you can make the right call for your business.",
+    meta: { solution: "AUTOMATION TOOLS GUIDE", stat: "n8n Saves Up to 90% on Costs" },
+    image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1762323483/seo_omnsuv.png"
+  },
+  body: {
+    sections: [
+      {
+        title: "The Short Answer",
+        text: "If you want plug-and-play simplicity and have a small number of automations, Zapier works. If you want real power, AI integrations, and don't want to pay $500/month as you scale — n8n wins. For most businesses I work with in the USA and Canada, n8n is the better long-term choice."
+      },
+      {
+        title: "Cost Comparison",
+        text: [
+          "Zapier: Free tier is extremely limited (100 tasks/month). Professional plan starts at $49/month. At scale (50,000+ tasks), you're looking at $400–800/month.",
+          "n8n: Self-hosted version is completely free — you only pay for your server (around $5–20/month on Hetzner or DigitalOcean). Cloud version starts at $20/month with far more generous limits.",
+          "Real example: A client running 30,000 automations/month on Zapier was paying $299/month. We migrated to n8n — their cost dropped to $12/month. Same workflows, 96% cost reduction."
+        ]
+      },
+      {
+        title: "Power & Flexibility",
+        iconList: [
+          "n8n supports custom JavaScript/Python code inside workflows",
+          "n8n has native Claude AI and OpenAI nodes built in",
+          "n8n allows self-hosting — your data never leaves your server",
+          "Zapier is easier for non-technical users with no coding",
+          "n8n handles complex multi-branch logic Zapier can't",
+          "Zapier has more pre-built app integrations out of the box"
+        ]
+      },
+      {
+        title: "Which Should You Choose?",
+        text: "Choose Zapier if you're non-technical, running fewer than 20 simple automations, and value speed of setup over cost. Choose n8n if you want AI-powered automations, plan to scale, care about data privacy, or want to stop paying thousands per year to a SaaS tool."
+      },
+      {
+        title: "Bottom Line",
+        bullets: [
+          "n8n is 80–95% cheaper than Zapier at scale",
+          "n8n handles AI workflows that Zapier simply can't",
+          "Zapier is faster to set up for simple tasks",
+          "n8n self-hosted keeps your business data private",
+          "For serious business automation — n8n is the professional choice"
+        ]
+      }
+    ]
+  }
+},
+{
+  slug: "save-20-hours-week-business-automation",
+  title: "How to Save 20 Hours a Week with Business Automation (Real Examples)",
+  category: "Blog",
+  date: "2025-12-08",
+  excerpt: "Twenty hours a week is 1,000 hours a year. Here are the exact automations — built for real businesses in the USA, Canada, and Europe — that reclaim that time.",
+  image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1759666970/repeatless/consultation_niszxz.png",
+  hero: {
+    title: "Save 20 Hours a Week with Business Automation",
+    description: "Every business owner I've worked with in the USA and Canada says the same thing: 'I'm drowning in tasks that feel important but aren't.' Here's the exact playbook — with real automation examples — to get 20 hours back every week.",
+    meta: { solution: "BUSINESS PRODUCTIVITY", stat: "20 Hours Saved Per Week" },
+    image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1759666970/repeatless/consultation_niszxz.png"
+  },
+  body: {
+    sections: [
+      {
+        title: "Where the 20 Hours Actually Go",
+        text: "Most business owners waste time in the same places: manually responding to leads and enquiries (3–5 hrs), copy-pasting data between tools (2–3 hrs), creating and filing documents (2–4 hrs), scheduling and follow-ups (2–3 hrs), social media posting (3–5 hrs), and reporting (1–2 hrs). Total: 13–22 hours every week on work that AI can do in seconds."
+      },
+      {
+        title: "The 6 Automations That Reclaim Your Time",
+        text: [
+          "Lead Response Automation: New enquiry → instant personalized reply via email/SMS. Saves 3–5 hours/week for service businesses.",
+          "Document Generation: Client fills a form → all contracts, proposals, and onboarding docs auto-generate and file to Google Drive. Saves 2–4 hours/week.",
+          "Social Media Scheduling: AI generates and schedules a week of posts in one session. Saves 3–5 hours/week.",
+          "Invoice & Follow-Up: New project completion → invoice auto-sent, follow-up sequence triggered if unpaid after 7 days. Saves 1–2 hours/week.",
+          "Report Automation: Weekly KPI report auto-assembled from your tools (CRM, Stripe, GA4) and emailed every Monday. Saves 1–2 hours/week.",
+          "Email Triage: AI reads, categorizes, and drafts replies to routine emails. Saves 2–3 hours/week."
+        ]
+      },
+      {
+        title: "Real Results from Real Businesses",
+        iconList: [
+          "Toronto agency: 15 hrs/week saved on client onboarding docs",
+          "Chicago bike shop: 8 hrs/week on social media content",
+          "New York creative agency: 20 hrs/week on ad production",
+          "Vancouver marketing firm: 10 hrs/week on LinkedIn content",
+          "Ohio service business: 6 hrs/week on customer routing",
+          "Austin consulting firm: 12 hrs/week on document filing"
+        ]
+      },
+      {
+        title: "How to Start",
+        bullets: [
+          "Pick the ONE task you repeat most every week — start there",
+          "Map the inputs and outputs of that task before automating",
+          "Build the automation, test it for 2 weeks, then add the next",
+          "Don't automate everything at once — stack wins gradually",
+          "Book a free audit if you want someone to map it out for you"
+        ]
+      }
+    ]
+  }
+},
+{
+  slug: "ai-instagram-content-automation-2025",
+  title: "AI Content Automation for Instagram — What Actually Works in 2025",
+  category: "Blog",
+  date: "2025-12-10",
+  excerpt: "Posting consistently on Instagram without burning out is a solved problem. Here's the exact AI automation stack that keeps accounts active, on-brand, and growing — without daily effort.",
+  image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1759665534/repeatless/insta_dm_hpng0l.png",
+  hero: {
+    title: "AI Content Automation for Instagram in 2025",
+    description: "Instagram rewards consistency — but consistency is hard when you're running a business. This guide covers the exact AI automation stack that keeps your Instagram active, on-brand, and generating leads without you posting manually every day.",
+    meta: { solution: "INSTAGRAM AUTOMATION", stat: "Daily Posts · Zero Manual Work" },
+    image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1759665534/repeatless/insta_dm_hpng0l.png"
+  },
+  body: {
+    sections: [
+      {
+        title: "Why Manual Instagram Posting Fails",
+        text: "Most business owners post when they remember to — which means inconsistently. The Instagram algorithm penalizes inconsistency with lower reach. You need a minimum of 4–5 posts per week to maintain momentum. For most people running a business, that's simply not sustainable manually."
+      },
+      {
+        title: "The Full Automation Stack",
+        text: [
+          "Content Ideation: AI monitors trending topics, competitor content, and niche hashtags to surface 10 proven post ideas every week.",
+          "Copywriting: Claude AI writes captions in your brand voice — hooks, body, CTA, hashtags — for every post.",
+          "Visual Creation: AI generates on-brand images or selects from your approved asset library.",
+          "Scheduling: Posts are queued at optimal times for your audience's timezone (typically 9am and 6pm in your target market).",
+          "DM Automation: When a post generates DM interest, AI handles the initial conversation and qualifies the lead.",
+          "Comment Responses: AI replies to comments in your tone within minutes — keeping engagement high without your input."
+        ],
+        image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1759665534/repeatless/insta_dm_hpng0l.png"
+      },
+      {
+        title: "What Actually Drives Results",
+        iconList: [
+          "Consistency beats viral — post daily, grow steadily",
+          "Hook in the first line decides whether anyone reads",
+          "Brand voice must be trained — not just a generic prompt",
+          "DM automation converts followers to buyers",
+          "Hashtag strategy changes monthly — AI keeps it current",
+          "Story content needs a separate automation track"
+        ]
+      },
+      {
+        title: "Results from Clients Using This Stack",
+        bullets: [
+          "Chicago luxury brand: consistent daily posts across 5 platforms with zero manual work",
+          "Toronto content creator: automated Reels every 2 days with manual override option",
+          "Vancouver agency: LinkedIn + Instagram fully automated, 8–10 hrs/week saved",
+          "Engagement consistency improved within 30 days of implementation",
+          "DM response rate improved due to instant automated replies"
+        ]
+      }
+    ]
+  }
+},
+{
+  slug: "best-automation-tools-marketing-agencies-2025",
+  title: "The Best Automation Tools for Marketing Agencies in USA & Canada (2025)",
+  category: "Blog",
+  date: "2025-12-14",
+  excerpt: "Marketing agencies waste hours on repetitive client work. Here's the exact tool stack — ranked and compared — that the best agencies in the USA and Canada are using to automate and scale.",
+  image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1759665812/repeatless/linkedin_q4ttbl.png",
+  hero: {
+    title: "Best Automation Tools for Marketing Agencies (USA & Canada)",
+    description: "Whether you're running a boutique agency in Toronto or a growth shop in Chicago, these are the automation tools worth your time — ranked by ROI, ease of use, and real-world agency performance.",
+    meta: { solution: "AGENCY TOOLS GUIDE", stat: "Top 8 Tools Ranked" },
+    image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1759665812/repeatless/linkedin_q4ttbl.png"
+  },
+  body: {
+    sections: [
+      {
+        title: "The Agency Automation Stack",
+        text: "The best marketing agencies in North America aren't hiring more people — they're automating more processes. Here are the 8 tools that give the best return for agencies specifically."
+      },
+      {
+        title: "The Tools, Ranked",
+        text: [
+          "n8n (Workflow Automation): The backbone of any serious automation stack. Connects everything, supports AI, and costs a fraction of Zapier. Best for: complex multi-step workflows.",
+          "Claude AI (Content & Reasoning): The most capable AI for writing, analysis, and reasoning tasks. Best for: content creation, email drafts, client reporting summaries.",
+          "Make.com (Visual Workflows): More visual than n8n, easier for non-technical teams. Best for: agencies that want simple automations without code.",
+          "Airtable (Client & Project Management): Automatable CRM and project tracker. Best for: managing client deliverables and automating status updates.",
+          "HubSpot (CRM + Marketing): Best-in-class CRM with powerful automation. Best for: agencies managing multiple client pipelines.",
+          "Slack + n8n (Internal Alerts): Automated notifications to your team when client milestones hit. Best for: keeping the team informed without manual updates.",
+          "Google Sheets + Apps Script (Reporting): Auto-generate client reports pulled from your tools. Best for: weekly/monthly client reporting at zero added cost.",
+          "Instantly.ai (Outbound Prospecting): Automated cold email for agency new business. Best for: agencies running outbound for themselves or clients."
+        ]
+      },
+      {
+        title: "What to Automate First",
+        iconList: [
+          "Client onboarding documents and contracts",
+          "Weekly performance report generation",
+          "Social media scheduling and posting",
+          "Lead follow-up and nurture sequences",
+          "Invoice generation and payment follow-up",
+          "Internal project status updates"
+        ]
+      },
+      {
+        title: "The Bottom Line",
+        bullets: [
+          "n8n + Claude AI is the highest-ROI combination for most agencies",
+          "Start with one workflow — don't try to automate everything at once",
+          "The best agencies save 15–30 hours/week per team member with these tools",
+          "Automation compounds — each workflow you build makes the next one easier",
+          "Most agencies see full ROI on automation investment within 60 days"
+        ]
+      }
+    ]
+  }
+},
+{
+  slug: "whatsapp-automation-guide-service-businesses",
+  title: "WhatsApp Automation for Service Businesses: A Complete Guide",
+  category: "Blog",
+  date: "2025-12-18",
+  excerpt: "WhatsApp has a 98% open rate. Here's how service businesses — plumbers, cleaners, consultants, agencies — are automating customer conversations, bookings, and follow-ups on WhatsApp.",
+  image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1759666496/repeatless/publications_dsrg9k.png",
+  hero: {
+    title: "WhatsApp Automation for Service Businesses",
+    description: "Email open rates average 20%. WhatsApp open rates average 98%. If your service business isn't automating on WhatsApp, you're leaving significant revenue on the table. This guide covers everything — from setup to advanced automation flows.",
+    meta: { solution: "WHATSAPP BUSINESS AUTOMATION", stat: "98% Open Rate Channel" },
+    image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1759666496/repeatless/publications_dsrg9k.png"
+  },
+  body: {
+    sections: [
+      {
+        title: "Why WhatsApp for Service Businesses",
+        text: "Service businesses — home services, consulting, health & wellness, local agencies — rely on fast, personal communication. WhatsApp is where your customers already are. A customer who messages you on WhatsApp is 3x more likely to convert than one who fills out a web form — because the barrier is lower and the conversation feels personal."
+      },
+      {
+        title: "What You Can Automate on WhatsApp",
+        text: [
+          "Instant Lead Response: Customer messages 'I need a plumber' → AI replies within seconds with availability, pricing, and a booking link.",
+          "Appointment Booking: Customer selects a time slot via WhatsApp → booking confirmed, calendar updated, reminder sent 24 hours before.",
+          "Service Follow-Up: Job completed → automated WhatsApp sent asking for a review and offering a loyalty discount on next service.",
+          "Broadcast Campaigns: Send offers, seasonal promotions, or new service announcements to opted-in customers at scale.",
+          "FAQ Handling: AI answers common questions (pricing, availability, service area) instantly without human involvement.",
+          "Payment Reminders: Outstanding invoice → polite automated WhatsApp reminder with payment link."
+        ],
+        image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1759666496/repeatless/publications_dsrg9k.png"
+      },
+      {
+        title: "Compliance & Best Practices",
+        iconList: [
+          "Only message customers who have opted in — always",
+          "Use WhatsApp Business API (not the regular app) for automation",
+          "Pre-approved message templates required for outbound messages",
+          "Always include an easy opt-out option",
+          "Respect quiet hours — no messages between 9pm and 8am",
+          "Human handoff must always be available for complex issues"
+        ]
+      },
+      {
+        title: "Results from Real Implementations",
+        bullets: [
+          "Ohio service business: requests routed to on-duty providers in seconds",
+          "Book publisher: thousands of readers notified at launch with zero manual work",
+          "Local agency: 40% increase in booking confirmation rate vs email",
+          "Appointment no-shows reduced significantly with automated reminders",
+          "Customer satisfaction scores improved due to faster response times"
+        ]
+      }
+    ]
+  }
+},
+{
+  slug: "claude-ai-n8n-automation-guide",
+  title: "Claude AI + n8n: The Most Powerful Automation Stack for 2025",
+  category: "Blog",
+  date: "2025-12-22",
+  excerpt: "Claude AI handles the thinking. n8n handles the doing. Together, they form the most capable — and most cost-effective — automation stack available to businesses right now.",
+  image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1762263083/repeatless/newyork_casestudy_h0knjf.png",
+  hero: {
+    title: "Claude AI + n8n: The Ultimate Business Automation Stack",
+    description: "Most automation tools move data. Claude AI + n8n moves data AND thinks about it. This combination lets you build automations that understand context, make decisions, write content, and handle exceptions — not just trigger actions when conditions are met.",
+    meta: { solution: "AI AUTOMATION STACK", stat: "Thinking Automations · Not Just Triggers" },
+    image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1762263083/repeatless/newyork_casestudy_h0knjf.png"
+  },
+  body: {
+    sections: [
+      {
+        title: "Why This Stack Is Different",
+        text: "Traditional automation (Zapier, Make) is 'if this, then that.' It moves data from A to B. Claude AI + n8n is different — Claude reads, understands, writes, and decides. n8n executes. The result is automation that handles complexity: emails that read and respond intelligently, pipelines that score and qualify leads, content systems that understand your brand voice."
+      },
+      {
+        title: "What You Can Build With This Stack",
+        text: [
+          "Intelligent Email Triage: Claude reads every incoming email, categorizes it, drafts a reply in your voice, and routes it — n8n sends the reply and updates your CRM.",
+          "Content Production Pipeline: n8n triggers on a schedule, Claude writes the content, n8n posts it across platforms and logs results.",
+          "Lead Scoring Engine: New lead comes in via n8n, Claude scores and qualifies based on their message/profile, n8n routes hot leads to your phone and cold leads to nurture.",
+          "Document Intelligence: n8n receives a document (contract, invoice, application), Claude extracts and summarizes key data, n8n files it and updates your database.",
+          "Customer Support Agent: Incoming support ticket → Claude reads context and history → writes a specific, helpful reply → n8n sends it and logs the resolution.",
+          "SEO Content System: n8n triggers on keyword list, Claude researches and writes SEO articles, n8n publishes to WordPress with metadata — fully hands-free."
+        ],
+        image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1762263083/repeatless/newyork_casestudy_h0knjf.png"
+      },
+      {
+        title: "Why Claude AI Specifically",
+        iconList: [
+          "Best-in-class reasoning and writing quality",
+          "Handles long documents and complex context",
+          "Follows nuanced brand voice instructions precisely",
+          "API is reliable and affordable at scale",
+          "Available natively in n8n — no complex setup",
+          "Safer for business use — built with responsible AI principles"
+        ]
+      },
+      {
+        title: "Getting Started",
+        bullets: [
+          "Set up n8n on a $6/month VPS (Hetzner or DigitalOcean)",
+          "Connect your Claude API key in n8n's credentials",
+          "Start with one workflow — email triage or lead response",
+          "Test with real data for one week before scaling",
+          "Add Claude AI nodes anywhere you need thinking, not just triggering",
+          "Book a free audit to get a custom build plan for your business"
+        ]
+      }
+    ]
+  }
+}
 ];
 
 

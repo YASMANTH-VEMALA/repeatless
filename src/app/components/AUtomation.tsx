@@ -170,7 +170,7 @@ const HeroSection: React.FC = () => {
       {/* CTA Button */}
       <div className="flex justify-center lg:absolute lg:bottom-4 lg:left-1/2 lg:-translate-x-1/2 pt-10">
         <a
-          href="https://cal.com/chandan-kumar-zhrofj/30min"
+          href="https://calendly.com/chandannetha/30min"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-center gap-2 px-4 py-2 md:px-5 md:py-3 bg-[#4D00FF] rounded-[40px] hover:bg-[#3700cc] transition"
