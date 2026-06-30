@@ -16,80 +16,106 @@ const navLinks = [
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [visible, setVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const currentScroll = window.scrollY;
+    const handleThemeCheck = () => {
+      const homeSection = document.getElementById("home");
+      const aboutSection = document.getElementById("about");
+      const homeRect = homeSection?.getBoundingClientRect();
+      const aboutRect = aboutSection?.getBoundingClientRect();
+      const isOverHome = !!homeRect && homeRect.top <= 90 && homeRect.bottom > 90;
+      const isOverMission = !!aboutRect && aboutRect.top <= 90 && aboutRect.bottom > 90;
 
-      // Add threshold to avoid flickering on small scrolls
-      if (Math.abs(currentScroll - lastScrollY) > 10) {
-        if (currentScroll > lastScrollY) {
-          setVisible(false); // hide on scroll down
-        } else {
-          setVisible(true); // show on scroll up
-        }
-        setLastScrollY(currentScroll);
-      }
+      setIsDark(
+        isOverHome ||
+        isOverMission ||
+        document.body.classList.contains("theme-dark") ||
+        document.documentElement.classList.contains("theme-dark")
+      );
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+    // Initial check
+    handleThemeCheck();
+
+    // Listen to scroll and body class mutations
+    const observer = new MutationObserver(handleThemeCheck);
+    observer.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+
+    window.addEventListener("scroll", handleThemeCheck, { passive: true });
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", handleThemeCheck);
+    };
+  }, []);
 
   return (
-    <motion.header
-      initial={{ y: 0 }}
-      animate={{ y: visible ? 0 : -100 }}
-      transition={{ duration: 0.4, ease: "easeInOut" }}
-      className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[92%] max-w-6xl"
-    >
-      <nav className="flex items-center justify-between px-4 md:px-6 py-3 rounded-full border border-white/10 bg-white/10 backdrop-blur-xl shadow-[0px_6px_30px_rgba(77,0,255,0.3)]">
+    <header className="fixed top-0 left-0 w-full z-50 bg-transparent">
+      <div className="max-w-[1440px] mx-auto px-6 md:px-16 py-4 flex items-center justify-between">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
+        <Link
+          href="/"
+          className={`flex items-center gap-2 transition-colors duration-500 ${
+            isDark ? "text-white" : "text-neutral-950"
+          }`}
+        >
           <Image
             src="/images/logo.svg"
             alt="Repeatless Logo"
             width={120}
             height={40}
-            className="object-contain"
+            className="object-contain transition-all duration-700"
+            style={{ filter: isDark ? "none" : "invert(1) brightness(0)" }}
           />
         </Link>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-6 lg:gap-8 text-white font-medium text-sm tracking-wide text-poppins">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="hover:text-purple-400 transition"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </div>
+        {/* Desktop Menu & Button Wrapper */}
+        <div className="hidden md:flex items-center gap-8">
+          <div className="flex items-center gap-6 lg:gap-8 font-medium text-sm tracking-wide text-poppins">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`transition-all duration-500 ${
+                  isDark 
+                    ? "!text-white/85 hover:!text-white" 
+                    : "text-neutral-800 hover:text-neutral-950"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
 
-        {/* Book a Demo Button (Desktop) */}
-        <a
-          href="https://cal.com/chandan-kumar-zhrofj/30min"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hidden md:flex items-center gap-2 w-40 h-12 rounded-full bg-[#4D00FF] hover:bg-[#3700cc] transition text-white text-poppins font-medium text-sm shadow-lg justify-center"
-        >
-          <FiPhoneCall className="w-4 h-4" />
-          <span>Book a Demo</span>
-        </a>
+          {/* Book a Demo Button (Desktop) */}
+          <a
+            href="https://cal.com/chandan-kumar-zhrofj/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-poppins font-semibold text-sm justify-center transition-all duration-500 ${
+              isDark 
+                ? "bg-white text-neutral-950 hover:bg-neutral-200" 
+                : "bg-[#EBE9FE] hover:bg-[#DDD9FE] text-[#4D00FF]"
+            }`}
+          >
+            <FiPhoneCall className="w-4 h-4" />
+            <span>Book a Demo</span>
+          </a>
+        </div>
 
         {/* Mobile Toggle */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-white text-3xl p-2"
+          className={`md:hidden text-3xl p-2 transition-colors duration-500 ${
+            isDark ? "text-white" : "text-neutral-950"
+          }`}
           aria-label="Toggle menu"
         >
           {isOpen ? <FiX /> : <FiMenu />}
         </button>
-      </nav>
+      </div>
 
       {/* Mobile Menu */}
       <AnimatePresence>
@@ -99,14 +125,20 @@ const Navbar: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="md:hidden mt-3 mx-4 rounded-2xl border border-white/10 bg-black/70 backdrop-blur-xl shadow-xl text-white text-poppins flex flex-col items-center gap-6 py-8"
+            className={`md:hidden absolute top-full left-0 w-full border-b backdrop-blur-xl shadow-lg flex flex-col items-center gap-6 py-8 ${
+              isDark 
+                ? "bg-neutral-950/95 border-white/5 text-white" 
+                : "bg-white/95 border-black/5 text-neutral-950"
+            }`}
           >
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="text-lg font-medium hover:text-purple-400 transition"
+                className={`text-lg font-medium transition-all ${
+                  isDark ? "hover:text-neutral-300" : "hover:text-[#4D00FF]"
+                }`}
               >
                 {link.label}
               </Link>
@@ -116,7 +148,11 @@ const Navbar: React.FC = () => {
               href="https://cal.com/chandan-kumar-zhrofj/30min"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 w-40 h-12 rounded-full bg-[#4D00FF] hover:bg-[#3700cc] transition text-white text-poppins font-medium text-sm justify-center"
+              className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-poppins font-semibold text-sm justify-center transition-all ${
+                isDark 
+                  ? "bg-white text-neutral-950" 
+                  : "bg-[#EBE9FE] text-[#4D00FF]"
+              }`}
             >
               <FiPhoneCall className="w-4 h-4" />
               <span>Book a Demo</span>
@@ -124,7 +160,7 @@ const Navbar: React.FC = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </header>
   );
 };
 

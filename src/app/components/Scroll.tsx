@@ -1,206 +1,356 @@
-"use client";
-import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
-import { motion } from "framer-motion";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/dist/ScrollTrigger";
+﻿"use client";
 
-gsap.registerPlugin(ScrollTrigger);
+import { useEffect, useRef } from "react";
+import {
+  MotionValue,
+  motion,
+  useMotionValueEvent,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
+import { ArrowDownRight, BarChart3, Bot, GitBranch } from "lucide-react";
 
-const features = [
+type Feature = {
+  id: string;
+  title: string;
+  eyebrow: string;
+  desc: string;
+  visualTitle: string;
+  visualDesc: string;
+  icon: "results" | "workflow" | "consultant";
+};
+
+const features: Feature[] = [
   {
     id: "01",
-    icon: "/images/Box.png",
     title: "Proven Results",
-    desc: "Real Impact for Real Businesses. Clients across the USA, Canada, and India have reduced manual work, accelerated lead response, and cut operational costs with custom automation.",
-    img: "/images/scroll2.png",
-    gradient: true,
+    eyebrow: "Impact system",
+    desc: "Real impact for real businesses. Clients across the USA, Canada, and India have reduced manual work, accelerated lead response, and cut operational costs with custom automation.",
+    visualTitle: "Proven Results",
+    visualDesc: "Measured gains from practical automation builds",
+    icon: "results",
   },
   {
     id: "02",
-    icon: "/images/sicon2.png",
     title: "n8n Automation Expert",
-    desc: "Custom Automation, Maximum Efficiency. I design powerful workflows — from CRMs to SaaS tools — integrating n8n with Sheets, GHL, Slack, WhatsApp, and more.",
-    img: "/images/scroll1.png",
-    gradient: false,
+    eyebrow: "Workflow engine",
+    desc: "Custom automation, maximum efficiency. I design powerful workflows from CRMs to SaaS tools, integrating n8n with Sheets, GHL, Slack, WhatsApp, and more.",
+    visualTitle: "n8n Automation",
+    visualDesc: "Connected workflows that remove repetitive work",
+    icon: "workflow",
   },
   {
     id: "03",
-    icon: "/images/sicon3.png",
     title: "Consultant Approach",
-    desc: "Unlike agencies, I work as your dedicated automation consultant — hands-on from strategy to deployment, with ongoing support and optimization as your business scales.",
-    img: "/images/scroll3.svg",
-    gradient: false,
+    eyebrow: "Hands-on delivery",
+    desc: "Unlike agencies, I work as your dedicated automation consultant, hands-on from strategy to deployment, with ongoing support and optimization as your business scales.",
+    visualTitle: "Consultant Approach",
+    visualDesc: "Founder-led strategy, build, and iteration",
+    icon: "consultant",
   },
 ];
 
+function serviceRange(index: number) {
+  const count = features.length;
+  const start = index / count;
+  const end = (index + 1) / count;
+  const fade = 0.035;
+
+  return [
+    Math.max(0, start - fade),
+    Math.min(1, start + fade),
+    Math.max(0, end - fade),
+    Math.min(1, end + fade),
+  ] as [number, number, number, number];
+}
+
+function ServiceIcon({ type }: { type: Feature["icon"] }) {
+  const className = "h-6 w-6";
+
+  if (type === "workflow") return <GitBranch className={className} strokeWidth={1.8} />;
+  if (type === "consultant") return <Bot className={className} strokeWidth={1.8} />;
+  return <BarChart3 className={className} strokeWidth={1.8} />;
+}
+
+function OrbitVisual({
+  feature,
+  index,
+  progress,
+}: {
+  feature: Feature;
+  index: number;
+  progress: MotionValue<number>;
+}) {
+  const rotate = useTransform(progress, [0, 1], [-135, 225]);
+  const innerRotate = useTransform(progress, [0, 1], [18, -28]);
+
+  return (
+    <div className="relative h-[320px] w-[320px] md:h-[420px] md:w-[420px] xl:h-[500px] xl:w-[500px]">
+      <div className="absolute inset-0 rounded-full bg-[#171724] shadow-[inset_0_0_92px_rgba(255,255,255,0.045)]" />
+      <div className="absolute inset-[7%] rounded-full border border-dashed border-[#8B5CF6]/55" />
+      <div className="absolute inset-[13%] rounded-full border border-white/10" />
+      <motion.div
+        style={{ rotate }}
+        className="absolute inset-[2%] rounded-full border border-white/45 border-b-transparent border-l-transparent"
+      >
+        <span className="absolute right-[12%] top-[7%] h-3.5 w-3.5 rounded-full bg-[#A778FF]" />
+      </motion.div>
+      <motion.div
+        style={{ rotate: innerRotate }}
+        className="absolute inset-[24%] rounded-full bg-[#07070b]"
+      />
+      <div className="absolute inset-0 flex flex-col items-center justify-center px-10 text-center">
+        <CircleContent feature={feature} index={index} progress={progress} />
+      </div>
+    </div>
+  );
+}
+
+function CircleContent({
+  feature,
+  index,
+  progress,
+}: {
+  feature: Feature;
+  index: number;
+  progress: MotionValue<number>;
+}) {
+  const input = serviceRange(index);
+  const opacity = useTransform(progress, input, [0, 1, 1, 0]);
+  const y = useTransform(progress, input, [34, 0, 0, -26]);
+
+  return (
+    <motion.div
+      style={{ opacity, y }}
+      className="flex flex-col items-center justify-center"
+    >
+      <div className="mb-7 grid h-14 w-14 place-items-center rounded-full border border-white/20 bg-black/30 text-white shadow-[0_18px_50px_rgba(0,0,0,0.4)]">
+        <ServiceIcon type={feature.icon} />
+      </div>
+      <h3 className="text-2xl font-extrabold tracking-tight text-white md:text-3xl">
+        {feature.visualTitle}
+      </h3>
+      <p className="mx-auto mt-3 max-w-[260px] text-sm font-medium leading-relaxed text-white/78 md:text-base">
+        {feature.visualDesc}
+      </p>
+    </motion.div>
+  );
+}
+
+function ServiceScene({
+  feature,
+  index,
+  progress,
+}: {
+  feature: Feature;
+  index: number;
+  progress: MotionValue<number>;
+}) {
+  const input = serviceRange(index);
+  const opacity = useTransform(progress, input, [0, 1, 1, 0]);
+
+  return (
+    <motion.div
+      style={{ opacity, pointerEvents: "none" }}
+      className="absolute inset-0 grid grid-cols-12 items-center gap-8 px-8 pt-24 pb-8 lg:px-12"
+    >
+      <div className="col-span-7 h-full" />
+
+      <div className="col-span-5 flex items-center justify-center">
+        <OrbitVisual feature={feature} index={index} progress={progress} />
+      </div>
+    </motion.div>
+  );
+}
+
+function CopyReel({ progress }: { progress: MotionValue<number> }) {
+  const titleY = useTransform(
+    progress,
+    [0, 0.27, 0.38, 0.6, 0.71, 1],
+    ["0%", "0%", "-33.3333%", "-33.3333%", "-66.6666%", "-66.6666%"]
+  );
+  const descY = useTransform(
+    progress,
+    [0, 0.31, 0.42, 0.64, 0.75, 1],
+    ["0%", "0%", "-33.3333%", "-33.3333%", "-66.6666%", "-66.6666%"]
+  );
+
+  return (
+    <div className="pointer-events-none absolute left-8 top-[31vh] z-20 w-[min(720px,58vw)] lg:left-12">
+      <div className="h-[46px] overflow-hidden">
+        <motion.div style={{ y: titleY }} className="flex flex-col">
+          {features.map((feature) => (
+            <div key={feature.id} className="h-[46px]">
+              <p className="flex items-center gap-3 text-xl font-bold text-white">
+                <span className="grid h-8 w-8 place-items-center rounded-full border border-[#A778FF]/35 text-[#A778FF]">
+                  <ArrowDownRight className="h-4 w-4" />
+                </span>
+                {feature.title}
+              </p>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+
+      <div className="mt-4 h-[102px] overflow-hidden">
+        <motion.div style={{ y: descY }} className="flex flex-col">
+          {features.map((feature) => (
+            <div key={feature.id} className="h-[102px]">
+              <p className="max-w-[720px] text-lg font-medium leading-relaxed text-white/56">
+                {feature.desc}
+              </p>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+    </div>
+  );
+}
+
+function StepCounter({ progress }: { progress: MotionValue<number> }) {
+  const digitY = useTransform(
+    progress,
+    [0, 0.27, 0.38, 0.6, 0.71, 1],
+    ["0em", "0em", "-1em", "-1em", "-2em", "-2em"]
+  );
+
+  return (
+    <div className="pointer-events-none absolute bottom-10 left-8 z-20 flex font-display text-[clamp(7rem,14vw,14rem)] font-extrabold leading-none text-white lg:left-12">
+      <span>0</span>
+      <span className="relative inline-block h-[1em] w-[0.72em] overflow-hidden">
+        <motion.span
+          style={{ y: digitY }}
+          className="absolute left-0 top-0 flex flex-col"
+        >
+          {features.map((feature) => (
+            <span key={feature.id} className="block h-[1em] leading-none">
+              {feature.id.slice(1)}
+            </span>
+          ))}
+        </motion.span>
+      </span>
+    </div>
+  );
+}
+
+function DesktopServices({ progress }: { progress: MotionValue<number> }) {
+  const progressWidth = useTransform(progress, [0.02, 0.98], ["0%", "100%"]);
+  const headingY = useTransform(progress, [0, 0.08, 0.94, 1], [22, 0, 0, -20]);
+
+  return (
+    <div className="hidden md:sticky md:top-0 md:block md:h-screen md:w-full md:overflow-hidden">
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,#07080b_0%,#050507_100%)]" />
+      <div className="absolute inset-0 opacity-[0.12] [background-image:linear-gradient(to_right,rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:96px_96px]" />
+      <div className="absolute left-8 right-8 top-[92px] h-px overflow-hidden bg-white/10 lg:left-12 lg:right-12">
+        <motion.div
+          style={{ width: progressWidth }}
+          className="h-full bg-gradient-to-r from-[#6D21F0] via-[#A778FF] to-white"
+        />
+      </div>
+
+      <motion.h2
+        style={{ y: headingY }}
+        className="absolute left-8 top-[118px] z-20 font-display text-[clamp(4.2rem,7vw,8rem)] font-extrabold leading-[0.92] tracking-normal text-white lg:left-12"
+      >
+        What We Do
+      </motion.h2>
+
+      {features.map((feature, index) => (
+        <ServiceScene
+          key={feature.id}
+          feature={feature}
+          index={index}
+          progress={progress}
+        />
+      ))}
+      <CopyReel progress={progress} />
+      <StepCounter progress={progress} />
+    </div>
+  );
+}
+
 export default function FeaturesSection() {
-  const [active, setActive] = useState(0);
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const lineRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
+
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 36,
+    damping: 30,
+    mass: 1.15,
+    restDelta: 0.0004,
+  });
+
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    const active = latest > 0.001 && latest < 0.999;
+    document.body.classList.toggle("theme-dark", active);
+    document.documentElement.classList.toggle("theme-dark", active);
+  });
 
   useEffect(() => {
-    // Only initialize GSAP for md+ screens
-    if (window.innerWidth < 768) return;
+    const section = containerRef.current;
+    if (!section) return;
 
-    if (sectionRef.current && lineRef.current) {
-      // Animate the gradient line
-      gsap.to(lineRef.current, {
-        height: "100%",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: () => `+=${features.length * window.innerHeight}`,
-          scrub: true,
-        },
-      });
+    const updateTheme = () => {
+      const rect = section.getBoundingClientRect();
+      const active = rect.top < window.innerHeight * 0.72 && rect.bottom > window.innerHeight * 0.28;
+      document.body.classList.toggle("theme-dark", active);
+      document.documentElement.classList.toggle("theme-dark", active);
+    };
 
-      // Pin section and track active feature
-      ScrollTrigger.create({
-        trigger: sectionRef.current,
-        start: "top top",
-        end: () => `+=${features.length * window.innerHeight}`,
-        pin: true,
-        scrub: true,
-        onUpdate: (self) => {
-          const progress = self.progress;
-          const index = Math.floor(progress * features.length);
-          setActive(Math.min(index, features.length - 1));
-        },
-      });
-    }
+    updateTheme();
+    window.addEventListener("scroll", updateTheme, { passive: true });
+    window.addEventListener("resize", updateTheme);
 
-    // Cleanup ScrollTriggers on unmount
     return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
+      window.removeEventListener("scroll", updateTheme);
+      window.removeEventListener("resize", updateTheme);
+      document.body.classList.remove("theme-dark");
+      document.documentElement.classList.remove("theme-dark");
     };
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative w-full bg-[#050014]">
-      {/* ===== DESKTOP & TABLET ===== */}
-      <div className="hidden md:flex justify-center py-20">
-        <div className="relative flex w-[1176px] gap-20">
-          {/* LEFT SIDE: Feature IDs and line */}
-          <div className="flex flex-col items-start gap-[85px] py-[53px] w-[37px] h-[592px] relative">
-            {features.map((f, i) => (
-              <span
-                key={f.id}
-                className={`font-dmSans font-medium text-[30px] tracking-[-0.02em] transition-colors duration-300 ${
-                  active === i ? "text-white" : "text-[#E6E6E6] opacity-50"
-                }`}
-              >
-                {f.id}
-              </span>
-            ))}
-            <div
-              className="absolute left-16 top-0 w-[3px] bg-gradient-to-b from-[#1C76FD] to-[#6D21F0] rounded"
-              ref={lineRef}
-            />
-          </div>
+    <section ref={containerRef} className="relative w-full bg-[#050608] md:h-[480vh]">
+      <DesktopServices progress={smoothProgress} />
 
-          {/* MIDDLE & RIGHT: Feature Content */}
-          <div className="flex-1 flex gap-8">
-            {/* Feature titles and descriptions */}
-            <div className="flex flex-col gap-8 relative w-[300px]">
-              {features.map((f, i) => (
-                <motion.div
-                  key={f.id}
-                  className="flex flex-row items-start gap-5 w-full h-[170px]"
-                  initial={{ opacity: 0.35, y: 20 }}
-                  animate={{ opacity: active === i ? 1 : 0.35, y: active === i ? 0 : 20 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <div
-                    className={`w-[46px] h-[46px] rounded-full border flex items-center justify-center shrink-0 ${
-                      active === i
-                        ? "border-white shadow-[0_0_16px_#6D21F0,0_0_8px_#1C76FD]"
-                        : "border-white/40"
-                    }`}
-                  >
-                    <Image src={f.icon} alt={f.title} width={32} height={32} />
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <h3
-                      className={`font-poppins font-medium text-[20px] ${
-                        active === i
-                          ? "text-transparent bg-clip-text bg-gradient-to-r from-[#1C76FD] to-[#6D21F0]"
-                          : "text-[#E6E6E6]"
-                      }`}
-                    >
-                      {f.title}
-                    </h3>
-                    <p className={`text-[12px] ${active === i ? "text-white" : "text-white/60"}`}>
-                      {f.desc}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Feature image */}
-            <div className="flex-1 flex justify-center items-center relative pl-20">
-              <motion.div
-                key={features[active].id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6 }}
-                className="relative w-full max-w-[770px] h-[550px] drop-shadow-[0_3px_39px_#4D00FF]"
-              >
-                <div className="absolute inset-0 bg-[#F6F6F9] rounded-l-[25px]" />
-                <div className="absolute top-[24px] left-[3%] right-0 bottom-0 bg-[#0B001C] rounded-[22px] shadow-[0_4px_13px_#1C76FD] overflow-hidden">
-                  <Image
-                    src={features[active].img}
-                    alt={features[active].title}
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* ===== MOBILE VERSION (scroll not pinned) ===== */}
-      <div className="flex flex-col gap-16 md:hidden px-6 py-12">
-        {features.map((f) => (
-          <motion.div
-            key={f.id}
-            initial={{ opacity: 0, y: 30 }}
+      <div className="flex flex-col gap-12 px-6 py-16 md:hidden">
+        <h2 className="font-display text-5xl font-extrabold leading-none text-white">
+          What We Do
+        </h2>
+        {features.map((item, index) => (
+          <motion.article
+            key={item.id}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="flex flex-col gap-6"
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+            className="border-t border-white/10 pt-8"
           >
-            <div className="flex items-center gap-4">
-              <span className="text-white text-2xl font-bold">{f.id}</span>
-              <div className="w-12 h-12 rounded-full border border-white flex items-center justify-center shadow-[0_0_16px_#6D21F0,0_0_8px_#1C76FD]">
-                <Image src={f.icon} alt={f.title} width={28} height={28} />
+            <div className="flex items-start justify-between gap-6">
+              <div>
+                <p className="text-sm font-bold uppercase tracking-[0.24em] text-[#A778FF]">
+                  {item.eyebrow}
+                </p>
+                <h3 className="mt-3 text-3xl font-extrabold tracking-tight text-white">
+                  {item.title}
+                </h3>
               </div>
+              <span className="font-display text-5xl font-extrabold leading-none text-white">
+                {item.id}
+              </span>
             </div>
-            <div>
-              <h3
-                className={`text-xl font-semibold ${
-                  f.gradient
-                    ? "bg-gradient-to-r from-[#1C76FD] to-[#6D21F0] bg-clip-text text-transparent"
-                    : "text-white"
-                }`}
-              >
-                {f.title}
-              </h3>
-              <p className="text-sm text-white/80 mt-2">{f.desc}</p>
+            <p className="mt-5 text-base font-medium leading-relaxed text-white/62">
+              {item.desc}
+            </p>
+            <div className="mt-8 flex justify-center">
+              <OrbitVisual feature={item} index={index} progress={smoothProgress} />
             </div>
-            <div className="w-full h-64 rounded-2xl overflow-hidden shadow-[0_4px_20px_#1C76FD]">
-              <Image
-                src={f.img}
-                alt={f.title}
-                width={800}
-                height={400}
-                className="w-full h-full object-contain"
-              />
-            </div>
-          </motion.div>
+          </motion.article>
         ))}
       </div>
     </section>

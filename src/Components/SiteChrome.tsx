@@ -8,7 +8,9 @@ export default function SiteChrome({ children }: { children: React.ReactNode }) 
     return (
         <>
             <Navbar />
-            {children}
+            <div className="relative z-10 bg-[var(--background)] transition-colors duration-1000 shadow-[0_20px_50px_rgba(0,0,0,0.15)]">
+                {children}
+            </div>
             <Footer />
             <a
                 href="https://wa.me/919849884501"

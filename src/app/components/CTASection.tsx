@@ -1,8 +1,38 @@
-"use client";
+﻿"use client";
 import { FiPhoneCall } from "react-icons/fi";
-import { motion, Variants } from "framer-motion";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+  Variants,
+} from "framer-motion";
+import { useRef } from "react";
 
 export default function CTASection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const shouldReduceMotion = useReducedMotion();
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start 90%", "end 35%"],
+  });
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 70,
+    damping: 28,
+    mass: 0.45,
+    restDelta: 0.0005,
+  });
+  const contentOpacity = useTransform(smoothProgress, [0, 0.45], [0.25, 1]);
+  const contentY = useTransform(smoothProgress, [0, 0.65], [42, 0]);
+  const contentFilter = useTransform(
+    smoothProgress,
+    [0, 0.7],
+    ["blur(14px)", "blur(0px)"]
+  );
+  const buttonScale = useTransform(smoothProgress, [0.1, 0.7], [0.94, 1]);
+
   // Variants for fade-up
   const fadeUpVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
@@ -10,14 +40,19 @@ export default function CTASection() {
   };
 
   return (
-    <section className="relative w-full bg-[#04051B] text-white overflow-hidden">
-      {/* purple blur ellipse */}
-      <div className="absolute -left-40 -top-40 w-[354px] h-[344px] bg-[#4E2FFF] opacity-80 blur-[96px]" />
-
+    <section
+      ref={sectionRef}
+      className="relative w-full bg-transparent text-neutral-950 overflow-hidden"
+    >
       <div className="container mx-auto flex flex-col lg:flex-row items-start lg:items-center justify-between px-8 py-16 gap-6">
         {/* Text Content */}
         <motion.div
           className="max-w-xl flex flex-col gap-4"
+          style={
+            shouldReduceMotion
+              ? undefined
+              : { opacity: contentOpacity, y: contentY, filter: contentFilter }
+          }
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
@@ -26,7 +61,7 @@ export default function CTASection() {
           <h2 className="font-poppins font-medium text-[50px] leading-[60px] tracking-[-1px]">
             Ready to Repeat Less &amp; <br /> Grow More?
           </h2>
-          <p className="text-white/80 text-lg leading-7">
+          <p className="text-neutral-700 text-lg leading-7">
             Let&apos;s map your automation journey together. Book a free strategy call — serving businesses across the USA, Canada &amp; Europe.
           </p>
         </motion.div>
@@ -34,7 +69,12 @@ export default function CTASection() {
         {/* CTA Button */}
         <motion.a
           href="https://cal.com/chandan-kumar-zhrofj/30min"
-          className="flex items-center justify-center gap-2 px-5 py-3 bg-[#4D00FF] rounded-full shadow-[0_0_16px_#6D21F0,0_0_8.1px_#1C76FD] text-white font-poppins font-medium text-sm whitespace-nowrap"
+          className="flex items-center justify-center gap-2 px-5 py-3 bg-[#4D00FF] rounded-full shadow-sm text-white font-poppins font-medium text-sm whitespace-nowrap transition-colors hover:bg-[#3F00D8]"
+          style={
+            shouldReduceMotion
+              ? undefined
+              : { opacity: contentOpacity, y: contentY, filter: contentFilter, scale: buttonScale }
+          }
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}

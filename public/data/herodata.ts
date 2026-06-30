@@ -1,4 +1,4 @@
-// app/data/herodata.ts
+﻿// app/data/herodata.ts
 
 export const heroData = {
     title: "LinkedIn Post Generator for EduTech",

@@ -1,4 +1,4 @@
-export interface CaseStudy {
+﻿export interface CaseStudy {
     id: number;
     company: string;
     metric: string;

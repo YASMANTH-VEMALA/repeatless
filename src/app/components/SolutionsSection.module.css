@@ -1,87 +1,198 @@
-/* Blurred ellipse that matches Figma's Ellipse 14 sizing and blend */
-.ellipse {
-    position: absolute;
-    width: 847px;
-    height: 797px;
-    border-radius: 50%;
-    background: #1D2688;
-    mix-blend-mode: plus-lighter;
-    filter: blur(250px);
-    pointer-events: none;
-    z-index: -10;
-  
-    /* tuned to match the Figma position in your screenshot:
-       large circle, mostly off-screen to the right, with the top aligned near the heading */
-    top: 72px;
-    right: -220px;
-    transform: translateZ(0);
+.horizSection {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  overflow: clip;
+  background: #f4f1ec;
+  color: #171717;
+  scroll-margin-top: 0;
+}
+
+.stickyViewport {
+  position: sticky;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.horizTrack {
+  display: flex;
+  width: max-content;
+  height: 100vh;
+  will-change: transform;
+}
+
+.hPanel {
+  width: 100vw;
+  height: 100vh;
+  padding: 0 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8vw;
+  flex: 0 0 auto;
+}
+
+.hText {
+  width: 35vw;
+  min-width: 360px;
+  padding-top: 4vh;
+}
+
+.caption {
+  margin-bottom: 18px;
+  color: #8400ff;
+  font-family: var(--font-poppins-family), sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.panelTitle {
+  margin: 0;
+  color: #050505;
+  font-family: var(--font-poppins-family), sans-serif;
+  font-size: clamp(3rem, 5.1vw, 5.7rem);
+  font-weight: 400;
+  line-height: 0.96;
+  letter-spacing: 0;
+}
+
+.wordWrap {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.12em;
+}
+
+.word {
+  display: inline-block;
+  will-change: transform;
+  transform-origin: top left;
+}
+
+.panelBody {
+  max-width: 560px;
+  margin: 24px 0 0;
+  color: rgba(23, 23, 23, 0.76);
+  font-family: var(--font-poppins-family), sans-serif;
+  font-size: clamp(1rem, 1.25vw, 1.32rem);
+  line-height: 1.6;
+}
+
+.panelMeta {
+  margin-top: 38px;
+  color: rgba(23, 23, 23, 0.45);
+  font-family: var(--font-poppins-family), sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.imageMask {
+  position: relative;
+  width: 48vw;
+  height: 70vh;
+  overflow: hidden;
+  background: #130820;
+  border-radius: 2px;
+  transform: translateZ(0);
+  will-change: clip-path;
+}
+
+.panelImage {
+  position: absolute;
+  top: -15%;
+  left: 0;
+  width: 100%;
+  height: 130%;
+  object-fit: cover;
+  object-position: center;
+  filter: grayscale(12%) brightness(0.92);
+  transition:
+    filter 0.8s ease,
+    transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, filter;
+}
+
+.imageMask:hover .panelImage {
+  filter: grayscale(0%) brightness(1);
+  transform: scale(1.04);
+}
+
+@media (max-width: 1024px) {
+  .horizSection {
+    width: 100%;
+    margin-left: 0;
+    min-height: auto !important;
+    overflow: visible;
   }
-  
-  /* Slight shift on very large screens to better match Figma export */
-  @media (min-width: 1700px) {
-    .ellipse {
-      right: -280px;
-      top: 96px;
-    }
-  }
-  
-  /* Scale / reposition on medium screens */
-  @media (max-width: 1280px) {
-    .ellipse {
-      right: -120px;
-      top: 60px;
-      transform: scale(0.9);
-    }
-  }
-  
-  /* Hide/scale down on small screens to avoid overpowering the layout */
-  @media (max-width: 768px) {
-    .ellipse {
-      right: -60px;
-      top: -40px;
-      transform: scale(0.6);
-    }
-  }
- 
-  /* Animated gradient border */
-.cardBorder {
+
+  .stickyViewport {
     position: relative;
-    border-radius: 16px;
-    padding: 1px; /* border thickness */
-    background: linear-gradient(
-      270deg,
-      #7300ff,
-      #1c76fd,
-      #5721f0,
-      #7300ff
-    );
-    background-size: 600% 600%;
-    animation: gradientMove 6s ease infinite;
+    width: 100%;
+    height: auto;
+    overflow: visible;
   }
-  
-  @keyframes gradientMove {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
+
+  .horizTrack {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    transform: none !important;
   }
-  
-  /* Inner content */
-  .cardInner {
-    background: #0a0118;
-    border-radius: 16px;
-    height: 100%;
-    transition: box-shadow 0.4s ease;
+
+  .hPanel {
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    padding: 14vh 5vw;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 5vh;
   }
-  
-  /* Glow on hover */
-  .cardBorder:hover .cardInner {
-    box-shadow: 0 0 25px rgba(115, 0, 255, 0.5),
-                0 0 50px rgba(28, 118, 253, 0.4);
+
+  .hText,
+  .imageMask {
+    width: 100%;
+    min-width: 0;
   }
-  
+
+  .panelTitle {
+    font-size: clamp(2.8rem, 12vw, 4.8rem);
+  }
+
+  .imageMask {
+    height: 50vh;
+  }
+}
+
+@media (max-width: 640px) {
+  .hPanel {
+    padding: 12vh 20px;
+    min-height: auto;
+  }
+
+  .panelBody {
+    font-size: 1rem;
+  }
+
+  .imageMask {
+    height: 42vh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .horizTrack,
+  .panelImage,
+  .word {
+    transition: none;
+    animation: none;
+  }
+}

@@ -1,0 +1,208 @@
+"use client";
+
+import { useEffect, useState, useRef } from "react";
+import Image from "next/image";
+import { FiArrowUpRight } from "react-icons/fi";
+import { Variants, motion, useInView } from "framer-motion";
+
+interface CounterProps {
+  target: number;
+  suffix?: string;
+  duration?: number;
+}
+
+const AnimatedCounter = ({ target, suffix = "", duration = 5 }: CounterProps) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
+  useEffect(() => {
+    if (!isInView) return;
+
+    let start = 0;
+    const end = target;
+    if (start === end) return;
+
+    const totalMilliseconds = duration * 1000;
+    const incrementTime = Math.max(Math.floor(totalMilliseconds / end), 16);
+
+    const timer = setInterval(() => {
+      const steps = totalMilliseconds / incrementTime;
+      const increment = Math.ceil(end / steps);
+      start += increment;
+
+      if (start >= end) {
+        clearInterval(timer);
+        setCount(end);
+      } else {
+        setCount(start);
+      }
+    }, incrementTime);
+
+    return () => clearInterval(timer);
+  }, [isInView, target, duration]);
+
+  return <span ref={ref}>{count}{suffix}</span>;
+};
+
+// Animation Variants
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+};
+
+const fadeUpStagger = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.2, delayChildren: 0.1 },
+  },
+};
+
+const Hero = () => {
+  const stats = [
+    { target: 3, suffix: "+", label: "Years of Experience" },
+    { target: 80, suffix: "+", label: "Businesses Automated" },
+    { target: 300, suffix: "+", label: "Automations Built" },
+  ];
+
+  const avatars = ["/images/1.svg", "/images/2.svg", "/images/4.svg", "/images/3.svg"];
+
+  return (
+    <>
+      <section
+        id="home"
+        className="relative h-screen w-full overflow-hidden text-neutral-900 flex flex-col justify-between select-none"
+      >
+        {/* Background Subtle Grid Pattern */}
+        <div
+          className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.025)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.025)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none -z-30"
+          style={{
+            WebkitMaskImage: "linear-gradient(to bottom, white 60%, transparent 100%)",
+            maskImage: "linear-gradient(to bottom, white 60%, transparent 100%)",
+          }}
+        />
+
+        {/* Hero Content */}
+        <motion.div
+          className="flex flex-col items-center justify-center text-center w-full px-4 sm:px-6 md:px-8 max-w-5xl mx-auto pt-44 sm:pt-36 pointer-events-none z-10"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUpStagger}
+        >
+          {/* Eyebrow */}
+          <motion.span 
+            className="font-manrope text-[0.75rem] uppercase tracking-[0.25em] font-medium text-[#857F75] mb-4 block"
+            variants={fadeUp as Variants}
+          >
+            Claude AI & n8n Workflows
+          </motion.span>
+
+          {/* Unified Premium Headline */}
+          <motion.h1
+            className="font-manrope font-light text-4xl sm:text-6xl md:text-7xl lg:text-[5.2rem] text-[#1C1A17] tracking-tight leading-[1.05] max-w-4xl mx-auto"
+            variants={fadeUp as Variants}
+          >
+            Your AI Automation Consultant for{" "}
+            <span className="font-serif italic font-normal text-[#B75C40] block sm:inline mt-1 sm:mt-0">Business Growth.</span>
+          </motion.h1>
+
+          {/* Centered Logo (Crisp, clean SVG replacement instead of canvas spacer) */}
+          <motion.div
+            className="mt-10 flex flex-col items-center pointer-events-auto"
+            variants={fadeUp as Variants}
+          >
+            <Image
+              src="/images/logo.svg"
+              alt="Repeatless Logo"
+              width={260}
+              height={42}
+              className="w-[180px] sm:w-[220px] md:w-[260px] h-auto object-contain brightness-90 contrast-125 dark:invert"
+            />
+          </motion.div>
+
+          {/* CTA Button */}
+          <motion.a
+            href="https://cal.com/chandan-kumar-zhrofj/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-10 flex items-center justify-center bg-[#1C1A17] hover:bg-[#B75C40] text-white rounded-full px-8 py-3.5 gap-2.5 shadow-lg transition-all duration-300 pointer-events-auto cursor-pointer"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            variants={fadeUp as Variants}
+          >
+            <span className="font-manrope text-sm sm:text-base font-medium">Book a Free Strategy Call</span>
+            <FiArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+          </motion.a>
+        </motion.div>
+
+        {/* Stats Section */}
+        <motion.div
+          className="relative flex flex-col sm:flex-row flex-wrap justify-center sm:justify-between items-center w-full max-w-6xl mx-auto px-4 sm:px-6 gap-4 sm:gap-6 pb-20 sm:pb-12 pointer-events-none z-10"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeUpStagger}
+        >
+          {/* Left Stats */}
+          <div className="flex flex-row justify-center sm:justify-start items-center gap-4 sm:gap-12 w-full sm:w-auto">
+            {stats.map((stat, idx) => (
+              <motion.div
+                key={idx}
+                className="flex flex-col items-center sm:items-start gap-1 flex-1 min-w-[70px] max-w-[130px]"
+                variants={fadeUp as Variants}
+              >
+                <div className="font-serif font-normal text-3xl sm:text-4xl text-[#1C1A17]">
+                  <AnimatedCounter target={stat.target} suffix={stat.suffix} />
+                </div>
+                <div className="font-manrope font-medium text-[10px] sm:text-xs text-[#857F75] uppercase tracking-wider text-center sm:text-left leading-tight">
+                  {stat.label}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Right Automation Build Card */}
+          <motion.div
+            className="relative w-full max-w-[280px] sm:max-w-[323px] p-[1px] rounded-[30px] bg-gradient-to-r from-neutral-300/30 via-neutral-200/20 to-transparent mt-6 sm:mt-0 pointer-events-auto"
+            variants={fadeUp as Variants}
+          >
+            <div className="flex items-center gap-3 relative z-10 bg-white/20 backdrop-blur-md rounded-[30px] px-3 py-2 sm:px-4 sm:py-3 border border-white/10 shadow-md">
+              {/* Avatars */}
+              <div className="relative w-[130px] h-[40px] sm:w-[160px] sm:h-[56px]">
+                {avatars.map((src, idx) => (
+                  <div
+                    key={idx}
+                    className={`absolute w-[40px] h-[40px] sm:w-[56px] sm:h-[56px] rounded-full overflow-hidden ${idx === 0
+                      ? "bg-gradient-to-br from-pink-400 to-red-500 left-0 z-30"
+                      : idx === 1
+                        ? "bg-gradient-to-br from-purple-400 to-blue-500 left-[25px] sm:left-[35px] z-20"
+                        : idx === 2
+                          ? "bg-gradient-to-br from-blue-400 to-cyan-500 left-[50px] sm:left-[70px] z-10"
+                          : "bg-gradient-to-br from-green-400 to-teal-500 left-[75px] sm:left-[105px] z-0"
+                      }`}
+                  >
+                    <Image src={src} alt={`Avatar ${idx}`} width={56} height={56} className="rounded-full object-cover" />
+                  </div>
+                ))}
+              </div>
+
+              {/* Text */}
+              <div className="flex flex-col items-start justify-center">
+                <div className="font-serif font-normal text-2xl sm:text-3xl text-[#1C1A17]">
+                  <AnimatedCounter target={100} suffix="+" />
+                </div>
+                <div className="font-manrope font-medium text-[10px] sm:text-xs text-[#857F75] uppercase tracking-wider">
+                  Automation Builds
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+      </section>
+    </>
+  );
+};
+
+export default Hero;

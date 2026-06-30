@@ -1,4 +1,4 @@
-export interface Testimonial {
+﻿export interface Testimonial {
     review: string;
     name: string;
     position: string;

@@ -1,189 +1,81 @@
 "use client";
 
 import Image from "next/image";
-import { FiArrowDown } from "react-icons/fi";
-import { FiArrowUpRight } from "react-icons/fi";
-import { Variants, motion } from "framer-motion";
-import StarsCanvas from "@/Components/ShootingStars";
-import FeaturesSection from "./Scroll";
-
-// Animation Variants
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
-};
-
-const fadeUpStagger = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.2, delayChildren: 0.1 },
-  },
-};
+import { motion } from "framer-motion";
+import { FiChevronDown } from "react-icons/fi";
+import { VolumetricStudio } from "@/Components/ui/volumetric-studio";
 
 const Hero = () => {
-  const stats = [
-    { value: "3+", label: "Years of Experience" },
-    { value: "80+", label: "Businesses Automated" },
-    { value: "300+", label: "Automations Built" },
-  ];
-
-  const avatars = ["/images/1.svg", "/images/2.svg", "/images/4.svg", "/images/3.svg"];
-
-  // Scroll to next section
+  // Smooth scroll to the next section
   const scrollToNextSection = () => {
-    const nextSection = document.getElementById("features-section");
+    const nextSection = document.getElementById("about") || document.getElementById("case-studies");
     if (nextSection) {
       nextSection.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
-    <>
-      <section
-        id="home"
-        className="relative h-screen w-full overflow-hidden text-white flex flex-col justify-between"
-      >
-        {/* Background Image */}
-        <Image
-          src="/images/herobg.png"
-          alt="Hero Background"
-          fill
-          className="object-cover -z-20"
-          priority
-        />
-
-        {/* Shooting Stars */}
-        <div className="absolute inset-0 -z-10">
-          <StarsCanvas />
-        </div>
-
-        {/* Hero Content */}
-        <motion.div
-          className="flex flex-col items-center justify-center text-center w-full px-4 sm:px-6 md:px-8 max-w-4xl mx-auto pt-48 sm:pt-36 md:pt-36"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeUpStagger}
-        >
-          {/* Headline */}
-          <motion.div
-            className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4"
-            variants={fadeUpStagger}
-          >
-            <motion.h1
-              className="font-poppins font-medium text-[26px] sm:text-5xl md:text-6xl lg:text-7xl drop-shadow-lg"
-              variants={fadeUp as Variants}
-            >
-              Your AI
-            </motion.h1>
-            <motion.h1
-              className="font-poppins italic font-light text-[26px] sm:text-5xl md:text-6xl lg:text-7xl underline drop-shadow-lg"
-              variants={fadeUp as Variants}
-            >
-              Automation
-            </motion.h1>
-          </motion.div>
-
-          <motion.h2
-            className="font-poppins font-medium text-[22px] sm:text-4xl md:text-5xl lg:text-6xl mt-2 sm:mt-4"
-            variants={fadeUp as Variants}
-          >
-            Consultant for <span className="text-purple-400">Business Growth.</span>
-          </motion.h2>
-
-          {/* Subtext */}
-          <motion.p
-            className="font-dmSans text-xs sm:text-base md:text-lg mt-3 sm:mt-5 max-w-sm sm:max-w-xl mx-auto leading-relaxed"
-            variants={fadeUp as Variants}
-          >
-            I help businesses across the <span className="text-purple-400">USA, Canada, and Europe</span> eliminate repetitive tasks with custom <span className="text-purple-400">Claude AI &amp; n8n</span> automations — as your dedicated <span className="text-purple-400">AI automation consultant</span>.
-          </motion.p>
-
-          {/* CTA Button */}
-          <motion.a
-            href="https://cal.com/chandan-kumar-zhrofj/30min"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-6 flex items-center justify-center bg-[#4D00FF] rounded-full px-6 py-2 sm:px-8 sm:py-3 gap-2 shadow-lg hover:bg-[#3700cc] transition-all duration-300"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            variants={fadeUp as Variants}
-          >
-            <span className="font-poppins text-sm sm:text-base">Book a Free Strategy Call</span>
-            <FiArrowUpRight className="w-4 h-4 sm:w-6 sm:h-6 rotate-45" />
-          </motion.a>
-        </motion.div>
-
-        {/* Stats Section */}
-        {/* Stats Section */}
-        <motion.div
-          className="relative flex flex-col sm:flex-row flex-wrap justify-center sm:justify-between items-center w-full max-w-6xl mx-auto px-4 sm:px-6 gap-4 sm:gap-6 pb-20 sm:pb-10"
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeUpStagger}
-        >
-          {/* Left Stats */}
-          <div className="flex flex-row justify-center sm:justify-start items-center gap-4 sm:gap-10 w-full sm:w-auto">
-            {stats.map((stat, idx) => (
-              <motion.div
-                key={idx}
-                className="flex flex-col items-center sm:items-start gap-1 flex-1 min-w-[70px] max-w-[120px]"
-                variants={fadeUp as Variants}
-              >
-                <div className="font-dmSans font-medium text-lg sm:text-3xl">{stat.value}</div>
-                <div className="font-dmSans text-[10px] sm:text-sm text-[#F2F2F2] text-center sm:text-left">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Right Automation Build Card */}
-          <motion.div
-            className="relative w-full max-w-[280px] sm:max-w-[323px] p-[1px] rounded-[30px] bg-gradient-to-r from-white/80 via-white/40 to-white/10 mt-6 sm:mt-0"
-            variants={fadeUp as Variants}
-          >
-            <div className="flex items-center gap-3 relative z-10 bg-[rgba(77,0,255,0.15)] backdrop-blur-[6px] rounded-[30px] px-3 py-2 sm:px-4 sm:py-3">
-              {/* Avatars */}
-              <div className="relative w-[130px] h-[40px] sm:w-[160px] sm:h-[56px]">
-                {avatars.map((src, idx) => (
-                  <div
-                    key={idx}
-                    className={`absolute w-[40px] h-[40px] sm:w-[56px] sm:h-[56px] rounded-full overflow-hidden ${idx === 0
-                      ? "bg-gradient-to-br from-pink-400 to-red-500 left-0 z-30"
-                      : idx === 1
-                        ? "bg-gradient-to-br from-purple-400 to-blue-500 left-[25px] sm:left-[35px] z-20"
-                        : idx === 2
-                          ? "bg-gradient-to-br from-blue-400 to-cyan-500 left-[50px] sm:left-[70px] z-10"
-                          : "bg-gradient-to-br from-green-400 to-teal-500 left-[75px] sm:left-[105px] z-0"
-                      }`}
-                  >
-                    <Image src={src} alt={`Avatar ${idx}`} width={56} height={56} className="rounded-full object-cover" />
-                  </div>
-                ))}
-              </div>
-
-              {/* Text */}
-              <div className="flex flex-col items-start justify-center">
-                <div className="font-jakarta font-medium text-base sm:text-xl text-white">
-                  100+
-                </div>
-                <div className="font-jakarta text-[10px] sm:text-sm text-white">
-                  Automation Builds
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
-      </section>
-
-      {/* Features Section with an id for scroll target */}
-      <div id="features-section">
-        <FeaturesSection />
+    <section
+      id="home"
+      className="relative h-screen w-full bg-black text-white flex flex-col justify-between items-center select-none overflow-hidden transition-colors duration-1000"
+    >
+      <div className="absolute inset-0 z-0">
+        <VolumetricStudio className="min-h-0" />
       </div>
-    </>
+      <div aria-hidden="true" className="absolute inset-0 z-[1] bg-[radial-gradient(circle_at_50%_42%,rgba(0,0,0,0)_0,rgba(0,0,0,0.1)_42%,rgba(0,0,0,0.72)_100%)]" />
+
+      {/* Spacer for Top Menu alignment */}
+      <div className="relative z-10 h-20" />
+
+      {/* Centered Loop Icon & Headline Deck */}
+      <div className="relative flex flex-col items-center justify-center max-w-4xl px-6 text-center z-10 w-full">
+        {/* Company mark */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+          className="relative mb-5 flex h-24 w-24 items-center justify-center sm:h-32 sm:w-32"
+        >
+          <Image
+            src="/images/repeatless-mark.png"
+            alt="Repeatless"
+            fill
+            priority
+            sizes="(min-width: 640px) 8rem, 6rem"
+            className="object-contain opacity-95 invert drop-shadow-[0_18px_34px_rgba(255,255,255,0.12)]"
+          />
+        </motion.div>
+
+        {/* Main Centered Mission Statement */}
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
+          className="font-display font-extrabold text-[2.05rem] sm:text-5xl md:text-[3.4rem] lg:text-[3.65rem] leading-[1.12] sm:leading-[1.06] tracking-normal max-w-[22rem] sm:max-w-3xl text-white z-10 drop-shadow-[0_20px_50px_rgba(0,0,0,0.55)]"
+        >
+          We build custom AI automations for business growth
+        </motion.h1>
+      </div>
+
+      {/* Scroll to know more Anchor */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.7 }}
+        transition={{ delay: 1, duration: 1 }}
+        onClick={scrollToNextSection}
+        className="flex flex-col items-center gap-1.5 cursor-pointer pb-8 z-10 text-white/60 hover:text-white transition-colors duration-300"
+      >
+        <span className="font-manrope text-[10px] sm:text-xs uppercase tracking-[0.2em] font-semibold">
+          Scroll to know more
+        </span>
+        <motion.div
+          animate={{ y: [0, 4, 0] }}
+          transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+        >
+          <FiChevronDown className="w-5 h-5" />
+        </motion.div>
+      </motion.div>
+    </section>
   );
 };
 

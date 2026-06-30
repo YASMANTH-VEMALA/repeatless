@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import { motion, Variants } from "framer-motion";
@@ -37,7 +37,7 @@ export default function BlogHero({ title, description, meta, image, video }: Her
   }, []);
 
   return (
-    <section className="relative flex flex-col items-center justify-center px-6 sm:px-12 lg:px-[150px] pt-16 sm:pt-20 lg:pt-[100px] gap-8 sm:gap-12 lg:gap-[50px] text-white w-full max-w-[1440px] mx-auto">
+    <section className="relative flex flex-col items-center justify-center px-6 sm:px-12 lg:px-[150px] pt-16 sm:pt-20 lg:pt-[100px] gap-8 sm:gap-12 lg:gap-[50px] text-neutral-950 w-full max-w-[1440px] mx-auto">
       {/* Gradient line progress (optional) */}
       {/* <div className="absolute top-5 left-0 w-full h-[12px] bg-gradient-to-r from-[#0F6CBD] to-[#27C840] opacity-90 z-10">
         <div
@@ -58,7 +58,7 @@ export default function BlogHero({ title, description, meta, image, video }: Her
           {title}
         </h1>
 
-        <p className="text-base sm:text-lg lg:text-[22px] font-light leading-relaxed sm:leading-[28px] lg:leading-[35px] text-white/60">
+        <p className="text-base sm:text-lg lg:text-[22px] font-light leading-relaxed sm:leading-[28px] lg:leading-[35px] text-neutral-600">
           {description}
         </p>
 
@@ -67,7 +67,7 @@ export default function BlogHero({ title, description, meta, image, video }: Her
           <span className="text-[#0F6CBD] text-base sm:text-lg lg:text-[22px] font-medium uppercase tracking-[-0.03em]">
             {meta.solution}
           </span>
-          <div className="w-2 h-2 rounded-full bg-white" />
+          <div className="w-2 h-2 rounded-full bg-neutral-300" />
           <span className="text-[#27C840] text-sm sm:text-base lg:text-[18px] font-medium uppercase">
             {meta.stat}
           </span>

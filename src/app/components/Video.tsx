@@ -1,53 +1,61 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { FiPlay } from "react-icons/fi";
+import { ContainerScroll } from "@/Components/ui/container-scroll-animation";
 
 const VideoSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
-    <motion.section
-      className="relative w-full flex justify-center items-center py-10 md:py-20 px-4"
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      viewport={{ once: true }}
-    >
-      <div
-        className="relative w-full max-w-[1140px] aspect-[1140/548] border border-white/30 rounded-[20px] overflow-hidden shadow-[0_0_16px_#6D21F0,0_0_8.1px_#1C76FD]"
+    <section className="relative w-full overflow-hidden bg-[#f4f1ec] px-4 py-8 text-neutral-950 md:py-14">
+      <ContainerScroll
+        titleComponent={
+          <div className="mx-auto max-w-4xl px-4">
+            <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#8400FF]">
+              / Demo Walkthrough
+            </p>
+            <h2 className="mt-4 font-poppins text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl">
+              See how a real automation system comes together.
+            </h2>
+          </div>
+        }
       >
-        {!isPlaying ? (
-          <>
-            <div
-              className="w-full h-full bg-cover bg-center"
-              style={{ backgroundImage: "url('/images/thumbnail.png')" }}
-            />
-            <button
-              onClick={() => setIsPlaying(true)}
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-                         w-[80px] h-[80px] md:w-[110px] md:h-[110px] rounded-full border border-white 
-                         bg-black/20 backdrop-blur-md shadow-md flex items-center justify-center"
-            >
-              <div
-                className="w-[24px] h-[24px] md:w-[32px] md:h-[32px] bg-white"
-                style={{
-                  clipPath: "polygon(0% 0%, 100% 50%, 0% 100%)",
-                  transform: "rotate(0deg)",
-                }}
+        <div className="relative h-full w-full bg-neutral-950">
+          {!isPlaying ? (
+            <>
+              <Image
+                src="/images/video-section-thumbnail-cropped.png"
+                alt="Build your n8n automations SaaS tools video thumbnail"
+                fill
+                priority={false}
+                sizes="(min-width: 1024px) 1024px, 100vw"
+                className="object-cover object-center"
+                draggable={false}
               />
-            </button>
-          </>
-        ) : (
-          <video
-            src="/images/Repeatless.mp4"
-            autoPlay
-            controls
-            className="w-full h-full object-cover rounded-[20px]"
-          />
-        )}
-      </div>
-    </motion.section>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/10" />
+              <button
+                type="button"
+                onClick={() => setIsPlaying(true)}
+                aria-label="Play automation demo video"
+                className="absolute left-1/2 top-1/2 grid h-20 w-20 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border border-white/55 bg-white/18 text-white shadow-[0_18px_50px_rgba(0,0,0,0.35)] backdrop-blur-md transition-transform duration-300 hover:scale-105 md:h-28 md:w-28"
+              >
+                <FiPlay className="ml-1 h-9 w-9 fill-white md:h-12 md:w-12" />
+              </button>
+            </>
+          ) : (
+            <video
+              src="/images/Repeatless.mp4"
+              autoPlay
+              controls
+              playsInline
+              className="h-full w-full object-cover"
+            />
+          )}
+        </div>
+      </ContainerScroll>
+    </section>
   );
 };
 

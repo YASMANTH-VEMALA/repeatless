@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { ArrowRightCircle } from "lucide-react";
 import { motion, Variants } from "framer-motion";
 
@@ -26,7 +26,7 @@ const fadeUpVariants: Variants = {
 
 export default function BlogBody({ sections }: BodyProps) {
   return (
-    <section className="relative flex flex-col items-center px-6 sm:px-12 lg:px-[150px] py-12 sm:py-16 lg:py-[80px] w-full max-w-[1440px] mx-auto text-white">
+    <section className="relative flex flex-col items-center px-6 sm:px-12 lg:px-[150px] py-12 sm:py-16 lg:py-[80px] w-full max-w-[1440px] mx-auto text-neutral-950">
       <div className="flex flex-col gap-16 sm:gap-20 lg:gap-[90px] w-full max-w-[940px]">
         {sections.map((section, idx) => (
           <motion.div
@@ -55,7 +55,7 @@ export default function BlogBody({ sections }: BodyProps) {
                     key={i}
                     variants={fadeUpVariants}
                     custom={i + 1}
-                    className="text-base sm:text-lg lg:text-[18px] leading-relaxed sm:leading-[26px] lg:leading-[29px] font-normal text-white/60 text-justify"
+                    className="text-base sm:text-lg lg:text-[18px] leading-relaxed sm:leading-[26px] lg:leading-[29px] font-normal text-neutral-600 text-justify"
                   >
                     {t}
                   </motion.p>
@@ -64,7 +64,7 @@ export default function BlogBody({ sections }: BodyProps) {
                 <motion.p
                   variants={fadeUpVariants}
                   custom={1}
-                  className="text-base sm:text-lg lg:text-[18px] leading-relaxed sm:leading-[26px] lg:leading-[29px] font-normal text-white/60 text-justify"
+                  className="text-base sm:text-lg lg:text-[18px] leading-relaxed sm:leading-[26px] lg:leading-[29px] font-normal text-neutral-600 text-justify"
                 >
                   {section.text}
                 </motion.p>
@@ -85,7 +85,7 @@ export default function BlogBody({ sections }: BodyProps) {
                     key={i}
                     variants={fadeUpVariants}
                     custom={i + 4}
-                    className="flex items-center gap-3 text-base sm:text-lg text-white/60"
+                    className="flex items-center gap-3 text-base sm:text-lg text-neutral-600"
                   >
                     <ArrowRightCircle className="text-[#8400FF]" size={22} />
                     <span>{item}</span>
@@ -134,7 +134,7 @@ export default function BlogBody({ sections }: BodyProps) {
               <motion.ul
                 variants={fadeUpVariants}
                 custom={5}
-                className="list-disc list-inside space-y-2 sm:space-y-3 text-base sm:text-lg lg:text-[18px] text-white/60"
+                className="list-disc list-inside space-y-2 sm:space-y-3 text-base sm:text-lg lg:text-[18px] text-neutral-600"
               >
                 {section.bullets.map((b, i) => (
                   <motion.li key={i} variants={fadeUpVariants} custom={i + 6}>

@@ -2,26 +2,22 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import Marquee from "react-fast-marquee";
 import { blogs } from "../../../public/data/blogs";
-import { useRef } from "react";
-import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { useEffect } from "react";
 import { motion, Variants } from "framer-motion";
 
 export default function CaseStudies() {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const isDarkTheme = false;
 
-  const scrollLeft = () => {
-    scrollRef.current?.scrollBy({ left: -300, behavior: "smooth" });
-  };
-  const scrollRight = () => {
-    scrollRef.current?.scrollBy({ left: 300, behavior: "smooth" });
-  };
+  useEffect(() => {
+    document.body.classList.remove("theme-dark");
+  }, []);
 
-  // Properly typed variants
   const containerVariants: Variants = {
     hidden: {},
     show: {
-      transition: { staggerChildren: 0.2 },
+      transition: { staggerChildren: 0.1 },
     },
   };
 
@@ -32,151 +28,84 @@ export default function CaseStudies() {
 
   return (
     <motion.section
-    id="case-studies"
-      className="flex flex-col items-center justify-center px-6 md:px-20 py-12 gap-12 bg-black"
+      id="case-studies"
+      className="relative flex w-full flex-col items-center justify-center gap-12 overflow-hidden bg-transparent px-6 py-24 transition-colors duration-1000 md:px-20 md:py-32"
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.1 }}
       variants={containerVariants}
     >
-      {/* Heading */}
+      <div
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-neutral-900/60 via-transparent to-transparent transition-opacity duration-1000"
+        style={{ opacity: isDarkTheme ? 0.7 : 0 }}
+      />
+
       <motion.div
-        className="max-w-[934px] mx-auto text-center flex flex-col items-center gap-4"
+        className="relative z-10 mx-auto flex max-w-[934px] flex-col items-center gap-4 text-center"
         variants={cardVariants}
       >
-        <h2 className="text-white font-inter font-normal text-[48px] leading-[52px] tracking-[-1px]">
+        <span className="mb-2 block font-poppins text-xs font-semibold uppercase tracking-[0.25em] text-[#8400FF]">
+          The Gallery
+        </span>
+        <h2
+          className={`font-poppins text-[42px] font-semibold leading-[1.05] tracking-[-0.04em] transition-colors duration-700 md:text-[58px] ${
+            isDarkTheme ? "text-white" : "text-neutral-950"
+          }`}
+        >
           Proven Results. Real Impact.
         </h2>
-        <p className="text-white/70 font-poppins font-light text-[18.4748px] leading-[150%] text-center max-w-[578.26px]">
+        <p
+          className={`max-w-[578px] text-center font-manrope text-[15px] font-light leading-[1.6] opacity-80 transition-colors duration-700 md:text-[17px] ${
+            isDarkTheme ? "text-neutral-300" : "text-neutral-700"
+          }`}
+        >
           Discover how we have helped businesses across industries automate their
           operations, improve efficiency, and drive growth through innovative AI
           solutions.
         </p>
       </motion.div>
 
-      {/* ---------- DESKTOP: Centered cards (top 3 from blogs) ---------- */}
-      <motion.div
-        className="hidden lg:flex justify-center gap-6 w-full"
-        variants={containerVariants}
-      >
-        {blogs.slice(0, 3).map((item) => (
-          <motion.div
-            key={item.slug}
-            className="flex flex-col items-start gap-4 w-[364px]"
-            variants={cardVariants}
-          >
-            <Link href={`/casestudies/${item.slug}`} className="block w-full">
-              <div className="relative w-full h-[190px] rounded-[8px] overflow-hidden">
-                <Image src={item.image} alt={item.title} fill className="object-cover" />
+      <motion.div className="relative z-10 w-screen overflow-hidden" variants={cardVariants}>
+        <Marquee
+          autoFill
+          pauseOnHover
+          gradient
+          gradientColor="244, 241, 236"
+          gradientWidth={80}
+          speed={36}
+        >
+          {blogs.map((item, idx) => (
+            <Link
+              key={item.slug}
+              href={`/casestudies/${item.slug}`}
+              className="group mx-3 flex h-[410px] w-[300px] shrink-0 flex-col overflow-hidden rounded-lg border border-neutral-950/10 bg-white/60 shadow-[0_16px_45px_rgba(24,24,27,0.06)] backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-[#8400FF]/35 hover:bg-white sm:h-[450px] sm:w-[360px] lg:h-[470px] lg:w-[420px]"
+            >
+              <div className="relative h-[170px] w-full shrink-0 overflow-hidden bg-neutral-950/5 sm:h-[210px]">
+                <Image
+                  src={item.image}
+                  alt={`${item.title} automation case study`}
+                  fill
+                  className="object-cover transition duration-500 group-hover:scale-105"
+                  sizes="(min-width: 1024px) 420px, (min-width: 640px) 360px, 300px"
+                />
+              </div>
+
+              <div className="flex min-h-0 flex-1 flex-col p-5">
+                <div className="mb-4 flex items-center justify-between gap-4 font-manrope text-[11px] font-semibold uppercase tracking-[0.18em] text-neutral-500">
+                  <span>{String(idx + 1).padStart(2, "0")}</span>
+                  <span>{item.category || "Case Study"}</span>
+                </div>
+                <h3 className="line-clamp-2 font-poppins text-[24px] font-semibold leading-[1.08] tracking-[-0.04em] text-neutral-950 transition-colors duration-300 group-hover:text-[#8400FF] sm:text-[30px]">
+                  {item.title}
+                </h3>
+                <p className="mt-4 line-clamp-3 font-manrope text-sm leading-6 text-neutral-600">
+                  {item.excerpt}
+                </p>
               </div>
             </Link>
-
-            <div className="flex flex-col items-start gap-2 w-full">
-              <Link href={`/casestudies/${item.slug}`} className="hover:underline">
-                <h3 className="font-poppins text-[18px] font-normal text-white">{item.title}</h3>
-              </Link>
-              <p className="font-roboto text-[16px] text-white/60">{item.excerpt}</p>
-            </div>
-          </motion.div>
-        ))}
+          ))}
+        </Marquee>
       </motion.div>
-
-      {/* ---------- TABLET: Horizontal scroll with arrows (top 3 from blogs) ---------- */}
-      <div className="hidden md:flex lg:hidden relative items-center w-full">
-        <button
-          className="absolute left-0 z-10 bg-black/50 p-2 rounded-full hover:bg-black/70"
-          onClick={scrollLeft}
-        >
-          <FiChevronLeft className="text-white w-6 h-6" />
-        </button>
-
-        <div
-          ref={scrollRef}
-          className="flex overflow-x-auto gap-6 scrollbar-hide scroll-smooth py-2"
-        >
-          {blogs.slice(0, 3).map((item) => (
-            <motion.div
-              key={item.slug}
-              className="flex-shrink-0 w-[300px] flex flex-col gap-4"
-              variants={cardVariants}
-            >
-              <Link href={`/casestudies/${item.slug}`} className="block w-full">
-                <div className="relative w-full h-[190px] rounded-[8px] overflow-hidden">
-                  <Image src={item.image} alt={item.title} fill className="object-cover" />
-                </div>
-              </Link>
-
-              <div className="flex flex-col items-start gap-2">
-                <Link href={`/casestudies/${item.slug}`} className="hover:underline">
-                  <h3 className="font-poppins text-[18px] font-normal text-white">{item.title}</h3>
-                </Link>
-                <p className="font-roboto text-[16px] text-white/60">{item.excerpt}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        <button
-          className="absolute right-0 z-10 bg-black/50 p-2 rounded-full hover:bg-black/70"
-          onClick={scrollRight}
-        >
-          <FiChevronRight className="text-white w-6 h-6" />
-        </button>
-      </div>
-
-      {/* ---------- MOBILE: Horizontal scroll without arrows (top 3 from blogs) ---------- */}
-      <div className="md:hidden relative w-full">
-        <div
-          ref={scrollRef}
-          className="flex overflow-x-auto gap-4 scroll-smooth snap-x snap-mandatory px-4 py-2 scrollbar-hide"
-        >
-          {blogs.slice(0, 3).map((item) => (
-            <motion.div
-              key={item.slug}
-              className="flex-shrink-0 w-[90vw] snap-start flex flex-col gap-4"
-              variants={cardVariants}
-            >
-              <Link href={`/casestudies/${item.slug}`} className="block w-full">
-                <div className="relative w-full h-[160px] rounded-[8px] overflow-hidden">
-                  <Image src={item.image} alt={item.title} fill className="object-cover" />
-                </div>
-              </Link>
-
-              <div className="flex flex-col items-start gap-2">
-                <Link href={`/casestudies/${item.slug}`} className="hover:underline">
-                  <h3 className="font-poppins text-[16px] font-normal text-white">{item.title}</h3>
-                </Link>
-                <p className="font-roboto text-[14px] text-white/60">{item.excerpt}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-
-      {/* Learn more */}
-      <motion.a
-        href="/casestudies"
-        className="relative flex items-center gap-2 w-[117.61px] h-[26px] text-white font-poppins font-medium text-[16px] leading-[26px] hover:underline"
-        variants={cardVariants}
-      >
-        Learn more
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="12"
-          height="12"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          className="w-[12px] h-[12px]"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M9 5l7 7-7 7"
-          />
-        </svg>
-      </motion.a>
     </motion.section>
   );
 }

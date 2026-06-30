@@ -40,13 +40,13 @@ export const blogs: Blog[] = [
   date: "2025-11-05",
   excerpt:
     "We automated a New York ad-creative agency — turning product photos into high-end video ads in hours instead of weeks. No photoshoots. No studios. Just AI-powered creative production at scale.",
-  image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1762263083/repeatless/newyork_casestudy_h0knjf.png",
+  image: "/images/case-study-generated/ai-video-ad-automation.png",
   hero: {
     title: "AI-Powered Video Ad Creative System",
     description:
       "A New York creative agency needed to scale ad production without photography teams, studios, or long edit cycles. We built an AI system that turns a single product image into photorealistic scenes and fully-edited video ads — in hours, not weeks.",
     meta: { solution: "CREATIVE AUTOMATION", stat: "5 Ad Variants • 1-Day Production" },
-    image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1762263083/repeatless/newyork_casestudy_h0knjf.png"
+    image: "/images/case-study-generated/ai-video-ad-automation.png"
   },
   body: {
     sections: [
@@ -65,7 +65,7 @@ export const blogs: Blog[] = [
           "Smart Storage: All assets stored in a secure cloud library organized by client & campaign.",
           "Clip Selection + Final Render: Agency picks best moments, stitches them in app, and exports a ready-to-run paid-ad video."
         ],
-        image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1762263083/repeatless/newyork_casestudy_h0knjf.png"
+        image: "/images/case-study-generated/ai-video-ad-automation.png"
       },
       {
         title: "Why It Works",
@@ -81,7 +81,7 @@ export const blogs: Blog[] = [
       {
         text:
           "This automation turned a traditional creative pipeline into an AI-driven production engine. The agency can now produce dozens of ad variations in a single day. No camera crews. No studios. Just creativity, direction, and automation doing the heavy lifting — while their clients get premium ad videos faster than ever.",
-        image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1762263083/repeatless/newyork_casestudy_h0knjf.png"
+        image: "/images/case-study-generated/ai-video-ad-automation.png"
       },
       {
         title: "Impact",
@@ -103,13 +103,13 @@ export const blogs: Blog[] = [
   date: "2025-11-10",
   excerpt:
     "We built a fully automated short-video content engine for a Toronto client — auto-creating and auto-publishing Reels every 2 days, with an optional manual trigger for custom topics.",
-  image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1767760008/shorts_pi1oti.png",
+  image: "/images/case-study-generated/short-video-reels-automation.png",
   hero: {
     title: "Short Video (Reels) Content Automation",
     description:
       "A Toronto content brand needed a way to maintain consistent short video presence without manual effort. We built an automation that generates and publishes video content every 2 days — with a manual override option for custom stories.",
     meta: { solution: "SOCIAL VIDEO AUTOMATION", stat: "Auto-Published Every 2 Days" },
-    image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1767760008/shorts_pi1oti.png"
+    image: "/images/case-study-generated/short-video-reels-automation.png"
   },
   body: {
     sections: [
@@ -128,7 +128,7 @@ export const blogs: Blog[] = [
           "Smart Scheduling: Two publishing modes — automated cadence (every 2 days) and manual immediate publish — both with optimized time slots for peak engagement.",
           "Cloud Library & Tracking: All generated videos are saved to a cloud drive with metadata (topic, keywords, publish date) for easy reuse, analytics, or A/B testing."
         ],
-        image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1767760008/shorts_pi1oti.png"
+        image: "/images/case-study-generated/short-video-reels-automation.png"
       },
       {
         title: "Why It Works",
@@ -144,7 +144,7 @@ export const blogs: Blog[] = [
       {
         text:
           "This automation turns short-video content from a bottleneck into a growth engine. Whether running on schedule or triggered manually, each video is crafted with sound hooks, optimized captions, and platform-native format. The client now maintains a reliable presence without the grind of editing, uploading, or planning twice a week.",
-        image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1767760008/shorts_pi1oti.png"
+        image: "/images/case-study-generated/short-video-reels-automation.png"
       },
       {
         title: "Impact",
@@ -167,13 +167,13 @@ export const blogs: Blog[] = [
   date: "2025-11-06",
   excerpt:
     "We built an AI-powered SEO content engine for a Canadian client — auto-researching keywords, writing SEO-optimized blogs, generating branded images, and publishing directly to WordPress.",
-  image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1762323483/seo_omnsuv.png",
+  image: "/images/case-study-generated/seo-blog-automation.png",
   hero: {
     title: "AI-Driven SEO Content Automation",
     description:
       "A Canada-based business needed a way to rank faster, publish more content, and dominate high-intent search keywords — without hiring writers or SEO experts. We automated their entire SEO content pipeline end-to-end.",
     meta: { solution: "SEO CONTENT AUTOMATION", stat: "1-Click Publishing • Fully Optimized" },
-    image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1762323483/seo_omnsuv.png"
+    image: "/images/case-study-generated/seo-blog-automation.png"
   },
   body: {
     sections: [
@@ -193,7 +193,7 @@ export const blogs: Blog[] = [
           "Auto-Publishing to WordPress: Blog + image + SEO tags + slug + meta description are posted directly via API.",
           "Continuous Schedule: System runs daily/weekly publishing schedule to stay ahead in rankings."
         ],
-        image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1762323483/seo_omnsuv.png"
+        image: "/images/case-study-generated/seo-blog-automation.png"
       },
       {
         title: "Why It Works",
@@ -209,7 +209,7 @@ export const blogs: Blog[] = [
       {
         text:
           "Once we set up the pipeline, the client only inputs their topic or product name. The system researches the niche, finds keywords worth ranking for, writes a polished SEO blog, generates a branded image, inserts keywords + meta data, and publishes directly to their WordPress site — all automatically.",
-        image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1762323483/seo_omnsuv.png"
+        image: "/images/case-study-generated/seo-blog-automation.png"
       },
       {
         title: "Impact",
@@ -232,13 +232,13 @@ export const blogs: Blog[] = [
   date: "2025-10-04",
   excerpt:
     "AI agent + n8n turned Instagram comments & DMs into 24/7 sales chats—62% more replies and 41% more qualified leads.",
-  image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1759665534/repeatless/insta_dm_hpng0l.png",
+  image: "/images/case-study-generated/instagram-dm-comments-automation.png",
   hero: {
     title: "Instagram DM & Comments Automation",
     description:
       "Brands needed faster, on-brand Instagram conversations. We delivered an AI agent that replies in comments, moves to DM, and converts interest into sales—compliantly and at scale.",
     meta: { solution: "SOCIAL COMMERCE SOLUTION", stat: "62% MORE REPLIES FROM COMMENTS" },
-    image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1759665534/repeatless/insta_dm_hpng0l.png",
+    image: "/images/case-study-generated/instagram-dm-comments-automation.png",
   },
   body: {
     sections: [
@@ -254,7 +254,7 @@ export const blogs: Blog[] = [
           "Handles FAQs, shares links/coupons, captures leads with consent, and escalates edge cases to a human.",
           "Built with n8n + Meta Graph API, including rate-limit guards, sentiment/intent routing, and safety fallbacks.",
         ],
-        image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1759665534/repeatless/insta_dm_hpng0l.png",
+        image: "/images/case-study-generated/instagram-dm-comments-automation.png",
       },
       {
         title: "Why it Works",
@@ -269,7 +269,7 @@ export const blogs: Blog[] = [
       {
         text:
           "Operators see live threads, confidence scores, and templates. Marketing can pause/approve flows per campaign and track conversions from comment → DM → checkout.",
-        image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1759665534/repeatless/insta_dm_hpng0l.png",
+        image: "/images/case-study-generated/instagram-dm-comments-automation.png",
       },
       {
         title: "Impact",
@@ -291,13 +291,13 @@ export const blogs: Blog[] = [
   date: "2025-10-04",
   excerpt:
     "AI discovers proven LinkedIn ideas, rewrites them in your voice, posts daily—driving inbound leads and new client acquisition without manual work.",
-  image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1759665812/repeatless/linkedin_q4ttbl.png",
+  image: "/images/case-study-generated/linkedin-post-generator-for-b2b.png",
   hero: {
     title: "LinkedIn Post Generator for B2B Growth",
     description:
       "We built an AI system that analyzes top public posts in your niche, rewrites them in your tone with fresh angles, designs an image, and auto‑posts to LinkedIn—keeping you consistently visible to prospects and winning new clients.",
     meta: { solution: "B2B CONTENT SOLUTION", stat: "Boost in Inbound Leads" },
-    image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1759665812/repeatless/linkedin_q4ttbl.png"
+    image: "/images/case-study-generated/linkedin-post-generator-for-b2b.png"
   },
   body: {
     sections: [
@@ -317,7 +317,7 @@ export const blogs: Blog[] = [
           "Lead Capture: Strong CTAs to book calls/DM, UTM‑tagged links to landing pages, and auto‑logging of inbound interest.",
           "Learning Loop: Track engagement and downstream conversions (profile visits, connection accepts, booked calls); promote winning angles; de‑prioritize underperformers."
         ],
-        image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1759665812/repeatless/linkedin_q4ttbl.png"
+        image: "/images/case-study-generated/linkedin-post-generator-for-b2b.png"
       },
       {
         title: "Why it Works",
@@ -333,7 +333,7 @@ export const blogs: Blog[] = [
       {
         text:
           "Operators see a simple queue with previews, tone checks, and policy flags. You can approve, edit, or let the agent auto‑publish on a set cadence (e.g., 1 post/day at 9:30 AM).",
-        image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1759665812/repeatless/linkedin_q4ttbl.png"
+        image: "/images/case-study-generated/linkedin-post-generator-for-b2b.png"
       },
       {
         title: "Impact",
@@ -356,13 +356,13 @@ export const blogs: Blog[] = [
   date: "2025-10-05",
   excerpt:
     "We turned newsletter subscriptions into a lead engine by detecting senders landing in spam and triggering tailored outreach—fueling a marketing agency's pipeline.",
-  image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1759666185/repeatless/seannewsletter_g8mzip.png",
+  image: "/images/case-study-generated/newsletter-automation-leadgen.png",
   hero: {
     title: "Newsletter Automation for Agency Lead Generation",
     description:
       "A marketing agency needed a steady stream of qualified leads. We built an automation that subscribes to niche newsletters across managed inboxes, detects senders landing in spam or failing verification, and launches contextual outreach to offer deliverability & email marketing services.",
     meta: { solution: "LEAD GEN & DELIVERABILITY", stat: "Spam-to-Lead Conversion Engine" },
-    image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1759666185/repeatless/seannewsletter_g8mzip.png"
+    image: "/images/case-study-generated/newsletter-automation-leadgen.png"
   },
   body: {
     sections: [
@@ -381,7 +381,7 @@ export const blogs: Blog[] = [
           "CRM Sync: De‑duplicate domains, enrich contacts, and track outcomes from first touch → booked call.",
           "Compliance: Respect unsubscribes, frequency caps, and lawful bases for contact; store audit logs."
         ],
-        image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1759666185/repeatless/seannewsletter_g8mzip.png"
+        image: "/images/case-study-generated/newsletter-automation-leadgen.png"
       },
       {
         title: "Why it Works",
@@ -397,7 +397,7 @@ export const blogs: Blog[] = [
       {
         text:
           "Operators see a dashboard of newsletter domains with status (OK/Spam/No‑Mail/Double‑Opt‑In), niche tags, and last events. One click reveals suggested outreach copy and a remediation checklist; wins feed a case‑study queue automatically.",
-        image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1759666185/repeatless/seannewsletter_g8mzip.png"
+        image: "/images/case-study-generated/newsletter-automation-leadgen.png"
       },
       {
         title: "Impact",
@@ -419,13 +419,13 @@ export const blogs: Blog[] = [
   date: "2025-10-05",
   excerpt:
     "When a publisher releases a new book, our automation broadcasts rich WhatsApp messages to opted‑in readers—driving immediate awareness and sales at scale.",
-  image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1759666496/repeatless/publications_dsrg9k.png",
+  image: "/images/case-study-generated/whatsapp-broadcast-automation-books.png",
   hero: {
     title: "WhatsApp Broadcast Automation for Publishers",
     description:
       "A book publisher needed instant reach to thousands of readers at launch. We built a compliant WhatsApp broadcast system that detects new titles, personalizes messages, and sends at scale with tracking and opt‑outs—no manual steps.",
     meta: { solution: "WHATSAPP COMMERCE", stat: "Launch‑Day Reach in Minutes" },
-    image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1759666496/repeatless/publications_dsrg9k.png"
+    image: "/images/case-study-generated/whatsapp-broadcast-automation-books.png"
   },
   body: {
     sections: [
@@ -444,7 +444,7 @@ export const blogs: Blog[] = [
           "Compliance: Manage consent and opt‑out keywords (STOP), handle fails/retries, and maintain an auditable log.",
           "Analytics: Track deliveries, reads, clicks (UTM), and conversions; auto‑compile a launch report."
         ],
-        image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1759666496/repeatless/publications_dsrg9k.png"
+        image: "/images/case-study-generated/whatsapp-broadcast-automation-books.png"
       },
       {
         title: "Why it Works",
@@ -460,7 +460,7 @@ export const blogs: Blog[] = [
       {
         text:
           "Operators get a simple launch dashboard: preview the broadcast, select segments, schedule or send now, and watch real‑time delivery/click stats. The system auto‑retries soft fails and logs unsubscribes to keep the list healthy.",
-        image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1759666496/repeatless/publications_dsrg9k.png"
+        image: "/images/case-study-generated/whatsapp-broadcast-automation-books.png"
       },
       {
         title: "Impact",
@@ -482,13 +482,13 @@ export const blogs: Blog[] = [
   date: "2025-10-10",
   excerpt:
     "An always-on content automation system that publishes daily across Instagram, TikTok, X, YouTube & LinkedIn for a Chicago luxury bike shop — turning local discovery into DMs and foot traffic.",
-  image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1760271382/social_media_yusuf_pceijg.png",
+  image: "/images/case-study-generated/social-media-automation-luxury-bike-chicago.png",
   hero: {
     title: "Social Media Automation for a Chicago Luxury Bike Shop",
     description:
       "We built an always-on content engine: AI generates on-brand posts + images, adds Chicago-local hashtags, and auto-publishes daily across five platforms—no manual work.",
     meta: { solution: "CONTENT + DISTRIBUTION", stat: "Daily Posting • 7 Categories" },
-    image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1760271382/social_media_yusuf_pceijg.png"
+    image: "/images/case-study-generated/social-media-automation-luxury-bike-chicago.png"
   },
   body: {
     sections: [
@@ -507,7 +507,7 @@ export const blogs: Blog[] = [
           "Scheduler + Guardrails: Queues a 2–3 week calendar, respects rate limits, and auto-skips repeats; manual approve/pause option.",
           "Analytics Loop: Tracks reach, profile visits, DMs, and saves; boosts winners; rotates underperformers out."
         ],
-        image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1760271382/social_media_yusuf_pceijg.png"
+        image: "/images/case-study-generated/social-media-automation-luxury-bike-chicago.png"
       },
       {
         title: "Why it Works",
@@ -523,7 +523,7 @@ export const blogs: Blog[] = [
       {
         text:
           "A simple calendar view shows upcoming posts by category and platform with preview thumbnails. The owner can drag-to-reorder, swap a photo, or let the queue run autonomously; weekly reports highlight DM spikes and best-performing angles (before/after, client testimonials, custom builds).",
-        image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1760271382/social_media_yusuf_pceijg.png"
+        image: "/images/case-study-generated/social-media-automation-luxury-bike-chicago.png"
       },
       {
         title: "Impact",
@@ -546,13 +546,13 @@ export const blogs: Blog[] = [
   date: "2025-10-05",
   excerpt:
     "An AI+automation workflow that connects residents to vetted plumbers, electricians, and AC techs via WhatsApp—routing in seconds and boosting provider subscriptions.",
-  image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1759668522/repeatless/serviceprovider_srwmjd.png",
+  image: "/images/case-study-generated/whatsapp-local-service-connector-us.png",
   hero: {
     title: "WhatsApp Local Service Connector",
     description:
       "In one US county, residents struggled to reach reliable home‑service providers quickly. We built a WhatsApp agent that understands the request, checks real‑time provider availability, and connects both parties instantly—no call centers, no waiting.",
     meta: { solution: "LOCAL SERVICES AUTOMATION", stat: "Instant Request → Provider Match" },
-    image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1759668522/repeatless/serviceprovider_srwmjd.png"
+    image: "/images/case-study-generated/whatsapp-local-service-connector-us.png"
   },
   body: {
     sections: [
@@ -571,7 +571,7 @@ export const blogs: Blog[] = [
           "Provider Portal: Service pros manage availability, service categories, pricing notes, and subscription billing (monthly).",
           "Logs & Metrics: Track response times, acceptance rates, completion notes, and customer feedback for quality control."
         ],
-        image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1759668522/repeatless/serviceprovider_srwmjd.png"
+        image: "/images/case-study-generated/whatsapp-local-service-connector-us.png"
       },
       {
         title: "Why it Works",
@@ -587,7 +587,7 @@ export const blogs: Blog[] = [
       {
         text:
           "Operations staff can view a live queue, override matches, or pause categories during storms/peaks. Providers toggle ‘Active’ in one tap; the agent respects do‑not‑disturb windows and rotates jobs fairly across subscribers.",
-        image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1759668522/repeatless/serviceprovider_srwmjd.png"
+        image: "/images/case-study-generated/whatsapp-local-service-connector-us.png"
       },
       {
         title: "Impact",
@@ -610,13 +610,13 @@ export const blogs: Blog[] = [
   date: "2025-10-13",
   excerpt:
     "Zero third‑party fees: our QR system verifies attendees against your database, blocks duplicate scans, and updates attendance in real time.",
-  image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1760339555/ticket_qr_cyff8c.png",
+  image: "/images/case-study-generated/qr-event-attendance-automation.png",
   hero: {
     title: "QR-Based Event Attendance Automation",
     description:
       "We built a lean, secure event check‑in system: unique QR codes per attendee, instant database verification, and one‑scan‑only gatekeeping to stop pass‑arounds—without paying per‑attendee platform fees.",
     meta: { solution: "EVENT OPS AUTOMATION", stat: "1‑Scan‑Only • Real‑Time Update" },
-    image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1760339555/ticket_qr_cyff8c.png"
+    image: "/images/case-study-generated/qr-event-attendance-automation.png"
   },
   body: {
     sections: [
@@ -635,7 +635,7 @@ export const blogs: Blog[] = [
           "Offline Tolerance: Edge cache for last sync + fallback code entry; queued confirmations sync back when online.",
           "Ops Console: Live counters, lane throughput, and exception list (e.g., name mismatch, duplicate attempt) with quick override for authorized staff."
         ],
-        image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1760339555/ticket_qr_cyff8c.png"
+        image: "/images/case-study-generated/qr-event-attendance-automation.png"
       },
       {
         title: "Why it Works",
@@ -651,7 +651,7 @@ export const blogs: Blog[] = [
       {
         text:
           "Staff simply scan with a mobile browser: the gate page renders attendee name, ticket type, and status instantly. Approved scans flash GREEN with a beep; blocked duplicates show RED with reason and timestamp. Coordinators monitor hall capacity in real time and export attendance afterward.",
-        image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1760339555/ticket_qr_cyff8c.png"
+        image: "/images/case-study-generated/qr-event-attendance-automation.png"
       },
       {
         title: "Impact",
@@ -674,13 +674,13 @@ export const blogs: Blog[] = [
   date: "2025-10-16",
   excerpt:
     "We built an n8n workflow that auto-replies to every YouTube comment in the creator’s tone — saving hours weekly and improving engagement, all with zero third-party tools.",
-  image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1760554512/repeatless/youtube_qa6uvx.png",
+  image: "/images/case-study-generated/youtube-comment-automation.png",
   hero: {
     title: "Automating YouTube Engagement with N8N",
     description:
       "Our client, a fast-growing YouTube creator, was overwhelmed by hundreds of comments per video. We built a smart N8N automation that instantly replies in their brand voice — saving over 10 hours weekly and boosting engagement 3x.",
     meta: { solution: "CREATOR AUTOMATION", stat: "10+ Hours Saved • 3x Engagement" },
-    image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1760554512/repeatless/youtube_qa6uvx.png"
+    image: "/images/case-study-generated/youtube-comment-automation.png"
   },
   body: {
     sections: [
@@ -699,7 +699,7 @@ export const blogs: Blog[] = [
           "Finally, it posts the reply automatically to YouTube within seconds.",
           "The workflow also logs all interactions for tracking engagement and detecting spam comments."
         ],
-        image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1760554512/repeatless/youtube_qa6uvx.png"
+        image: "/images/case-study-generated/youtube-comment-automation.png"
       },
       {
         title: "Why It Works",
@@ -715,7 +715,7 @@ export const blogs: Blog[] = [
       {
         text:
           "The workflow runs 24/7 — watching every video, Short, and community post. When a comment arrives, it replies in under 5 minutes, keeping engagement constant. The automation respects YouTube’s rate limits and stores all responses in Google Sheets for transparency. The creator now interacts with fans automatically while staying true to their voice.",
-        image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1760554512/repeatless/youtube_qa6uvx.png"
+        image: "/images/case-study-generated/youtube-comment-automation.png"
       },
       {
         title: "Impact",
@@ -738,13 +738,13 @@ export const blogs: Blog[] = [
   date: "2025-10-05",
   excerpt:
     "For consultancy teams: one form generates all client documents, auto‑names/files them in Google Drive, and supports image uploads—saving hours every week.",
-  image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1759666970/repeatless/consultation_niszxz.png",
+  image: "/images/case-study-generated/document-consolidation-automation.png",
   hero: {
     title: "Document Consolidation & Auto‑Foldering for Consultancy Clients",
     description:
       "Consultancy firms were manually filling multiple templates per client and filing them in the right folders. We delivered a single smart form that captures client data (plus images), populates every template, auto‑names files, and saves everything into a client‑specific Google Drive structure.",
     meta: { solution: "OPERATIONS AUTOMATION", stat: "Up to 75% Time Saved" },
-    image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1759666970/repeatless/consultation_niszxz.png"
+    image: "/images/case-study-generated/document-consolidation-automation.png"
   },
   body: {
     sections: [
@@ -764,7 +764,7 @@ export const blogs: Blog[] = [
           "Drive Sync & Permissions: Save to Google Drive with correct access for the consultancy team; log creator, timestamp, and version.",
           "Status, E‑Sign & QC: Dashboard shows completion status, missing fields, and e‑signature progress; sends e‑sign requests automatically and flags exceptions for review."
         ],
-        image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1759666970/repeatless/consultation_niszxz.png"
+        image: "/images/case-study-generated/document-consolidation-automation.png"
       },
       {
         title: "Why it Works",
@@ -780,7 +780,7 @@ export const blogs: Blog[] = [
       {
         text:
           "A coordinator opens the form, selects the consolidation pack (e.g., \"Standard Consultancy Onboarding\"), fills client details, and uploads any images (logo, ID proof, signatures). The system generates Docs/PDFs, creates the client folder, files each document in the correct subfolder, and posts a link summary to the team.",
-        image: "https://res.cloudinary.com/ds10dzkpj/image/upload/v1759666970/repeatless/consultation_niszxz.png"
+        image: "/images/case-study-generated/document-consolidation-automation.png"
       },
       {
         title: "Impact",

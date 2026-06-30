@@ -1,206 +1,223 @@
-"use client";
-import React from "react";
-import { Variants, motion } from "framer-motion";
+﻿"use client";
 
-const HeroSection: React.FC = () => {
-  const mobileCards = [
-    { title: "Discover", desc: "I analyze your current workflows, pain points, and growth goals in a 1:1 strategy session.", img: "/images/a1.png" },
-    { title: "Design", desc: "I build a custom automation blueprint tailored to your tools, team, and business model.", img: "/images/a2.png" },
-    { title: "Deploy", desc: "I implement and integrate everything with minimal disruption to your operations.", img: "/images/a3.png" },
-    { title: "Scale", desc: "I monitor, optimize, and expand your automation systems as your business grows.", img: "/images/a4.png" },
-  ];
+import React, { useEffect, useRef, useState } from "react";
+import Lottie from "lottie-react";
+import type { LottieRefCurrentProps } from "lottie-react";
+import {
+  motion,
+  useMotionValueEvent,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
+import analysisAnimation from "../../../public/animations/work-analysis.json";
+import designAnimation from "../../../public/animations/work-design.json";
+import deployAnimation from "../../../public/animations/work-deploy-model.json";
+import scaleAnimation from "../../../public/animations/work-scale-sale.json";
 
-  const cardVariant = {
-    hidden: { opacity: 0, y: 20, scale: 0.98 },
-    show: (i: number) => ({ opacity: 1, y: 0, scale: 1, transition: { delay: 0.14 * i, duration: 0.55, ease: "easeOut" } }),
-  };
-
-  return (
-    <section className="relative w-full min-h-[744px] bg-[#000000] overflow-hidden">
-      {/* ---------- HERO CONTENT (Pill + Title) ---------- */}
-      <div
-        className="
-          px-6 pt-8 pb-4 md:!px-8 lg:!px-0 lg:absolute lg:left-[101px] lg:top-[65px]
-          w-full lg:w-[566px] h-auto lg:h-[201px]
-          flex flex-col items-start gap-[16px]
-        "
-      >
-        {/* count pill */}
-        <div
-          className="
-            flex items-center justify-center gap-[10px]
-            px-[20px] py-[10px]
-            bg-[rgba(77,0,255,0.1)] border border-[rgba(255,255,255,0.1)]
-            rounded-[59px] w-fit
-          "
-        >
-          <div
-            className="
-              w-[12px] h-[12px] rounded-full bg-[#8400FF]
-              shadow-[0_0_16px_#6D21F0,0_0_8.1px_#1C76FD]
-            "
-          />
-          <span className="text-[#8400FF] font-poppins font-normal text-[14px] sm:text-[16px] md:text-[20px] leading-[130%]">
-            How it works
-          </span>
-        </div>
-
-        {/* title */}
-        <motion.h1
-          variants={{
-            hidden: { opacity: 0, y: 28 },
-            show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] } },
-          }}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.6 }}
-          className="
-            font-poppins font-medium text-white
-            text-2xl sm:text-3xl md:text-4xl lg:text-[54px]
-            leading-[120%] md:leading-[69px]
-            tracking-[-1px] md:tracking-[-3.69497px]
-            max-w-full break-words
-          "
-        >
-          How I Work With You
-        </motion.h1>
-      </div>
-
-      {/* ---------- DESKTOP: absolute-positioned cards ---------- */}
-      <motion.div initial="hidden" animate="show" className="hidden lg:block">
-        {/* Discover */}
-        <motion.div custom={0} className="md:absolute md:left-[84px] md:top-[330px] w-[153px] h-[226px] flex flex-col items-center gap-4">
-          <div
-            className="w-[115px] h-[106px] rounded-[25px] border border-[rgba(255,255,255,0.1)] shadow-[0_0_16px_#6D21F0,0_0_8.1px_#1C76FD] bg-cover bg-center"
-            style={{ backgroundImage: "url('/images/a1.png')" }}
-          />
-          <div className="flex flex-col items-center gap-2 text-center">
-            <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/70 font-roboto font-medium text-[18px] leading-[24px]">
-              Discover
-            </span>
-            <p className="text-[#9B96B0] font-roboto text-[16px] leading-[24px] w-[153px]">I analyze your current workflows, pain points, and growth goals in a 1:1 strategy session.</p>
-          </div>
-        </motion.div>
-
-        {/* Design */}
-        <motion.div custom={1} variants={cardVariant as Variants} className="md:absolute md:left-[367px] md:top-[330px] w-[211px] h-[228px] flex flex-col items-center gap-2">
-          <div className="flex flex-col items-center gap-2 text-center pb-5">
-            <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/70 font-roboto font-medium text-[18px] leading-[24px]">Design</span>
-            <p className="text-[#9B96B0] font-roboto text-[16px] leading-[24px] w-[191px]">I build a custom automation blueprint tailored to your tools, team, and business model.</p>
-          </div>
-          <div
-            className="w-[100px] h-[98px] rounded-[25px] border border-[rgba(255,255,255,0.1)] shadow-[0_0_16px_#6D21F0,0_0_8.1px_#1C76FD] bg-cover bg-center pt-5"
-            style={{ backgroundImage: "url('/images/a2.png')" }}
-          />
-        </motion.div>
-
-        {/* Deploy */}
-        <motion.div custom={2} variants={{
-          hidden: { opacity: 0, y: 28, scale: 0.8 },
-          show: (i: number) => ({
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            transition: { delay: i * 0.1, duration: 0.6, ease: "easeInOut" },
-          }),
-        }} className="md:absolute md:left-[736px] md:top-[330px] w-[191px] h-[214px] flex flex-col items-center gap-2">
-          <div
-            className="w-[100px] h-[98px] rounded-[25px] border border-[rgba(255,255,255,0.1)] shadow-[0_0_16px_#6D21F0,0_0_8.1px_#1C76FD] bg-cover bg-center"
-            style={{ backgroundImage: "url('/images/a3.png')" }}
-          />
-          <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/70 font-roboto font-medium text-[18px] leading-[24px]">Deploy</span>
-          <p className="text-[#9B96B0] font-roboto text-[16px] leading-[24px] w-[191px] text-center">I implement and integrate everything with minimal disruption to your operations.</p>
-        </motion.div>
-
-        {/* Scale */}
-        <motion.div custom={3} variants={{
-          hidden: { opacity: 0, y: 20, scale: 0.8 },
-          show: (i: number) => ({
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            transition: { delay: i * 0.1, duration: 0.5, ease: "easeOut" },
-          }),
-        }} className="md:absolute md:left-[1200px] md:top-[330px] w-[191px] h-[254px] flex flex-col items-center gap-2">
-          <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/70 font-roboto font-medium text-[18px] leading-[24px]">Scale</span>
-          <p className="text-[#9B96B0] font-roboto text-[16px] leading-[24px] w-[191px] text-center">I monitor, optimize, and expand your automation systems as your business grows.</p>
-          <div
-            className="w-[100px] h-[98px] rounded-[25px] border border-[rgba(255,255,255,0.1)] shadow-[0_0_16px_#6D21F0,0_0_8.1px_#1C76FD] bg-cover bg-center"
-            style={{ backgroundImage: "url('/images/a4.png')" }}
-          />
-        </motion.div>
-      </motion.div>
-
-      {/* ---------- MOBILE/TABLET: horizontal cards ---------- */}
-      <div className="lg:hidden mt-6 px-4">
-        <div className="grid grid-cols-2 gap-4">
-          {mobileCards.map((c, i) => (
-            <motion.div
-              key={c.title}
-              custom={i}
-              variants={{
-                hidden: { opacity: 0, y: 20, scale: 0.9 },
-                show: (i: number) => ({
-                  opacity: 1,
-                  y: 0,
-                  scale: 1,
-                  transition: { delay: i * 0.1, duration: 0.5, ease: "easeOut" },
-                }),
-              }}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.6 }}
-              className="flex flex-col items-center gap-3"
-            >
-              <div
-                className="w-[90px] h-[90px] rounded-[20px] border border-[rgba(255,255,255,0.1)] shadow-[0_0_12px_#6D21F0,0_0_6px_#1C76FD] bg-cover bg-center"
-                style={{ backgroundImage: `url(${c.img})` }}
-              />
-              <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/70 font-roboto font-medium text-[15px] text-center">
-                {c.title}
-              </span>
-              <p className="text-[#9B96B0] text-center text-sm px-1">{c.desc}</p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-      <svg className="hidden lg:block absolute left-[237px] top-[363.5px]" width="921" height="125" viewBox="0 0 921 125" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M1 112C60.9571 112 62.5923 10.0001 144.352 0.499268M341.665 0.499268C399.442 0.499268 398.897 124 485.562 124M711.764 124C812.056 121.001 827.339 0.499039 920 0.499271" stroke="white" strokeLinecap="round" strokeDasharray="15 15" />
-      </svg>
-      {/* CTA Button */}
-      <div className="flex justify-center lg:absolute lg:bottom-4 lg:left-1/2 lg:-translate-x-1/2 pt-10">
-        <a
-          href="https://cal.com/chandan-kumar-zhrofj/30min"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center justify-center gap-2 px-4 py-2 md:px-5 md:py-3 bg-[#4D00FF] rounded-[40px] hover:bg-[#3700cc] transition"
-        >
-          <span className="text-white font-poppins text-[12px] sm:text-[14px] md:text-[14px]">
-            Book a Free Strategy Call
-          </span>
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 22 22"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="rotate-90"
-          >
-            <path
-              d="M6 9L11 14L16 9"
-              stroke="white"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </a>
-
-      </div>
-
-
-    </section>
-  );
+type WorkStep = {
+  kicker: string;
+  title: string;
+  description: string;
+  animation: unknown;
+  tone: string;
+  glow: string;
 };
 
-export default HeroSection;
+const steps: WorkStep[] = [
+  {
+    kicker: "01 / Discover",
+    title: "Find the work that should not be manual anymore.",
+    description:
+      "I audit your workflows, tools, response times, missed handoffs, and repeated decisions to uncover where automation will create the most leverage.",
+    animation: analysisAnimation,
+    tone: "#7c3aed",
+    glow: "rgba(124,58,237,0.28)",
+  },
+  {
+    kicker: "02 / Design",
+    title: "Turn the messy process into a clean automation blueprint.",
+    description:
+      "I design the workflow logic, triggers, approvals, integrations, and fallback paths before anything is built, so the system has a real operating model.",
+    animation: designAnimation,
+    tone: "#2563eb",
+    glow: "rgba(37,99,235,0.24)",
+  },
+  {
+    kicker: "03 / Deploy",
+    title: "Launch the automation inside your actual business stack.",
+    description:
+      "I connect the tools, build the automations, test edge cases, and roll everything out carefully so your operations keep moving while the system goes live.",
+    animation: deployAnimation,
+    tone: "#8400ff",
+    glow: "rgba(132,0,255,0.28)",
+  },
+  {
+    kicker: "04 / Scale",
+    title: "Improve, expand, and compound the system over time.",
+    description:
+      "Once the system is live, I monitor performance, remove friction, add new branches, and keep improving the automation as your business grows.",
+    animation: scaleAnimation,
+    tone: "#0f766e",
+    glow: "rgba(20,184,166,0.22)",
+  },
+];
+
+function StepVisual({
+  isActive,
+  shouldReduceMotion,
+  step,
+}: {
+  isActive: boolean;
+  shouldReduceMotion: boolean | null;
+  step: WorkStep;
+}) {
+  const lottieRef = useRef<LottieRefCurrentProps | null>(null);
+
+  useEffect(() => {
+    const animation = lottieRef.current;
+    if (!animation) return;
+
+    if (isActive && !shouldReduceMotion) {
+      animation.play();
+    } else {
+      animation.pause();
+    }
+  }, [isActive, shouldReduceMotion]);
+
+  return (
+    <motion.div
+      aria-hidden={!isActive}
+      animate={{ opacity: isActive ? 1 : 0, scale: isActive ? 1 : 0.98 }}
+      transition={{ duration: 0.2, ease: "linear" }}
+      className="pointer-events-none absolute right-0 top-1/2 z-0 flex w-full -translate-y-1/2 transform-gpu items-center justify-center opacity-90 contain-paint lg:w-[68vw] lg:justify-end lg:pr-10"
+      style={{ visibility: isActive ? "visible" : "hidden" }}
+    >
+      <div
+        aria-hidden="true"
+        className="absolute h-[min(88vw,640px)] w-[min(88vw,640px)] rounded-full opacity-80"
+        style={{ background: `radial-gradient(circle, ${step.glow}, transparent 68%)` }}
+      />
+
+      <div className="relative flex aspect-square w-[min(108vw,820px)] items-center justify-center opacity-75 lg:opacity-100">
+        <div className="absolute inset-[18%] rounded-full bg-white/25" />
+        <div className="relative z-10 h-full w-full transform-gpu">
+          <Lottie
+            lottieRef={lottieRef}
+            animationData={step.animation}
+            autoplay={isActive && !shouldReduceMotion}
+            loop={!shouldReduceMotion}
+            rendererSettings={{ progressiveLoad: true }}
+          />
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+export default function HeroSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const activeIndexRef = useRef(0);
+  const shouldReduceMotion = useReducedMotion();
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end end"],
+  });
+
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    const nextIndex = Math.min(steps.length - 1, Math.floor(latest * steps.length));
+    if (activeIndexRef.current !== nextIndex) {
+      activeIndexRef.current = nextIndex;
+      setActiveIndex(nextIndex);
+    }
+  });
+
+  const trackX = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ["0%", `-${(steps.length - 1) * 100}%`]
+  );
+  const progressScale = useTransform(scrollYProgress, [0.02, 0.98], [0, 1]);
+
+  return (
+    <section
+      id="process"
+      ref={sectionRef}
+      className="relative w-full bg-transparent"
+      style={{ minHeight: `calc(${steps.length} * 100vh)` }}
+    >
+      <div className="sticky top-0 h-screen overflow-hidden">
+        <div className="absolute inset-x-0 top-0 z-20 h-1 bg-black/[0.04]">
+          <motion.div
+            style={{ scaleX: shouldReduceMotion ? 1 : progressScale }}
+            className="h-full origin-left bg-[#8400FF]"
+          />
+        </div>
+
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.035)_1px,transparent_1px)] bg-[size:48px_48px] opacity-40 [mask-image:linear-gradient(to_bottom,transparent,black_16%,black_84%,transparent)]" />
+
+        <div className="absolute left-5 top-24 z-20 md:left-12 lg:left-24">
+          <div className="flex w-fit items-center justify-center gap-[10px] rounded-[59px] border border-black/5 bg-white/75 px-5 py-2.5 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.05)] backdrop-blur-xl">
+            <div className="h-3 w-3 rounded-full bg-[#8400FF] shadow-[0_0_16px_#6D21F0,0_0_8.1px_#1C76FD]" />
+            <span className="font-poppins text-base leading-[130%] text-[#8400FF] md:text-xl">
+              How it works
+            </span>
+          </div>
+        </div>
+
+        <motion.div
+          className="flex h-screen w-full transform-gpu will-change-transform"
+          style={shouldReduceMotion ? undefined : { x: trackX }}
+        >
+          {steps.map((step, index) => {
+            const isActive = activeIndex === index;
+            return (
+              <article
+                key={step.kicker}
+                className="relative grid h-screen w-screen shrink-0 grid-cols-1 items-center gap-8 overflow-hidden px-5 pb-28 pt-36 md:px-12 md:pb-32 lg:grid-cols-[0.9fr_1.1fr] lg:px-24 lg:pb-36 lg:pt-24"
+              >
+                <motion.div
+                  animate={{ opacity: isActive ? 1 : 0.35 }}
+                  transition={{ duration: 0.35, ease: "easeOut" }}
+                  className="relative z-20 max-w-[680px]"
+                >
+                  <div className="font-poppins text-sm font-semibold uppercase tracking-[0.24em]" style={{ color: step.tone }}>
+                    {step.kicker}
+                  </div>
+                  <h2 className="mt-5 font-poppins text-[clamp(2.8rem,4.8vw,5.4rem)] font-medium leading-[0.96] tracking-[-0.045em] text-neutral-950">
+                    {step.title}
+                  </h2>
+                  <p className="mt-5 max-w-xl font-roboto text-lg leading-8 text-neutral-600 md:text-xl md:leading-9">
+                    {step.description}
+                  </p>
+
+                  <div className="mt-7 flex items-center gap-3">
+                    {steps.map((item, dotIndex) => (
+                      <div
+                        key={item.kicker}
+                        className="h-2 rounded-full transition-all duration-300"
+                        style={{
+                          width: dotIndex === activeIndex ? 48 : 10,
+                          backgroundColor:
+                            dotIndex === activeIndex ? steps[activeIndex].tone : "rgba(24,24,27,0.16)",
+                        }}
+                      />
+                    ))}
+                  </div>
+                </motion.div>
+
+                <StepVisual
+                  isActive={isActive}
+                  shouldReduceMotion={shouldReduceMotion}
+                  step={step}
+                />
+              </article>
+            );
+          })}
+        </motion.div>
+      </div>
+    </section>
+  );
+}

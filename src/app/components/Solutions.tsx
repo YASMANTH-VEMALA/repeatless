@@ -1,175 +1,308 @@
-"use client";
+﻿"use client";
 
-import { FC } from "react";
-import { FiPhoneCall, FiArrowRight } from "react-icons/fi";
-import { motion } from "framer-motion";
-import styles from "./SolutionsSection.module.css"; // CSS module
-import { Variants } from "framer-motion";
+import { FC, useEffect, useRef, useState } from "react";
+import {
+  MotionValue,
+  motion,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+  Variants,
+} from "framer-motion";
+import Lottie from "lottie-react";
+import styles from "./SolutionsSection.module.css";
+import workflowAnimation from "../../../public/animations/workflow_v2.json";
+import chatbotAnimation from "../../../public/animations/chatbot.json";
+import liveChatbotAnimation from "../../../public/animations/live-chatbot.json";
+import aiToolsAnimation from "../../../public/animations/ai-tools.json";
 
-const topSolutions = [
-  {
-    title: "Workflow Automation",
-    description:
-      "Automate repetitive manual tasks like data entry, scheduling, and approvals with intelligent AI flows. Free up your team’s time to focus on high-value work while reducing errors and delays.",
-    image: "/images/sol5.png",
-  },
-  {
-    title: "Smart Chat Agents",
-    description:
-      "Our AI chat agents work 24/7—delivering instant, human-like responses for everything from product recommendations to order tracking. Automate support, cut wait times, and elevate customer experience effortlessly.",
-    image: "/images/sol1.png",
-  },
-];
-
-const bottomSolutions = [
-  {
-    title: "Mass Voice Automation",
-    description:
-      "Engage thousands with lifelike AI voice agents in 30+ languages. From scheduling to reminders, our AI handles calls seamlessly—preventing double bookings and scaling smooth conversations effortlessly.",
-    image: "/images/sol2.png",
-  },
-  {
-    title: "Effortless Operations",
-    description:
-      "Supercharge productivity with AI-powered workflows. Automate tasks, cut errors, and streamline everything from data to support—boosting efficiency and freeing your team to focus on growth.",
-    image: "/images/sol3.png",
-  },
-  {
-    title: "Tailored AI Solutions",
-    description:
-      "Every business is unique—so are our AI solutions. Tailored to your goals, they deliver instant impact and scale effortlessly as you grow—optimizing operations and elevating customer experiences along the way.",
-    image: "/images/sol4.png",
-  },
-];
-
-// Animation Variants
-const fadeUp = {
-  hidden: { opacity: 0, y: 60 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+type Solution = {
+  eyebrow: string;
+  title: string;
+  description: string;
+  image: string;
+  animation?: any;
+  loop?: boolean;
+  objectFit?: "cover" | "contain";
+  background?: string;
 };
 
-const staggerContainer = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.2,
-    },
+const solutions: Solution[] = [
+  {
+    eyebrow: "Solution A",
+    title: "Workflow Automation.",
+    description:
+      "Automate repetitive manual tasks like data entry, scheduling, and approvals with intelligent AI flows. Free up your team's time to focus on high-value work while reducing errors and delays.",
+    image: "/images/sol5.png",
+    animation: workflowAnimation,
+    objectFit: "contain",
+    background: "transparent",
   },
+  {
+    eyebrow: "Solution B",
+    title: "Smart Chat Agents.",
+    description:
+      "AI chat agents work 24/7 - delivering instant, human-like responses for product recommendations, order tracking, support, and customer experience at scale.",
+    image: "/images/sol1.png",
+    animation: chatbotAnimation,
+    background: "transparent",
+  },
+  {
+    eyebrow: "Solution C",
+    title: "Mass Voice Automation.",
+    description:
+      "Engage thousands with lifelike AI voice agents in 30+ languages. From scheduling to reminders, calls are handled seamlessly without double bookings.",
+    image: "/images/sol2.png",
+    animation: liveChatbotAnimation,
+    loop: true,
+    objectFit: "contain",
+    background: "transparent",
+  },
+  {
+    eyebrow: "Solution D",
+    title: "Effortless Operations.",
+    description:
+      "Supercharge productivity with AI-powered workflows that automate data, support, admin, and approvals so your team can focus on growth.",
+    image: "/images/workflow_automation_diagram.png",
+    objectFit: "contain",
+    background: "#2e2e2e",
+  },
+  {
+    eyebrow: "Solution E",
+    title: "Tailored AI Solutions.",
+    description:
+      "Every business is unique. We build AI systems around your goals, tools, and workflows so automation delivers impact now and scales with you later.",
+    image: "/images/sol4.png",
+    animation: aiToolsAnimation,
+    objectFit: "contain",
+    background: "transparent",
+  },
+];
+
+const HORIZONTAL_SCROLL_SLOWDOWN = 1.65;
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 30 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] },
+  },
+};
+
+const wordReveal: Variants = {
+  hidden: { y: "115%" },
+  show: {
+    y: "0%",
+    transition: { duration: 1.1, ease: [0.16, 1, 0.3, 1] },
+  },
+};
+
+const imageReveal: Variants = {
+  hidden: { clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)" },
+  show: {
+    clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+    transition: { duration: 1.25, ease: [0.16, 1, 0.3, 1] },
+  },
+};
+
+const splitWords = (text: string) =>
+  text.split(" ").map((word, index) => (
+    <span className={styles.wordWrap} key={`${word}-${index}`}>
+      <motion.span variants={wordReveal} className={styles.word}>
+        {word}
+        {index < text.split(" ").length - 1 ? "\u00a0" : ""}
+      </motion.span>
+    </span>
+  ));
+
+const HorizontalPanel: FC<{
+  solution: Solution;
+  index: number;
+  parentScrollProgress: MotionValue<number>;
+}> = ({ solution, index, parentScrollProgress }) => {
+  const panelRef = useRef<HTMLDivElement>(null);
+  const lottieRef = useRef<any>(null);
+  const shouldReduceMotion = useReducedMotion();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  const { scrollYProgress } = useScroll({
+    target: panelRef,
+    offset: ["start end", "end start"],
+  });
+  const imageY = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+
+  const step = 1 / (solutions.length - 1);
+  const center = index * step;
+  const start = index === 0 ? 0 : Math.max(0, center - step * 0.72);
+  const end = index === 0 ? step * 0.9 : Math.min(1, center + step * 0.48);
+  const enter = Math.max(0, center - step * 0.82);
+  const exit = Math.min(1, center + step * 0.82);
+
+  const panelProgress = useTransform(
+    parentScrollProgress,
+    [start, end],
+    [0, 1]
+  );
+  const contentOpacity = useTransform(
+    parentScrollProgress,
+    [enter, center, exit],
+    index === 0 ? [1, 1, 0.36] : [0.28, 1, 0.28]
+  );
+  const contentY = useTransform(
+    parentScrollProgress,
+    [enter, center, exit],
+    index === 0 ? ["0px", "0px", "-22px"] : ["34px", "0px", "-28px"]
+  );
+  const imageScale = useTransform(
+    parentScrollProgress,
+    [enter, center, exit],
+    index === 0 ? [1, 1, 0.97] : [0.96, 1, 0.97]
+  );
+
+  useEffect(() => {
+    if (solution.loop) return;
+    if (!lottieRef.current) return;
+
+    const updateFrame = (latest: number) => {
+      const clamped = Math.max(0, Math.min(1, latest));
+      const totalFrames = lottieRef.current.getDuration(true);
+      const lastFrame = Math.max(totalFrames - 1, 0);
+      lottieRef.current.goToAndStop(clamped * lastFrame, true);
+    };
+
+    updateFrame(panelProgress.get());
+
+    const unsubscribe = panelProgress.on("change", updateFrame);
+    return () => unsubscribe();
+  }, [isMounted, panelProgress, solution.loop]);
+
+  return (
+    <motion.div
+      ref={panelRef}
+      className={styles.hPanel}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: false, amount: 0.36 }}
+    >
+      <motion.div
+        className={styles.hText}
+        style={shouldReduceMotion ? undefined : { opacity: contentOpacity, y: contentY }}
+      >
+        <motion.div variants={fadeUp} className={styles.caption}>
+          {solution.eyebrow}
+        </motion.div>
+        <h2 className={styles.panelTitle}>{splitWords(solution.title)}</h2>
+        <motion.p variants={fadeUp} className={styles.panelBody}>
+          {solution.description}
+        </motion.p>
+        <motion.div variants={fadeUp} className={styles.panelMeta}>
+          {String(index + 1).padStart(2, "0")} /{" "}
+          {String(solutions.length).padStart(2, "0")}
+        </motion.div>
+      </motion.div>
+
+      <motion.div
+        variants={imageReveal}
+        className={styles.imageMask}
+        style={{
+          ...(solution.background ? { background: solution.background } : {}),
+          ...(shouldReduceMotion ? {} : { scale: imageScale }),
+        }}
+      >
+        {isMounted && solution.animation ? (
+          <Lottie
+            lottieRef={lottieRef}
+            animationData={solution.animation}
+            autoplay={solution.loop ?? false}
+            loop={solution.loop ?? false}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: solution.objectFit || "cover",
+            }}
+          />
+        ) : (
+          <motion.img
+            src={solution.image}
+            alt={solution.title}
+            loading={index > 1 ? "lazy" : "eager"}
+            style={{
+              ...(shouldReduceMotion ? {} : { y: imageY }),
+              objectFit: solution.objectFit || "cover",
+            }}
+            className={styles.panelImage}
+          />
+        )}
+      </motion.div>
+    </motion.div>
+  );
 };
 
 const SolutionsSection: FC = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const [scrollDistance, setScrollDistance] = useState(0);
+  const [trackDistance, setTrackDistance] = useState(0);
+  const shouldReduceMotion = useReducedMotion();
+
+  useEffect(() => {
+    const measure = () => {
+      const distance = Math.max(0, window.innerWidth * (solutions.length - 1));
+      setTrackDistance(distance);
+      setScrollDistance(distance * HORIZONTAL_SCROLL_SLOWDOWN);
+    };
+
+    measure();
+    window.addEventListener("resize", measure);
+
+    return () => window.removeEventListener("resize", measure);
+  }, []);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end end"],
+  });
+  const smoothScrollProgress = useSpring(scrollYProgress, {
+    stiffness: 64,
+    damping: 30,
+    mass: 0.45,
+    restDelta: 0.0005,
+  });
+  const trackX = useTransform(smoothScrollProgress, [0, 1], [0, -trackDistance]);
+
   return (
-    <motion.section
+    <section
       id="solutions"
-      variants={staggerContainer}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.2 }}
-      className="relative w-full max-w-[1440px] mx-auto px-6 py-20 text-white overflow-hidden"
+      ref={sectionRef}
+      className={styles.horizSection}
+      style={{
+        minHeight: scrollDistance
+          ? `calc(100vh + ${Math.round(scrollDistance)}px)`
+          : undefined,
+      }}
     >
-      {/* Background Glow */}
-      <div className="absolute right-[-200px] top-[150px] w-[847px] h-[797px] 
-        bg-[#1D2688] rounded-full blur-[300px] mix-blend-plus-lighter bg-opacity-30 -z-10" />
-
-      {/* Top Tag */}
-      <motion.div
-        variants={{
-          hidden: { opacity: 0, y: 60 },
-          show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.4, 0, 0.2, 1] } },
-        }}
-        className="flex items-center gap-2 px-5 py-2 bg-[rgba(77,0,255,0.1)] border border-white/10 rounded-full w-fit relative z-10"
-      >
-        <span className="w-3 h-3 rounded-full bg-[#8400FF] shadow-[0_0_16px_#6D21F0,0_0_8px_#1C76FD]" />
-        <span className="text-[#8400FF] text-lg">
-          AI Automation Consultant
-        </span>
-      </motion.div>
-
-      {/* Heading */}
-      <motion.div
-        variants={{
-          hidden: { opacity: 0, y: 60 },
-          show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.4, 0, 0.2, 1] } },
-        }}
-        className="mt-10 flex flex-col md:flex-row md:justify-between gap-6 relative z-10"
-      >
-        <h2 className="text-4xl md:text-6xl font-medium tracking-tight max-w-lg">
-          Automation Solutions Built for Your Business
-        </h2>
-        <p className="text-lg max-w-xl text-white/80">
-          From startups to enterprises across the USA, Canada, and Europe — I design, build, and manage custom automation systems tailored to your business goals.
-        </p>
-      </motion.div>
-
-      {/* Top Row Cards */}
-      <motion.div
-        variants={staggerContainer}
-        className="mt-16 grid md:grid-cols-2 gap-6 relative z-10"
-      >
-        {topSolutions.map((s, i) => (
-          <motion.div key={i}
-            variants={{
-              hidden: { opacity: 0, y: 60 },
-              show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.4, 0, 0.2, 1] } },
-            }}
-            className={styles.cardBorder}>
-            <div className={`${styles.cardInner} p-6 flex flex-col`}>
-              <div
-                className="h-40 w-full bg-cover bg-center rounded-lg mb-6"
-                style={{ backgroundImage: `url(${s.image})` }}
-              />
-              <h3 className="text-lg font-medium bg-gradient-to-b from-white to-white/70 bg-clip-text text-transparent">
-                {s.title}
-              </h3>
-              <p className="mt-3 text-sm text-[#9B96B0]">{s.description}</p>
-            </div>
-          </motion.div>
-        ))}
-      </motion.div>
-
-      {/* Bottom Row Cards */}
-      <motion.div
-        variants={staggerContainer}
-        className="mt-8 grid md:grid-cols-3 gap-6 relative z-10"
-      >
-        {bottomSolutions.map((s, i) => (
-          <motion.div key={i}
-            variants={{
-              hidden: { opacity: 0, y: 60 },
-              show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.4, 0, 0.2, 1] } },
-            }}
-            className={styles.cardBorder}>
-            <div className={`${styles.cardInner} p-6 flex flex-col`}>
-              <div
-                className="h-40 w-full bg-cover bg-center rounded-lg mb-6"
-                style={{ backgroundImage: `url(${s.image})` }}
-              />
-              <h3 className="text-lg font-medium bg-gradient-to-b from-white to-white/70 bg-clip-text text-transparent">
-                {s.title}
-              </h3>
-              <p className="mt-3 text-sm text-[#9B96B0]">{s.description}</p>
-            </div>
-          </motion.div>
-        ))}
-      </motion.div>
-
-      {/* CTA */}
-      <motion.div
-        variants={{
-          hidden: { opacity: 0, y: 60 },
-          show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.4, 0, 0.2, 1] } },
-        }}
-        className="mt-16 flex flex-col items-center gap-5 relative z-10"
-      >
-        <a href="https://cal.com/chandan-kumar-zhrofj/30min" target="_blank" rel="noopener noreferrer">
-          <button className="flex items-center gap-2 px-6 py-2 bg-[#4D00FF] rounded-full text-sm hover:bg-[#5E1FFF] transition-all">
-            <FiPhoneCall size={16} />
-            Book a Free Strategy Call
-            <FiArrowRight size={18} />
-          </button>
-        </a>
-      </motion.div>
-    </motion.section>
+      <div ref={viewportRef} className={styles.stickyViewport}>
+        <motion.div
+          className={styles.horizTrack}
+          style={shouldReduceMotion ? undefined : { x: trackX }}
+        >
+          {solutions.map((solution, index) => (
+            <HorizontalPanel
+              key={solution.title}
+              solution={solution}
+              index={index}
+              parentScrollProgress={smoothScrollProgress}
+            />
+          ))}
+        </motion.div>
+      </div>
+    </section>
   );
 };
 
