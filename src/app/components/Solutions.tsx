@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { FC, useEffect, useRef, useState } from "react";
 import {
@@ -22,7 +22,7 @@ type Solution = {
   title: string;
   description: string;
   image: string;
-  animation?: any;
+  animation?: unknown;
   loop?: boolean;
   objectFit?: "cover" | "contain";
   background?: string;
@@ -123,11 +123,13 @@ const HorizontalPanel: FC<{
   parentScrollProgress: MotionValue<number>;
 }> = ({ solution, index, parentScrollProgress }) => {
   const panelRef = useRef<HTMLDivElement>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const lottieRef = useRef<any>(null);
   const shouldReduceMotion = useReducedMotion();
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsMounted(true);
   }, []);
 

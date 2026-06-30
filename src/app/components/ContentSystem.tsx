@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React from "react";
 import Image from "next/image";
@@ -49,7 +49,7 @@ const ContentSystem: React.FC = () => {
             </p>
             <p>
               Built for businesses that demand growth, this hands-free operation replaces manual coordination with intelligent systems.
-              Whether you're a startup or scaling agency, maintain a continuous digital presence and let your marketing run on autopilot
+              Whether you&apos;re a startup or scaling agency, maintain a continuous digital presence and let your marketing run on autopilot
               while you focus on results.
             </p>
           </div>
