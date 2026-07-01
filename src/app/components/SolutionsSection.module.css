@@ -35,6 +35,16 @@
   flex: 0 0 auto;
   overflow-x: hidden;
   overflow-y: auto;
+  /* Panels can scroll on very short viewports, but never show a solid
+     scrollbar. Windows renders a space-taking bar (and Mac hides its overlay),
+     so without this a stray vertical scrollbar appears mid-screen on Windows
+     whenever a panel is a hair taller than the viewport. */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* legacy Edge/IE */
+}
+
+.hPanel::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
 }
 
 .hText {
