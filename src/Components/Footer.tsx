@@ -128,7 +128,7 @@ export default function Footer() {
               viewBox="30.8 0 117 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="w-full h-auto text-neutral-800/80 dark:text-neutral-900/40 transition-colors duration-1000 max-h-[22vh] select-none overflow-hidden"
+              className="w-full h-auto text-white/15 transition-colors duration-1000 max-h-[22vh] select-none overflow-hidden"
             >
               <path
                 d="M39.4949 17.0712L36.0999 11.1725H34.2539V17.0712H31.835V2.32434H36.9274C38.0591 2.32434 39.0139 2.52238 39.7919 2.91846C40.5841 3.31454 41.1711 3.845 41.5531 4.50985C41.9491 5.1747 42.1472 5.91735 42.1472 6.7378C42.1472 7.6997 41.8643 8.57674 41.2984 9.3689C40.7467 10.1469 39.8909 10.6774 38.731 10.9603L42.3806 17.0712H39.4949ZM34.2539 9.24158H36.9274C37.8327 9.24158 38.5117 9.01525 38.9644 8.56259C39.4312 8.10993 39.6646 7.50166 39.6646 6.7378C39.6646 5.97393 39.4383 5.37981 38.9856 4.95544C38.5329 4.51692 37.8469 4.29766 36.9274 4.29766H34.2539V9.24158Z"
