@@ -26,22 +26,17 @@ function getCategoryCount(label: string) {
 }
 
 export default function CaseStudiesIndexClient() {
-  const [query, setQuery] = useState("");
   const [page, setPage] = useState(1);
   const [category, setCategory] = useState("All");
 
   const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase();
     const rule = categoryRules.find((item) => item.label === category);
 
     return blogs.filter((blog) => {
       const haystack = blogText(blog);
-      const matchesQuery = !q || haystack.includes(q);
-      const matchesCategory =
-        !rule || rule.label === "All" || rule.keywords.some((keyword) => haystack.includes(keyword));
-      return matchesQuery && matchesCategory;
+      return !rule || rule.label === "All" || rule.keywords.some((keyword) => haystack.includes(keyword));
     });
-  }, [category, query]);
+  }, [category]);
 
   const totalPages = Math.max(1, Math.ceil(filtered.length / PER_PAGE));
   const safePage = Math.min(page, totalPages);
@@ -89,23 +84,10 @@ export default function CaseStudiesIndexClient() {
         </aside>
 
         <section>
-          <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="mb-6">
             <h2 className="text-2xl sm:text-3xl lg:text-[32px] font-medium tracking-tight">
               Case study library
             </h2>
-
-            <div className="relative w-full sm:w-[280px]">
-              <input
-                value={query}
-                onChange={(e) => {
-                  setPage(1);
-                  setQuery(e.target.value);
-                }}
-                placeholder="Search automation topics"
-                className="bg-white/60 border border-black/15 rounded-md pl-10 pr-3 py-2 w-full text-sm text-neutral-950 placeholder:text-neutral-400 focus:outline-none focus:border-[#8400FF]/50"
-              />
-              <span className="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-500">Search</span>
-            </div>
           </div>
 
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-3">
@@ -115,11 +97,11 @@ export default function CaseStudiesIndexClient() {
                 key={blog.slug}
                 className="group flex h-full flex-col overflow-hidden rounded-lg border border-neutral-950/10 bg-white/60 shadow-[0_16px_45px_rgba(24,24,27,0.06)] backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-[#8400FF]/35 hover:bg-white"
               >
-                <div className="relative h-[200px] w-full shrink-0 overflow-hidden bg-neutral-950/5">
+                <div className="relative w-full shrink-0 overflow-hidden bg-neutral-950/5">
                   <img
                     src={blog.image}
                     alt={`${blog.title} automation case study`}
-                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                    className="block h-auto w-full object-contain transition duration-500 group-hover:scale-105"
                   />
                 </div>
 

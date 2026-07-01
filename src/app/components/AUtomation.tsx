@@ -155,13 +155,6 @@ function MobileProcess() {
 
   return (
     <div className="flex flex-col gap-14 px-5 py-16 sm:px-6 min-[1180px]:hidden">
-      <div className="flex w-fit items-center justify-center gap-2 rounded-[59px] border border-black/5 bg-white/75 px-4 py-2 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.05)] backdrop-blur-xl">
-        <div className="h-2.5 w-2.5 rounded-full bg-[#8400FF] shadow-[0_0_16px_#6D21F0,0_0_8.1px_#1C76FD]" />
-        <span className="font-poppins text-sm leading-[130%] text-[#8400FF]">
-          How it works
-        </span>
-      </div>
-
       {steps.map((step) => (
         <motion.article
           key={step.kicker}
@@ -230,15 +223,6 @@ export default function HeroSection() {
         </div>
 
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.035)_1px,transparent_1px)] bg-[size:48px_48px] opacity-40 [mask-image:linear-gradient(to_bottom,transparent,black_16%,black_84%,transparent)]" />
-
-        <div className="absolute left-5 top-24 z-20 md:left-12 min-[1180px]:left-16 xl:left-24">
-          <div className="flex w-fit items-center justify-center gap-[10px] rounded-[59px] border border-black/5 bg-white/75 px-5 py-2.5 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.05)] backdrop-blur-xl">
-            <div className="h-3 w-3 rounded-full bg-[#8400FF] shadow-[0_0_16px_#6D21F0,0_0_8.1px_#1C76FD]" />
-            <span className="font-poppins text-base leading-[130%] text-[#8400FF] md:text-xl">
-              How it works
-            </span>
-          </div>
-        </div>
 
         <motion.div
           className="flex h-[100svh] w-full transform-gpu will-change-transform"

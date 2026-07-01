@@ -117,7 +117,7 @@ export default function Footer() {
       >
         <motion.div
           style={{ y, scale, opacity }}
-          className="pointer-events-auto fixed bottom-0 left-0 z-[-20] flex h-[150px] w-full items-center justify-center overflow-hidden border-t border-white/5 bg-[#151412] text-white sm:h-[220px] md:h-[260px] lg:h-[300px]"
+          className="pointer-events-auto absolute bottom-0 left-0 z-0 flex h-[150px] w-full items-center justify-center overflow-hidden border-t border-white/5 bg-[#151412] text-white sm:h-[220px] md:fixed md:z-[-20] md:h-[260px] lg:h-[300px]"
         >
           <div className="relative w-full flex items-center justify-center select-none max-w-[1400px] px-[5vw] sm:px-[6vw]">
             {/* Inline Vector Logo rendered at giant scale */}
