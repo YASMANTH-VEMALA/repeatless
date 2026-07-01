@@ -63,6 +63,16 @@ html {
   overflow-x: clip;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  /* Offset in-page anchor jumps (e.g. nav "About Us" -> #testimonials) so the
+     target section lands below the fixed navbar instead of hidden under it. */
+  scroll-padding-top: 80px;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 .theme-dark {

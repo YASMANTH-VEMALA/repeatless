@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { VolumetricStudio } from "@/Components/ui/volumetric-studio";
+import AnimatedGrid from "./AnimatedGrid";
 
 const Hero = () => {
   return (
@@ -12,9 +12,9 @@ const Hero = () => {
       className="relative flex min-h-[100svh] w-full flex-col items-center justify-between overflow-hidden bg-black text-white select-none transition-colors duration-1000"
     >
       <div className="absolute inset-0 z-0">
-        <VolumetricStudio className="min-h-0" />
+        <AnimatedGrid />
       </div>
-      <div aria-hidden="true" className="absolute inset-0 z-[1] bg-[radial-gradient(circle_at_50%_42%,rgba(0,0,0,0)_0,rgba(0,0,0,0.1)_42%,rgba(0,0,0,0.72)_100%)]" />
+      <div aria-hidden="true" className="absolute inset-0 z-[1] bg-[radial-gradient(circle_at_50%_42%,rgba(0,0,0,0)_0,rgba(0,0,0,0.35)_55%,rgba(0,0,0,0.85)_100%)]" />
 
       {/* Spacer for Top Menu alignment */}
       <div className="relative z-10 h-20 shrink-0 sm:h-24" />

@@ -9,23 +9,8 @@ import {
 import { FaLinkedin, FaYoutube } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
 
 export default function Footer() {
-  const wrapperRef = useRef<HTMLDivElement>(null);
-
-  // Parallax scroll progress hook specifically tracking when the footer wrapper enters/reaches bottom of viewport
-  const { scrollYProgress } = useScroll({
-    target: wrapperRef,
-    offset: ["start end", "end end"]
-  });
-
-  // Interpolation for the giant logo parallax reveal physics
-  const y = useTransform(scrollYProgress, [0, 1], [-60, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [0.96, 1]);
-  const opacity = useTransform(scrollYProgress, [0, 1], [0.5, 1]);
-
   return (
     <>
       {/* 1. UPPER FOOTER: In the solid document flow with the same light theme Cashmere background and footer content in one card */}
@@ -110,14 +95,15 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* 2. LOWER FOOTER: The transparent scroll reveal spacer that uncovers the giant brand name underneath */}
-      <div 
-        ref={wrapperRef} 
+      {/* 2. LOWER FOOTER: a giant brand name pinned statically in the background.
+          The opaque page content above scrolls over it and reveals it through the
+          transparent spacer once you reach the very bottom — it does not animate in. */}
+      <div
+        aria-hidden
         className="pointer-events-none relative -z-10 h-[150px] w-full bg-transparent sm:h-[220px] md:h-[260px] lg:h-[300px]"
       >
-        <motion.div
-          style={{ y, scale, opacity }}
-          className="pointer-events-auto absolute bottom-0 left-0 z-0 flex h-[150px] w-full items-center justify-center overflow-hidden border-t border-white/5 bg-[#151412] text-white sm:h-[220px] md:fixed md:z-[-20] md:h-[260px] lg:h-[300px]"
+        <div
+          className="fixed bottom-0 left-0 -z-20 flex h-[150px] w-full items-center justify-center overflow-hidden border-t border-white/5 bg-[#151412] text-white sm:h-[220px] md:h-[260px] lg:h-[300px]"
         >
           <div className="relative w-full flex items-center justify-center select-none max-w-[1400px] px-[5vw] sm:px-[6vw]">
             {/* Inline Vector Logo rendered at giant scale */}
@@ -167,12 +153,13 @@ export default function Footer() {
                 fill="currentColor"
               />
               <path
-                d="M142.358 17.2622C141.438 17.2622 140.611 17.0995 139.875 16.7742C139.154 16.4347 138.581 15.982 138.157 15.4162C137.732 14.8362 137.506 14.1926 137.478 13.4853H139.981C140.024 13.9804 140.257 14.3977 140.682 14.7372C141.12 15.0625 141.665 15.2252 142.315 15.2252C142.994 15.2252 143.518 15.0979 143.886 14.8433C144.268 14.5745 144.458 14.235 144.458 13.8248C144.458 13.3863 144.246 13.0609 143.822 12.8487C143.412 12.6366 142.754 12.4031 141.849 12.1485C140.972 11.908 140.257 11.6746 139.706 11.4483C139.154 11.222 138.673 10.8754 138.263 10.4086C137.867 9.9418 137.669 9.32646 137.669 8.56259C137.669 7.94018 137.852 7.37435 138.22 6.86511C138.588 6.34172 139.111 5.93149 139.79 5.63443C140.484 5.33737 141.276 5.18884 142.167 5.18884C143.497 5.18884 144.565 5.52834 145.371 6.20733C146.191 6.87218 146.63 7.78458 146.686 8.94452H144.268C144.225 8.42113 144.013 8.00384 143.631 7.69263C143.249 7.38143 142.733 7.22582 142.082 7.22582C141.445 7.22582 140.957 7.34606 140.618 7.58654C140.278 7.82701 140.109 8.14529 140.109 8.54137C140.109 8.54137 140.222 9.11427 140.448 9.32646C140.675 9.53864 140.95 9.70839 141.276 9.8357C141.601 9.94887 142.719 10.2813C143.567 10.5076 144.798 10.9815C145.35 11.2078 145.824 11.5473 146.22 12C146.616 12.4527 146.821 13.0538 146.835 13.8036C146.835 14.4684 146.651 15.0625 146.283 15.5859C145.915 16.1093 145.392 16.5195 144.713 16.8166C144.048 17.1137 143.263 17.2622 142.358 17.2622Z"
+                d="M131.023 17.2622C130.104 17.2622 129.276 17.0995 128.541 16.7742C127.819 16.4347 127.246 15.982 126.822 15.4162C126.398 14.8362 126.171 14.1926 126.143 13.4853H128.647C128.689 13.9804 128.923 14.3977 129.347 14.7372C129.786 15.0625 130.33 15.2252 130.981 15.2252C131.66 15.2252 132.183 15.0979 132.551 14.8433C132.933 14.5745 133.124 14.235 133.124 13.8248C133.124 13.3863 132.912 13.0609 132.487 12.8487C132.077 12.6366 131.419 12.4031 130.514 12.1485C129.637 11.908 128.923 11.6746 128.371 11.4483C127.819 11.222 127.338 10.8754 126.928 10.4086C126.532 9.9418 126.334 9.32646 126.334 8.56259C126.334 7.94018 126.518 7.37435 126.886 6.86511C127.254 6.34172 127.777 5.93149 128.456 5.63443C129.149 5.33737 129.941 5.18884 130.832 5.18884C132.162 5.18884 133.23 5.52834 134.036 6.20733C134.857 6.87218 135.295 7.78458 135.352 8.94452H132.933C132.891 8.42113 132.678 8.00384 132.296 7.69263C131.915 7.38143 131.398 7.22582 130.747 7.22582C130.111 7.22582 129.623 7.34606 129.283 7.58654C128.944 7.82701 128.774 8.14529 128.774 8.54137C128.774 8.85258 128.887 9.11427 129.114 9.32646C129.34 9.53864 129.616 9.70839 129.941 9.8357C130.267 9.94887 130.747 10.0974 131.384 10.2813C132.233 10.5076 132.926 10.741 133.463 10.9815C134.015 11.2078 134.489 11.5473 134.885 12C135.281 12.4527 135.486 13.0538 135.5 13.8036C135.5 14.4684 135.317 15.0625 134.949 15.5859C134.581 16.1093 134.058 16.5195 133.379 16.8166C132.714 17.1137 131.929 17.2622 131.023 17.2622Z"
                 fill="currentColor"
+                transform="translate(11.335 0)"
               />
             </svg>
           </div>
-        </motion.div>
+        </div>
       </div>
     </>
   );

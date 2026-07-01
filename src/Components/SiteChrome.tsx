@@ -3,6 +3,7 @@
 import Navbar from '@/Components/Navbar';
 import Footer from '@/Components/Footer';
 import { useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 
 // Official WhatsApp logo mark (filled glyph), inlined so it renders crisp at
 // any size and can inherit `currentColor`.
@@ -15,12 +16,18 @@ function WhatsAppIcon({ className }: { className?: string }) {
 }
 
 export default function SiteChrome({ children }: { children: React.ReactNode }) {
+    const pathname = usePathname();
+
     // Single source of truth for the light/dark theme. Any section tagged
     // data-theme="dark" that sits directly under the navbar flips the page into
     // the dark theme; everything else is light. Because exactly one controller
     // owns the `theme-dark` class (the navbar only mirrors it), the class flips
     // once per crossing and the CSS colour transitions crossfade smoothly —
     // no snap, and no flicker from two controllers racing at different points.
+    //
+    // `pathname` is a dependency so the check re-runs on client-side navigation:
+    // otherwise the class set on one route (e.g. the dark Hero on "/") would
+    // persist onto the next route until the first scroll event corrected it.
     useEffect(() => {
         const PROBE_Y = 72; // just below the fixed navbar
         let raf = 0;
@@ -54,7 +61,7 @@ export default function SiteChrome({ children }: { children: React.ReactNode }) 
             document.documentElement.classList.remove('theme-dark');
             document.body.classList.remove('theme-dark');
         };
-    }, []);
+    }, [pathname]);
 
     return (
         <>

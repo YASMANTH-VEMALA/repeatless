@@ -37,7 +37,7 @@ export function ContainerScroll({
   return (
     <div
       ref={containerRef}
-      className="relative flex min-h-[720px] items-center justify-center px-0 py-12 sm:min-h-[820px] md:h-[min(80rem,150svh)] md:p-12 lg:p-20"
+      className="relative flex items-center justify-center px-0 py-8 md:h-[min(80rem,150svh)] md:p-12 lg:p-20"
     >
       <div
         className="relative w-full py-6 md:py-40"
