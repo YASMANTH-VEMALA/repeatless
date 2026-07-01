@@ -26,7 +26,7 @@ const fadeUpVariants: Variants = {
 
 export default function BlogBody({ sections }: BodyProps) {
   return (
-    <section className="relative flex flex-col items-center px-6 sm:px-12 lg:px-[150px] py-12 sm:py-16 lg:py-[80px] w-full max-w-[1440px] mx-auto text-neutral-950">
+    <section className="relative mx-auto flex w-full max-w-[1440px] flex-col items-center px-5 py-12 text-neutral-950 sm:px-8 sm:py-16 lg:px-[clamp(4rem,9vw,150px)] lg:py-[80px]">
       <div className="flex flex-col gap-16 sm:gap-20 lg:gap-[90px] w-full max-w-[940px]">
         {sections.map((section, idx) => (
           <motion.div
@@ -41,7 +41,7 @@ export default function BlogBody({ sections }: BodyProps) {
               <motion.h2
                 variants={fadeUpVariants}
                 custom={0}
-                className="text-2xl sm:text-3xl lg:text-[46px] leading-snug sm:leading-[48px] lg:leading-[66px] font-medium tracking-tight"
+                className="text-2xl font-medium leading-snug tracking-tight sm:text-3xl sm:leading-[1.24] lg:text-[clamp(2.5rem,3.7vw,2.875rem)] lg:leading-[1.28]"
               >
                 {section.title}
               </motion.h2>
@@ -55,7 +55,7 @@ export default function BlogBody({ sections }: BodyProps) {
                     key={i}
                     variants={fadeUpVariants}
                     custom={i + 1}
-                    className="text-base sm:text-lg lg:text-[18px] leading-relaxed sm:leading-[26px] lg:leading-[29px] font-normal text-neutral-600 text-justify"
+                    className="text-base font-normal leading-relaxed text-neutral-600 sm:text-lg sm:leading-[26px] lg:text-[18px] lg:leading-[29px] lg:text-justify"
                   >
                     {t}
                   </motion.p>
@@ -64,7 +64,7 @@ export default function BlogBody({ sections }: BodyProps) {
                 <motion.p
                   variants={fadeUpVariants}
                   custom={1}
-                  className="text-base sm:text-lg lg:text-[18px] leading-relaxed sm:leading-[26px] lg:leading-[29px] font-normal text-neutral-600 text-justify"
+                  className="text-base font-normal leading-relaxed text-neutral-600 sm:text-lg sm:leading-[26px] lg:text-[18px] lg:leading-[29px] lg:text-justify"
                 >
                   {section.text}
                 </motion.p>
@@ -85,9 +85,9 @@ export default function BlogBody({ sections }: BodyProps) {
                     key={i}
                     variants={fadeUpVariants}
                     custom={i + 4}
-                    className="flex items-center gap-3 text-base sm:text-lg text-neutral-600"
+                    className="flex items-start gap-3 text-base text-neutral-600 sm:text-lg"
                   >
-                    <ArrowRightCircle className="text-[#8400FF]" size={22} />
+                    <ArrowRightCircle className="mt-1 shrink-0 text-[#8400FF]" size={22} />
                     <span>{item}</span>
                   </motion.div>
                 ))}
@@ -134,7 +134,7 @@ export default function BlogBody({ sections }: BodyProps) {
               <motion.ul
                 variants={fadeUpVariants}
                 custom={5}
-                className="list-disc list-inside space-y-2 sm:space-y-3 text-base sm:text-lg lg:text-[18px] text-neutral-600"
+                className="list-inside list-disc space-y-2 text-base text-neutral-600 sm:space-y-3 sm:text-lg lg:text-[18px]"
               >
                 {section.bullets.map((b, i) => (
                   <motion.li key={i} variants={fadeUpVariants} custom={i + 6}>

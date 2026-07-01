@@ -80,7 +80,7 @@ const solutions: Solution[] = [
   },
 ];
 
-const HORIZONTAL_SCROLL_SLOWDOWN = 1.65;
+const HORIZONTAL_SCROLL_SLOWDOWN = 1.15;
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 30 },
@@ -255,6 +255,12 @@ const SolutionsSection: FC = () => {
 
   useEffect(() => {
     const measure = () => {
+      if (window.innerWidth <= 1024) {
+        setTrackDistance(0);
+        setScrollDistance(0);
+        return;
+      }
+
       const distance = Math.max(0, window.innerWidth * (solutions.length - 1));
       setTrackDistance(distance);
       setScrollDistance(distance * HORIZONTAL_SCROLL_SLOWDOWN);
@@ -276,7 +282,13 @@ const SolutionsSection: FC = () => {
     mass: 0.45,
     restDelta: 0.0005,
   });
-  const trackX = useTransform(smoothScrollProgress, [0, 1], [0, -trackDistance]);
+  // Finish the horizontal travel slightly before the section fully releases.
+  // The sticky pin unpins on the real scroll position (raw progress = 1), but
+  // smoothScrollProgress lags behind it (the spring). Mapping to [0, 0.92] and
+  // relying on useTransform's default clamping holds the track at its end for
+  // the last 8%, giving the spring room to settle the final panel into center
+  // before the section scrolls away — otherwise it slides off mid-animation.
+  const trackX = useTransform(smoothScrollProgress, [0, 0.96], [0, -trackDistance]);
 
   return (
     <section
@@ -285,7 +297,7 @@ const SolutionsSection: FC = () => {
       className={styles.horizSection}
       style={{
         minHeight: scrollDistance
-          ? `calc(100vh + ${Math.round(scrollDistance)}px)`
+          ? `calc(100svh + ${Math.round(scrollDistance)}px)`
           : undefined,
       }}
     >

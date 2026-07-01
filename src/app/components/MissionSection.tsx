@@ -62,11 +62,11 @@ const MissionSection: FC = () => {
     <div ref={containerRef} className="relative h-[320vh] w-full bg-[#05060B]">
       <section
         id="about"
-        className="sticky top-0 h-screen w-full flex flex-col justify-center overflow-hidden bg-[#05060B] select-none"
+        className="sticky top-0 flex h-[100svh] w-full flex-col justify-center overflow-hidden bg-[#05060B] select-none"
       >
         <div
           aria-hidden="true"
-          className="absolute inset-0 z-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:11.111%_100%,100%_100vh]"
+          className="absolute inset-0 z-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:11.111%_100%,100%_100svh]"
         />
         <div
           aria-hidden="true"

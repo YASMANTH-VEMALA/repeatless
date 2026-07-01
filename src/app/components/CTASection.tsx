@@ -41,10 +41,11 @@ export default function CTASection() {
 
   return (
     <section
+      id="contact"
       ref={sectionRef}
       className="relative w-full bg-transparent text-neutral-950 overflow-hidden"
     >
-      <div className="container mx-auto flex flex-col lg:flex-row items-start lg:items-center justify-between px-8 py-16 gap-6">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col items-start justify-between gap-6 px-5 py-14 sm:px-6 md:px-8 md:py-16 lg:flex-row lg:items-center">
         {/* Text Content */}
         <motion.div
           className="max-w-xl flex flex-col gap-4"
@@ -58,10 +59,10 @@ export default function CTASection() {
           viewport={{ once: true, amount: 0.2 }}
           variants={fadeUpVariants}
         >
-          <h2 className="font-poppins font-medium text-[50px] leading-[60px] tracking-[-1px]">
+          <h2 className="font-poppins text-3xl font-medium leading-tight tracking-tight sm:text-4xl md:text-[clamp(2.6rem,4vw,3.125rem)] md:leading-[1.18]">
             Ready to Repeat Less &amp; <br /> Grow More?
           </h2>
-          <p className="text-neutral-700 text-lg leading-7">
+          <p className="text-base leading-7 text-neutral-700 md:text-lg">
             Let&apos;s map your automation journey together. Book a free strategy call — serving businesses across the USA, Canada &amp; Europe.
           </p>
         </motion.div>
@@ -69,7 +70,7 @@ export default function CTASection() {
         {/* CTA Button */}
         <motion.a
           href="https://cal.com/chandan-kumar-zhrofj/30min"
-          className="flex items-center justify-center gap-2 px-5 py-3 bg-[#4D00FF] rounded-full shadow-sm text-white font-poppins font-medium text-sm whitespace-nowrap transition-colors hover:bg-[#3F00D8]"
+          className="flex w-full items-center justify-center gap-2 rounded-full bg-[#4D00FF] px-5 py-3 text-center font-poppins text-sm font-medium leading-5 text-white shadow-sm transition-colors hover:bg-[#3F00D8] sm:w-auto"
           style={
             shouldReduceMotion
               ? undefined

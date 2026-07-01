@@ -49,14 +49,14 @@ export default function OfferBanner() {
     <motion.section
       id="contact"
       ref={sectionRef}
-      className="w-full bg-transparent py-8 sm:py-12 flex justify-center"
+      className="flex w-full justify-center bg-transparent px-5 py-8 sm:px-6 sm:py-12"
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0.2 }}
       variants={fadeUpVariants}
     >
       <motion.div
-        className="bg-white/72 border border-black/10 shadow-sm rounded-[9px] max-w-6xl w-full flex flex-col gap-6 p-4 sm:p-7"
+        className="flex w-full max-w-6xl flex-col gap-5 rounded-[9px] border border-black/10 bg-white/72 p-4 shadow-sm sm:gap-6 sm:p-7"
         style={
           shouldReduceMotion
             ? undefined
@@ -65,7 +65,7 @@ export default function OfferBanner() {
       >
         {/* Banner Top */}
         <motion.div
-          className="w-full h-60 sm:h-[382px] rounded-[12px] bg-contain bg-center bg-no-repeat"
+          className="h-[44vw] min-h-[170px] w-full rounded-[12px] bg-contain bg-center bg-no-repeat sm:h-[clamp(260px,32vw,382px)]"
           style={{
             backgroundImage: "url('/images/banner.png')",
             ...(shouldReduceMotion
@@ -77,18 +77,18 @@ export default function OfferBanner() {
         {/* Content */}
         <div className="flex flex-col items-center gap-4 sm:gap-6 px-2 sm:px-0 max-w-3xl mx-auto">
           {/* Main Heading */}
-          <h3 className="text-neutral-900 font-poppins font-medium text-[22px] sm:text-[32px] leading-[28px] sm:leading-[48px] text-center">
+          <h3 className="text-center font-poppins text-[22px] font-medium leading-tight text-neutral-900 sm:text-[32px] sm:leading-[1.3]">
             The Repeatless Grand Slam Offer
           </h3>
 
           {/* Features / Description */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-12 text-neutral-700 text-[14px] sm:text-[16px] leading-[20px] sm:leading-[24px] pb-4 sm:pb-5">
-            <ul className="list-disc list-inside flex flex-col gap-2">
+          <div className="grid grid-cols-1 gap-4 pb-4 text-[14px] leading-6 text-neutral-700 sm:gap-8 sm:pb-5 sm:text-[16px] md:grid-cols-2 md:gap-12">
+            <ul className="flex list-inside list-disc flex-col gap-2">
               <li>Done-For-You Setup (7–10 days)</li>
               <li>24/7 Monitoring + Alerts</li>
               <li>Monthly Optimization Sprints</li>
             </ul>
-            <ul className="list-disc list-inside flex flex-col gap-2">
+            <ul className="flex list-inside list-disc flex-col gap-2">
               <li>ROI Dashboard & Reports</li>
               <li>60-Day Hours-Saved Guarantee</li>
               <li>Bonus: $499 Template Pack</li>
@@ -98,7 +98,7 @@ export default function OfferBanner() {
           {/* CTA Button */}
           <a
             href="https://cal.com/chandan-kumar-zhrofj/30min"
-            className="relative flex items-center justify-center gap-2 px-4 py-2 sm:px-[19px] sm:py-[8px] bg-[#4D00FF] rounded-[38px] text-white font-poppins text-[15px] sm:text-[17px] leading-[25px] sm:leading-[31px] shadow-sm hover:bg-[#3F00D8] transition-colors"
+            className="relative flex max-w-full items-center justify-center gap-2 rounded-[38px] bg-[#4D00FF] px-4 py-2 text-center font-poppins text-[15px] leading-[25px] text-white shadow-sm transition-colors hover:bg-[#3F00D8] sm:px-[19px] sm:py-[8px] sm:text-[17px] sm:leading-[31px]"
           >
             Book a 20-min Demo
             <FiArrowUpRight className="rotate-45 w-5 h-5 sm:w-[21px] sm:h-[21px]" />

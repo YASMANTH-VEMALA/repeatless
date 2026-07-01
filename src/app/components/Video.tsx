@@ -9,14 +9,14 @@ const VideoSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#f4f1ec] px-4 py-8 text-neutral-950 md:py-14">
+    <section className="relative w-full overflow-hidden bg-[#f4f1ec] px-4 py-10 text-neutral-950 sm:px-6 md:py-14">
       <ContainerScroll
         titleComponent={
-          <div className="mx-auto max-w-4xl px-4">
+          <div className="mx-auto max-w-4xl px-1 sm:px-4">
             <p className="text-xs font-bold uppercase tracking-[0.22em] text-[#8400FF]">
               / Demo Walkthrough
             </p>
-            <h2 className="mt-4 font-poppins text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl">
+            <h2 className="mt-4 font-poppins text-3xl font-semibold leading-[1.1] tracking-tight sm:text-4xl md:text-[clamp(3rem,5vw,3.75rem)]">
               See how a real automation system comes together.
             </h2>
           </div>

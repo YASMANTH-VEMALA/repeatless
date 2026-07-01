@@ -91,7 +91,7 @@ export default async function BlogPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
-      <section className="w-full max-w-[1440px] mx-auto px-6 sm:px-12 lg:px-[150px] pt-12">
+      <section className="w-full pt-12">
         <BlogHero
           title={blog.hero.title}
           description={blog.hero.description}

@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "General Sans";
+  src: url("/fonts/GeneralSans-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "General Sans";
+  src: url("/fonts/GeneralSans-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --font-sans: var(--font-geist-sans), sans-serif;
   --font-mono: var(--font-geist-mono), monospace;
@@ -9,6 +25,7 @@
   --font-serif: var(--font-serif-family), serif;
   --font-manrope: var(--font-manrope-family), sans-serif;
   --font-display: var(--font-display-family), sans-serif;
+  --font-general: "General Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
 :root {
@@ -35,7 +52,17 @@
 body {
   background: var(--background);
   color: var(--foreground);
+  min-width: 320px;
+  overflow-x: clip;
   transition: background-color 0.8s ease, color 0.8s ease;
+}
+
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 .theme-dark {
@@ -43,22 +70,10 @@ body {
   --foreground: #ffffff;
 }
 
-/* Navbar theme adaptability */
-.theme-dark header a:not([href*="cal.com"]) {
-  color: #f5f5f5 !important;
-}
-
-.theme-dark header img {
-  filter: invert(0) brightness(1) !important;
-}
-
-header a {
-  transition: color 0.8s ease !important;
-}
-
-header img {
-  transition: filter 0.8s ease !important;
-}
+/* The navbar owns its own light/dark styling + crossfade in Navbar.tsx (it
+   mirrors the .theme-dark class into React state), so no header overrides are
+   needed here. The body background/color transition above provides the smooth
+   page-level black↔white crossfade as sections change. */
 
 /* Word Scroll Styles */
 :root {
@@ -142,7 +157,7 @@ body.theme-dark .word-scroll {
 }
 
 .word-scroll[data-snap="true"] {
-	height: 100vh;
+	height: 100svh;
 	overflow-y: auto;
 	scroll-snap-type: y proximity;
 }
@@ -238,6 +253,44 @@ body.theme-dark .word-scroll {
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+main,
+section,
+article,
+aside,
+header,
+footer,
+nav,
+div {
+  min-width: 0;
+}
+
+img,
+svg,
+video,
+canvas,
+iframe {
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li,
+a,
+button,
+span {
+  overflow-wrap: break-word;
+}
+
+a,
+button {
+  min-width: 0;
 }
 
 .gradient-border {

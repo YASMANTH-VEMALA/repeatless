@@ -739,7 +739,7 @@ export default function SillyStringCanvas() {
   }, []);
 
   return (
-    <div className="fixed inset-0 w-screen h-screen select-none overflow-hidden hero-canvas-container -z-20 pointer-events-none">
+    <div className="pointer-events-none fixed inset-0 -z-20 h-[100svh] w-[100dvw] select-none overflow-hidden hero-canvas-container">
       {/* Physics Canvas */}
       <canvas
         ref={canvasRef}

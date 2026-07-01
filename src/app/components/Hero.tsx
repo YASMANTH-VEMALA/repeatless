@@ -2,22 +2,14 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { FiChevronDown } from "react-icons/fi";
 import { VolumetricStudio } from "@/Components/ui/volumetric-studio";
 
 const Hero = () => {
-  // Smooth scroll to the next section
-  const scrollToNextSection = () => {
-    const nextSection = document.getElementById("about") || document.getElementById("case-studies");
-    if (nextSection) {
-      nextSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <section
       id="home"
-      className="relative h-screen w-full bg-black text-white flex flex-col justify-between items-center select-none overflow-hidden transition-colors duration-1000"
+      data-theme="dark"
+      className="relative flex min-h-[100svh] w-full flex-col items-center justify-between overflow-hidden bg-black text-white select-none transition-colors duration-1000"
     >
       <div className="absolute inset-0 z-0">
         <VolumetricStudio className="min-h-0" />
@@ -25,16 +17,16 @@ const Hero = () => {
       <div aria-hidden="true" className="absolute inset-0 z-[1] bg-[radial-gradient(circle_at_50%_42%,rgba(0,0,0,0)_0,rgba(0,0,0,0.1)_42%,rgba(0,0,0,0.72)_100%)]" />
 
       {/* Spacer for Top Menu alignment */}
-      <div className="relative z-10 h-20" />
+      <div className="relative z-10 h-20 shrink-0 sm:h-24" />
 
       {/* Centered Loop Icon & Headline Deck */}
-      <div className="relative flex flex-col items-center justify-center max-w-4xl px-6 text-center z-10 w-full">
+      <div className="relative z-10 flex w-full max-w-4xl flex-1 flex-col items-center justify-center px-5 py-8 text-center sm:px-6">
         {/* Company mark */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
-          className="relative mb-5 flex h-24 w-24 items-center justify-center sm:h-32 sm:w-32"
+          className="relative mb-4 flex h-20 w-20 items-center justify-center sm:mb-5 sm:h-32 sm:w-32"
         >
           <Image
             src="/images/repeatless-mark.png"
@@ -51,30 +43,12 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
-          className="font-display font-extrabold text-[2.05rem] sm:text-5xl md:text-[3.4rem] lg:text-[3.65rem] leading-[1.12] sm:leading-[1.06] tracking-normal max-w-[22rem] sm:max-w-3xl text-white z-10 drop-shadow-[0_20px_50px_rgba(0,0,0,0.55)]"
+          className="z-10 max-w-[24rem] bg-linear-to-b from-white to-white/45 bg-clip-text font-general text-[clamp(2.25rem,12vw,3.25rem)] font-bold leading-[1.04] tracking-tight text-transparent drop-shadow-[0_20px_50px_rgba(0,0,0,0.55)] sm:max-w-4xl sm:text-6xl md:text-[clamp(4rem,6vw,4.35rem)] lg:text-[clamp(4.25rem,5.4vw,5rem)]"
         >
           We build custom AI automations for business growth
         </motion.h1>
       </div>
-
-      {/* Scroll to know more Anchor */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.7 }}
-        transition={{ delay: 1, duration: 1 }}
-        onClick={scrollToNextSection}
-        className="flex flex-col items-center gap-1.5 cursor-pointer pb-8 z-10 text-white/60 hover:text-white transition-colors duration-300"
-      >
-        <span className="font-manrope text-[10px] sm:text-xs uppercase tracking-[0.2em] font-semibold">
-          Scroll to know more
-        </span>
-        <motion.div
-          animate={{ y: [0, 4, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-        >
-          <FiChevronDown className="w-5 h-5" />
-        </motion.div>
-      </motion.div>
+      <div className="relative z-10 h-10 shrink-0 sm:h-12" />
     </section>
   );
 };

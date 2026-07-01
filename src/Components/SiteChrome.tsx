@@ -2,9 +2,60 @@
 
 import Navbar from '@/Components/Navbar';
 import Footer from '@/Components/Footer';
-import { FaWhatsapp } from 'react-icons/fa';
+import { useEffect } from 'react';
+
+// Official WhatsApp logo mark (filled glyph), inlined so it renders crisp at
+// any size and can inherit `currentColor`.
+function WhatsAppIcon({ className }: { className?: string }) {
+    return (
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={className}>
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.359.101 11.943c0 2.096.549 4.142 1.595 5.945L0 24l6.335-1.652a11.882 11.882 0 005.723 1.446h.005c6.581 0 11.94-5.36 11.944-11.945a11.876 11.876 0 00-3.487-8.4z" />
+        </svg>
+    );
+}
 
 export default function SiteChrome({ children }: { children: React.ReactNode }) {
+    // Single source of truth for the light/dark theme. Any section tagged
+    // data-theme="dark" that sits directly under the navbar flips the page into
+    // the dark theme; everything else is light. Because exactly one controller
+    // owns the `theme-dark` class (the navbar only mirrors it), the class flips
+    // once per crossing and the CSS colour transitions crossfade smoothly —
+    // no snap, and no flicker from two controllers racing at different points.
+    useEffect(() => {
+        const PROBE_Y = 72; // just below the fixed navbar
+        let raf = 0;
+
+        const apply = () => {
+            raf = 0;
+            const darkSections = document.querySelectorAll<HTMLElement>('[data-theme="dark"]');
+            let overDark = false;
+            darkSections.forEach((el) => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top <= PROBE_Y && rect.bottom > PROBE_Y) overDark = true;
+            });
+            document.documentElement.classList.toggle('theme-dark', overDark);
+            document.body.classList.toggle('theme-dark', overDark);
+        };
+
+        // rAF-throttle: one layout read + class write per frame no matter how
+        // many scroll events fire, so crossing the boundary never feels stuck.
+        const onScroll = () => {
+            if (!raf) raf = requestAnimationFrame(apply);
+        };
+
+        apply();
+        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll);
+
+        return () => {
+            window.removeEventListener('scroll', onScroll);
+            window.removeEventListener('resize', onScroll);
+            if (raf) cancelAnimationFrame(raf);
+            document.documentElement.classList.remove('theme-dark');
+            document.body.classList.remove('theme-dark');
+        };
+    }, []);
+
     return (
         <>
             <Navbar />
@@ -16,9 +67,10 @@ export default function SiteChrome({ children }: { children: React.ReactNode }) 
                 href="https://wa.me/919849884501"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="fixed bottom-6 right-6 z-50 bg-[#2d1e95] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-colors duration-300"
+                aria-label="Chat on WhatsApp"
+                className="fixed bottom-4 right-4 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-colors duration-300 hover:bg-[#1EBE57] sm:bottom-6 sm:right-6 sm:h-14 sm:w-14"
             >
-                <FaWhatsapp className="w-7 h-7" />
+                <WhatsAppIcon className="h-6 w-6 sm:h-7 sm:w-7" />
             </a>
         </>
     );

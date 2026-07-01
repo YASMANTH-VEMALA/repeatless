@@ -137,29 +137,29 @@ const Carousel: React.FC<PropType> = ({ testimonials, options }) => {
       <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 bg-gradient-to-l from-[var(--background)] to-transparent md:w-40" />
 
       <div className="overflow-hidden py-4" ref={emblaRef}>
-        <div className="flex touch-pan-y touch-pinch-zoom ml-[-18px]">
+        <div className="ml-[-14px] flex touch-pan-y touch-pinch-zoom sm:ml-[-18px]">
           {testimonials.map((testimonial, index) => (
             <div
-              className="cursor-grab active:cursor-grabbing relative flex-shrink-0 min-w-0 pl-[18px] w-[84%] md:w-[64%] xl:w-[48%] 2xl:w-[42%] translate-z-0"
+              className="relative w-[88%] min-w-0 flex-shrink-0 translate-z-0 cursor-grab pl-[14px] active:cursor-grabbing sm:w-[84%] sm:pl-[18px] md:w-[66%] xl:w-[50%] 2xl:w-[42%]"
               key={index}
             >
-              <div className="group/card px-6 md:px-10 py-10 md:py-12 bg-white/78 border border-black/8 shadow-[0_18px_60px_rgba(20,20,20,0.07)] backdrop-blur-md w-full min-h-[330px] md:min-h-[360px] flex flex-col gap-12 text-center items-center justify-between rounded-[10px] transition duration-500 ease-out hover:-translate-y-1 hover:bg-white hover:shadow-[0_24px_80px_rgba(20,20,20,0.11)]">
+              <div className="group/card flex min-h-[320px] w-full flex-col items-center justify-between gap-8 rounded-[10px] border border-black/8 bg-white/78 px-5 py-8 text-center shadow-[0_18px_60px_rgba(20,20,20,0.07)] backdrop-blur-md transition duration-500 ease-out hover:-translate-y-1 hover:bg-white hover:shadow-[0_24px_80px_rgba(20,20,20,0.11)] md:min-h-[380px] md:gap-10 md:px-8 md:py-10 xl:gap-12 xl:px-10 xl:py-12">
                 <div className="flex flex-grow items-center justify-center">
                   <p
-                    className="max-w-[720px] text-[0.95rem] md:text-[1.12rem] leading-[1.75] text-neutral-800"
+                    className="max-w-[720px] text-[0.95rem] leading-[1.75] text-neutral-800 md:text-[clamp(1rem,1.4vw,1.12rem)]"
                   >
                     {testimonial.review}
                   </p>
                 </div>
                 <div className="flex flex-col items-center justify-center gap-2 w-full">
                   <span className="w-full h-[1px] bg-black/10"></span>
-                  <div className="flex flex-col md:flex-row gap-4 items-center">
+                    <div className="flex min-w-0 flex-col items-center gap-4 md:flex-row">
                     <div className={`h-12 w-12 rounded-full flex items-center justify-center text-white font-semibold text-sm shrink-0 shadow-[0_10px_24px_rgba(80,66,255,0.18)] ${getAvatarColor(testimonial.name)}`}>
                       {getInitials(testimonial.name)}
                     </div>
-                    <div className="flex flex-col text-center md:text-left">
+                    <div className="flex min-w-0 flex-col text-center md:text-left">
                       <p
-                        className="font-medium text-[1.25rem] leading-[1.2] bg-gradient-to-r from-[#4F9BFF] to-[#6F58FF] bg-clip-text text-transparent tracking-[-0.02em]"
+                        className="font-medium text-[clamp(1.05rem,2.4vw,1.25rem)] leading-[1.2] bg-gradient-to-r from-[#4F9BFF] to-[#6F58FF] bg-clip-text text-transparent tracking-normal"
                       >
                         {testimonial.name}
                       </p>
@@ -177,7 +177,7 @@ const Carousel: React.FC<PropType> = ({ testimonials, options }) => {
         </div>
       </div>
 
-      <div className="w-full flex items-center justify-center pt-5 gap-4">
+      <div className="flex w-full flex-wrap items-center justify-center gap-4 pt-5">
         <button
           type="button"
           onClick={prevSlide}

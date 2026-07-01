@@ -1,6 +1,5 @@
 ﻿"use client";
 
-import { useEffect, useState } from "react";
 import { motion, Variants } from "framer-motion";
 
 type HeroProps = {
@@ -22,22 +21,8 @@ const fadeUp: Variants = {
 };
 
 export default function BlogHero({ title, description, meta, image, video }: HeroProps) {
-  const [scrollWidth, setScrollWidth] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const maxHeight = document.body.scrollHeight - window.innerHeight;
-      const scrollTop = window.scrollY;
-      const progress = (scrollTop / maxHeight) * 100;
-      setScrollWidth(progress);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
-    <section className="relative flex flex-col items-center justify-center px-6 sm:px-12 lg:px-[150px] pt-16 sm:pt-20 lg:pt-[100px] gap-8 sm:gap-12 lg:gap-[50px] text-neutral-950 w-full max-w-[1440px] mx-auto">
+    <section className="relative mx-auto flex w-full max-w-[1440px] flex-col items-center justify-center gap-8 px-5 pt-16 text-neutral-950 sm:gap-12 sm:px-8 sm:pt-20 lg:gap-[50px] lg:px-[clamp(4rem,9vw,150px)] lg:pt-[100px]">
       {/* Gradient line progress (optional) */}
       {/* <div className="absolute top-5 left-0 w-full h-[12px] bg-gradient-to-r from-[#0F6CBD] to-[#27C840] opacity-90 z-10">
         <div
@@ -54,17 +39,17 @@ export default function BlogHero({ title, description, meta, image, video }: Her
         viewport={{ once: true, amount: 0.3 }}
         className="flex flex-col gap-4 sm:gap-6 w-full max-w-[1140px]"
       >
-        <h1 className="text-3xl sm:text-4xl lg:text-[48px] leading-snug sm:leading-[50px] lg:leading-[66px] font-medium tracking-tight">
+        <h1 className="text-3xl font-medium leading-snug tracking-tight sm:text-4xl sm:leading-[1.18] lg:text-[clamp(2.75rem,4vw,3rem)] lg:leading-[1.2]">
           {title}
         </h1>
 
-        <p className="text-base sm:text-lg lg:text-[22px] font-light leading-relaxed sm:leading-[28px] lg:leading-[35px] text-neutral-600">
+        <p className="text-base font-light leading-relaxed text-neutral-600 sm:text-lg sm:leading-[28px] lg:text-[clamp(1.2rem,1.8vw,1.375rem)] lg:leading-[1.6]">
           {description}
         </p>
 
         {/* Meta info */}
         <div className="flex flex-wrap items-center gap-3 sm:gap-4">
-          <span className="text-[#0F6CBD] text-base sm:text-lg lg:text-[22px] font-medium uppercase tracking-[-0.03em]">
+          <span className="text-base font-medium uppercase tracking-normal text-[#0F6CBD] sm:text-lg lg:text-[clamp(1.1rem,1.8vw,1.375rem)]">
             {meta.solution}
           </span>
           <div className="w-2 h-2 rounded-full bg-neutral-300" />

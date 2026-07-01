@@ -29,10 +29,10 @@ export default function Footer() {
   return (
     <>
       {/* 1. UPPER FOOTER: In the solid document flow with the same light theme Cashmere background and footer content in one card */}
-      <div className="w-full bg-[var(--background)] py-12 px-6 flex justify-center relative z-10 transition-colors duration-1000">
-        <div className="bg-white/60 border border-black/5 shadow-sm rounded-[9px] max-w-6xl w-full flex flex-col md:flex-row md:justify-between gap-10 p-6 sm:p-10">
+      <div className="relative z-10 flex w-full justify-center bg-[var(--background)] px-5 py-10 transition-colors duration-1000 sm:px-6 sm:py-12">
+        <div className="flex w-full max-w-6xl flex-col gap-8 rounded-[9px] border border-black/5 bg-white/60 p-5 shadow-sm sm:p-10 md:flex-row md:flex-wrap md:justify-between md:gap-10 lg:flex-nowrap">
           {/* Left Column: Brand Info */}
-          <div className="flex flex-col gap-6 max-w-[279px]">
+          <div className="flex max-w-md flex-col gap-5 md:max-w-[279px] md:gap-6">
             {/* Logo */}
             <div className="flex items-center gap-4">
                 <Image
@@ -71,7 +71,7 @@ export default function Footer() {
             <h4 className="font-semibold text-neutral-950 dark:text-white mb-2 tracking-wider">Contact Us</h4>
             <div className="flex items-center gap-2 text-neutral-600 dark:text-neutral-400">
               <FiMail className="w-4 h-4 shrink-0" />
-              <span>contact@repeatless.in</span>
+              <span className="break-all">contact@repeatless.in</span>
             </div>
             <div className="flex items-center gap-2 text-neutral-600 dark:text-neutral-400">
               <FiMapPin className="w-4 h-4 shrink-0" />
@@ -113,26 +113,23 @@ export default function Footer() {
       {/* 2. LOWER FOOTER: The transparent scroll reveal spacer that uncovers the giant brand name underneath */}
       <div 
         ref={wrapperRef} 
-        className="relative w-full h-[220px] md:h-[260px] lg:h-[300px] -z-10 pointer-events-none bg-transparent"
+        className="pointer-events-none relative -z-10 h-[150px] w-full bg-transparent sm:h-[220px] md:h-[260px] lg:h-[300px]"
       >
         <motion.div
           style={{ y, scale, opacity }}
-          className="fixed bottom-0 left-0 w-full h-[220px] md:h-[260px] lg:h-[300px] bg-[#151412] text-white flex items-end justify-center pointer-events-auto z-[-20] overflow-hidden border-t border-white/5"
+          className="pointer-events-auto fixed bottom-0 left-0 z-[-20] flex h-[150px] w-full items-center justify-center overflow-hidden border-t border-white/5 bg-[#151412] text-white sm:h-[220px] md:h-[260px] lg:h-[300px]"
         >
-          <div className="relative w-full flex items-end justify-center select-none max-w-[1400px]">
+          <div className="relative w-full flex items-center justify-center select-none max-w-[1400px] px-[5vw] sm:px-[6vw]">
             {/* Inline Vector Logo rendered at giant scale */}
+            {/* viewBox cropped to just the "Repeatless" wordmark (x ≈ 31.8–146.8),
+                dropping the leading repeat-arrows icon so the WORD itself is
+                what sits centered in the footer. */}
             <svg
-              viewBox="0 0 147 24"
+              viewBox="30.8 0 117 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="w-full h-auto text-neutral-800/80 dark:text-neutral-900/40 transition-colors duration-1000 max-h-[22vh] select-none"
+              className="w-full h-auto text-neutral-800/80 dark:text-neutral-900/40 transition-colors duration-1000 max-h-[22vh] select-none overflow-hidden"
             >
-              <path
-                d="M16.9153 2.1149L20.8693 6.06894M20.8693 6.06894L16.9153 10.023M20.8693 6.06894H7.82102C6.16017 6.06894 5.32974 6.06894 4.69538 6.39216C4.13738 6.67647 3.68371 7.13014 3.3994 7.68814C3.07617 8.3225 3.07617 9.15293 3.07617 10.8138V11.0115M3.07617 17.931H16.1245C17.7853 17.931 18.6158 17.931 19.2501 17.6078C19.8081 17.3235 20.2618 16.8698 20.5461 16.3118C20.8693 15.6775 20.8693 14.8471 20.8693 13.1862V12.9885M3.07617 17.931L7.03021 21.8851M3.07617 17.931L7.03021 13.977"
-                stroke="currentColor"
-                strokeWidth="1.6"
-                strokeLinecap="round"
-              />
               <path
                 d="M39.4949 17.0712L36.0999 11.1725H34.2539V17.0712H31.835V2.32434H36.9274C38.0591 2.32434 39.0139 2.52238 39.7919 2.91846C40.5841 3.31454 41.1711 3.845 41.5531 4.50985C41.9491 5.1747 42.1472 5.91735 42.1472 6.7378C42.1472 7.6997 41.8643 8.57674 41.2984 9.3689C40.7467 10.1469 39.8909 10.6774 38.731 10.9603L42.3806 17.0712H39.4949ZM34.2539 9.24158H36.9274C37.8327 9.24158 38.5117 9.01525 38.9644 8.56259C39.4312 8.10993 39.6646 7.50166 39.6646 6.7378C39.6646 5.97393 39.4383 5.37981 38.9856 4.95544C38.5329 4.51692 37.8469 4.29766 36.9274 4.29766H34.2539V9.24158Z"
                 fill="currentColor"
@@ -174,11 +171,6 @@ export default function Footer() {
                 fill="currentColor"
               />
             </svg>
-
-            {/* Registered Trademark symbol exactly placed like the "R" circle in the screenshot */}
-            <div className="absolute right-[2vw] bottom-[2.5vw] md:bottom-[3.5vw] w-4 h-4 md:w-8 md:h-8 rounded-full border border-neutral-700/60 flex items-center justify-center text-[8px] md:text-sm text-neutral-500 font-sans font-bold select-none">
-              R
-            </div>
           </div>
         </motion.div>
       </div>

@@ -86,35 +86,36 @@ export default function GlobeSection() {
   return (
     <div
       data-globe-section="true"
-      className="relative -mt-1 w-full min-h-screen overflow-hidden bg-black select-none text-white"
+      data-theme="dark"
+      className="relative -mt-1 w-full overflow-hidden bg-black text-white select-none min-[1180px]:min-h-screen"
     >
       {/* Dark section background */}
       <div
         aria-hidden="true"
         className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_70%_42%,rgba(255,255,255,0.08)_0,rgba(255,255,255,0.025)_28%,rgba(0,0,0,0)_55%),linear-gradient(180deg,#030304_0%,#09090b_48%,#030304_100%)]"
       />
-      <div className="w-full min-h-screen flex items-center justify-center py-24 md:py-28">
-        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 md:px-16">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+      <div className="flex w-full items-center justify-center py-16 sm:py-20 min-[1180px]:min-h-screen min-[1180px]:py-28">
+        <div className="relative z-10 mx-auto w-full max-w-[1440px] px-5 sm:px-6 md:px-10 lg:px-16">
+          <div className="grid grid-cols-1 items-center gap-10 min-[1180px]:grid-cols-12 min-[1180px]:gap-16">
             
               {/* Left Column: Heading and copy */}
-            <div className="lg:col-span-6 flex flex-col justify-center gap-6">
+            <div className="flex flex-col justify-center gap-6 min-[1180px]:col-span-6">
               <div className="flex items-center gap-2">
                 <span className="text-white/70 uppercase tracking-wider text-xs md:text-sm font-semibold flex items-center gap-1.5">
                   <FiGlobe className="w-4 h-4" /> / Global Partnerships
                 </span>
               </div>
 
-              <h2 className="text-4xl md:text-5xl font-sans font-extrabold tracking-tight text-white leading-tight drop-shadow-[0_20px_50px_rgba(0,0,0,0.55)]">
+              <h2 className="text-3xl font-sans font-extrabold leading-tight tracking-tight text-white drop-shadow-[0_20px_50px_rgba(0,0,0,0.55)] sm:text-4xl md:text-[clamp(2.75rem,4.4vw,3.25rem)]">
                 Connecting Custom AI & Automation <span className="text-white/72">Worldwide.</span>
               </h2>
 
-              <div className="mt-5 grid max-w-xl grid-cols-1 gap-3 sm:grid-cols-2">
+              <div className="mt-2 grid max-w-xl grid-cols-1 gap-3 sm:mt-5 sm:grid-cols-2">
                 {regions.map((region) => (
                   <div
                     key={region.id}
                     data-globe-region={region.id}
-                    className="relative grid grid-cols-[auto_1fr] gap-3 rounded-[8px] border border-white/10 bg-white/[0.07] px-4 py-4 shadow-[0_18px_44px_rgba(0,0,0,0.22)] backdrop-blur-md"
+                    className="relative grid grid-cols-[auto_1fr] gap-3 rounded-[8px] border border-white/10 bg-white/[0.07] px-3.5 py-3.5 shadow-[0_18px_44px_rgba(0,0,0,0.22)] backdrop-blur-md sm:px-4 sm:py-4"
                   >
                     <span className="mt-1 h-2.5 w-2.5 rounded-full bg-white/80 shadow-[0_0_14px_rgba(255,255,255,0.36)]" />
                     <span className="min-w-0">
@@ -128,8 +129,8 @@ export default function GlobeSection() {
             </div>
 
             {/* Right Column: Globe Rendering */}
-            <div className="lg:col-span-6 flex justify-center items-center relative">
-              <div className="w-full max-w-[520px] aspect-square relative select-none">
+            <div className="relative flex items-center justify-center min-[1180px]:col-span-6">
+              <div className="relative aspect-square w-full max-w-[min(86vw,520px)] select-none">
                 <Globe
                   markers={markers}
                   arcs={arcs}

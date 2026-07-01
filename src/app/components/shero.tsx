@@ -15,7 +15,7 @@ export default function AutomationSection() {
       <div className="absolute w-[847px] h-[797px] left-[calc(50%-847px/2-754.5px)] top-[53px] bg-[#1D2688] blur-[500px] rounded-full bg-opacity-40"></div>
 
       {/* Heading */}
-      <h1 className="text-center font-poppins font-medium text-[54px] leading-[68px] tracking-[-0.25rem] text-white max-w-[754px] md:text-[40px] md:leading-[56px] sm:text-[28px] sm:leading-[40px]">
+      <h1 className="max-w-[754px] text-center font-poppins text-[clamp(2rem,8vw,3.375rem)] font-medium leading-[1.18] tracking-tight text-white md:text-[40px] md:leading-[1.2] sm:text-[28px] sm:leading-[1.25]">
         Revolutionize Your Business with Intelligent Automation
       </h1>
 

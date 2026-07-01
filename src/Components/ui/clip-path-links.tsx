@@ -102,7 +102,7 @@ export function ClipPathLogoGrid({
   itemClassName = "",
 }: Required<Pick<ClipPathLinksProps, "items">> & Omit<ClipPathLinksProps, "items">) {
   return (
-    <div className={`grid grid-cols-2 gap-4 sm:grid-cols-4 md:grid-cols-7 ${className}`}>
+    <div className={`grid grid-cols-3 gap-2.5 sm:grid-cols-4 sm:gap-3 md:grid-cols-5 lg:grid-cols-7 ${className}`}>
       {items.map((item) => (
         <LinkBox
           key={item.label}
@@ -160,7 +160,7 @@ function LinkBox({
       aria-label={item.label}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`group relative grid min-h-28 w-full cursor-default place-content-center overflow-hidden text-neutral-900 transition-colors duration-300 sm:min-h-28 ${className}`}
+      className={`group relative grid aspect-square w-full cursor-default place-content-center overflow-hidden text-neutral-900 transition-colors duration-300 ${className}`}
     >
       <LinkContent item={item} Icon={Icon} showLabel={showLabel} muted />
       <div
@@ -186,23 +186,23 @@ function LinkContent({
   muted?: boolean;
 }) {
   return (
-    <span className="flex flex-col items-center justify-center gap-3 px-3 text-center">
+    <span className="flex min-w-0 flex-col items-center justify-center gap-2.5 px-2 text-center">
       {item.imgSrc ? (
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={item.imgSrc}
           alt=""
-          width={36}
-          height={36}
-          className={`${item.imgClassName ?? "h-9 w-9 object-contain"} ${
+          width={32}
+          height={32}
+          className={`${item.imgClassName ?? "h-7 w-7 object-contain sm:h-8 sm:w-8"} ${
             muted ? "brightness-0 opacity-85" : "opacity-95"
           }`}
         />
       ) : Icon ? (
-        <Icon className="h-9 w-9" aria-hidden="true" />
+        <Icon className="h-7 w-7 sm:h-8 sm:w-8" aria-hidden="true" />
       ) : null}
       {showLabel ? (
-        <span className={`text-xs leading-tight transition-colors duration-300 ${muted ? "text-neutral-500" : "text-white"}`}>
+        <span className={`max-w-full text-[11px] leading-tight transition-colors duration-300 sm:text-xs ${muted ? "text-neutral-500" : "text-white"}`}>
           {item.label}
         </span>
       ) : null}

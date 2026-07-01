@@ -21,7 +21,6 @@ type WorkStep = {
   description: string;
   animation: unknown;
   tone: string;
-  glow: string;
 };
 
 const steps: WorkStep[] = [
@@ -32,7 +31,6 @@ const steps: WorkStep[] = [
       "I audit your workflows, tools, response times, missed handoffs, and repeated decisions to uncover where automation will create the most leverage.",
     animation: analysisAnimation,
     tone: "#7c3aed",
-    glow: "rgba(124,58,237,0.28)",
   },
   {
     kicker: "02 / Design",
@@ -41,7 +39,6 @@ const steps: WorkStep[] = [
       "I design the workflow logic, triggers, approvals, integrations, and fallback paths before anything is built, so the system has a real operating model.",
     animation: designAnimation,
     tone: "#2563eb",
-    glow: "rgba(37,99,235,0.24)",
   },
   {
     kicker: "03 / Deploy",
@@ -50,7 +47,6 @@ const steps: WorkStep[] = [
       "I connect the tools, build the automations, test edge cases, and roll everything out carefully so your operations keep moving while the system goes live.",
     animation: deployAnimation,
     tone: "#8400ff",
-    glow: "rgba(132,0,255,0.28)",
   },
   {
     kicker: "04 / Scale",
@@ -59,7 +55,6 @@ const steps: WorkStep[] = [
       "Once the system is live, I monitor performance, remove friction, add new branches, and keep improving the automation as your business grows.",
     animation: scaleAnimation,
     tone: "#0f766e",
-    glow: "rgba(20,184,166,0.22)",
   },
 ];
 
@@ -90,16 +85,10 @@ function StepVisual({
       aria-hidden={!isActive}
       animate={{ opacity: isActive ? 1 : 0, scale: isActive ? 1 : 0.98 }}
       transition={{ duration: 0.2, ease: "linear" }}
-      className="pointer-events-none absolute right-0 top-1/2 z-0 flex w-full -translate-y-1/2 transform-gpu items-center justify-center opacity-90 contain-paint lg:w-[68vw] lg:justify-end lg:pr-10"
+      className="pointer-events-none absolute right-0 top-1/2 z-0 flex w-full -translate-y-1/2 transform-gpu items-center justify-center opacity-90 contain-paint min-[1180px]:w-[62vw] min-[1180px]:justify-end min-[1180px]:pr-8 xl:w-[68vw] xl:pr-10"
       style={{ visibility: isActive ? "visible" : "hidden" }}
     >
-      <div
-        aria-hidden="true"
-        className="absolute h-[min(88vw,640px)] w-[min(88vw,640px)] rounded-full opacity-80"
-        style={{ background: `radial-gradient(circle, ${step.glow}, transparent 68%)` }}
-      />
-
-      <div className="relative flex aspect-square w-[min(108vw,820px)] items-center justify-center opacity-75 lg:opacity-100">
+      <div className="relative flex aspect-square w-[min(92vw,70svh,760px)] items-center justify-center opacity-75 min-[1180px]:opacity-100">
         <div className="absolute inset-[18%] rounded-full bg-white/25" />
         <div className="relative z-10 h-full w-full transform-gpu">
           <Lottie
@@ -112,6 +101,89 @@ function StepVisual({
         </div>
       </div>
     </motion.div>
+  );
+}
+
+function MobileStepVisual({
+  step,
+  shouldReduceMotion,
+}: {
+  step: WorkStep;
+  shouldReduceMotion: boolean | null;
+}) {
+  const lottieRef = useRef<LottieRefCurrentProps | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  // Play the animation only while it is on screen. Previously every step's
+  // Lottie autoplayed and looped at once (4 running simultaneously), which is
+  // what made mobile scrolling stutter. An IntersectionObserver keeps at most
+  // the visible one or two running.
+  useEffect(() => {
+    if (shouldReduceMotion) return;
+    const el = containerRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        const animation = lottieRef.current;
+        if (!animation) return;
+        if (entry.isIntersecting) animation.play();
+        else animation.pause();
+      },
+      { threshold: 0.35 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [shouldReduceMotion]);
+
+  return (
+    <div ref={containerRef} className="relative mt-6 aspect-square w-full">
+      <Lottie
+        lottieRef={lottieRef}
+        animationData={step.animation}
+        autoplay={false}
+        loop={!shouldReduceMotion}
+        rendererSettings={{ progressiveLoad: true }}
+      />
+    </div>
+  );
+}
+
+function MobileProcess() {
+  const shouldReduceMotion = useReducedMotion();
+
+  return (
+    <div className="flex flex-col gap-14 px-5 py-16 sm:px-6 min-[1180px]:hidden">
+      <div className="flex w-fit items-center justify-center gap-2 rounded-[59px] border border-black/5 bg-white/75 px-4 py-2 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.05)] backdrop-blur-xl">
+        <div className="h-2.5 w-2.5 rounded-full bg-[#8400FF] shadow-[0_0_16px_#6D21F0,0_0_8.1px_#1C76FD]" />
+        <span className="font-poppins text-sm leading-[130%] text-[#8400FF]">
+          How it works
+        </span>
+      </div>
+
+      {steps.map((step) => (
+        <motion.article
+          key={step.kicker}
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <div className="font-poppins text-xs font-semibold uppercase tracking-[0.22em]" style={{ color: step.tone }}>
+            {step.kicker}
+          </div>
+          <h2 className="mt-4 font-poppins text-[clamp(2rem,9vw,2.65rem)] font-medium leading-[1.05] tracking-tight text-neutral-950">
+            {step.title}
+          </h2>
+          <p className="mt-4 text-base leading-7 text-neutral-600">
+            {step.description}
+          </p>
+
+          <MobileStepVisual step={step} shouldReduceMotion={shouldReduceMotion} />
+        </motion.article>
+      ))}
+    </div>
   );
 }
 
@@ -145,10 +217,11 @@ export default function HeroSection() {
     <section
       id="process"
       ref={sectionRef}
-      className="relative w-full bg-transparent"
-      style={{ minHeight: `calc(${steps.length} * 100vh)` }}
+      className="relative w-full bg-transparent min-[1180px]:min-h-[400vh]"
     >
-      <div className="sticky top-0 h-screen overflow-hidden">
+      <MobileProcess />
+
+      <div className="sticky top-0 hidden h-[100svh] overflow-hidden min-[1180px]:block">
         <div className="absolute inset-x-0 top-0 z-20 h-1 bg-black/[0.04]">
           <motion.div
             style={{ scaleX: shouldReduceMotion ? 1 : progressScale }}
@@ -158,7 +231,7 @@ export default function HeroSection() {
 
         <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.035)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.035)_1px,transparent_1px)] bg-[size:48px_48px] opacity-40 [mask-image:linear-gradient(to_bottom,transparent,black_16%,black_84%,transparent)]" />
 
-        <div className="absolute left-5 top-24 z-20 md:left-12 lg:left-24">
+        <div className="absolute left-5 top-24 z-20 md:left-12 min-[1180px]:left-16 xl:left-24">
           <div className="flex w-fit items-center justify-center gap-[10px] rounded-[59px] border border-black/5 bg-white/75 px-5 py-2.5 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.05)] backdrop-blur-xl">
             <div className="h-3 w-3 rounded-full bg-[#8400FF] shadow-[0_0_16px_#6D21F0,0_0_8.1px_#1C76FD]" />
             <span className="font-poppins text-base leading-[130%] text-[#8400FF] md:text-xl">
@@ -168,7 +241,7 @@ export default function HeroSection() {
         </div>
 
         <motion.div
-          className="flex h-screen w-full transform-gpu will-change-transform"
+          className="flex h-[100svh] w-full transform-gpu will-change-transform"
           style={shouldReduceMotion ? undefined : { x: trackX }}
         >
           {steps.map((step, index) => {
@@ -176,20 +249,20 @@ export default function HeroSection() {
             return (
               <article
                 key={step.kicker}
-                className="relative grid h-screen w-screen shrink-0 grid-cols-1 items-center gap-8 overflow-hidden px-5 pb-28 pt-36 md:px-12 md:pb-32 lg:grid-cols-[0.9fr_1.1fr] lg:px-24 lg:pb-36 lg:pt-24"
+                className="relative grid h-[100svh] w-[100dvw] shrink-0 grid-cols-1 items-center gap-8 overflow-y-auto overflow-x-hidden px-5 pb-20 pt-36 md:px-12 md:pb-24 min-[1180px]:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] min-[1180px]:px-16 min-[1180px]:pb-24 min-[1180px]:pt-24 xl:px-24 xl:pb-32"
               >
                 <motion.div
                   animate={{ opacity: isActive ? 1 : 0.35 }}
                   transition={{ duration: 0.35, ease: "easeOut" }}
-                  className="relative z-20 max-w-[680px]"
+                  className="relative z-20 max-w-[660px]"
                 >
                   <div className="font-poppins text-sm font-semibold uppercase tracking-[0.24em]" style={{ color: step.tone }}>
                     {step.kicker}
                   </div>
-                  <h2 className="mt-5 font-poppins text-[clamp(2.8rem,4.8vw,5.4rem)] font-medium leading-[0.96] tracking-[-0.045em] text-neutral-950">
+                  <h2 className="mt-5 font-poppins text-[clamp(2.4rem,4.2vw,4.9rem)] font-medium leading-[1] tracking-tight text-neutral-950">
                     {step.title}
                   </h2>
-                  <p className="mt-5 max-w-xl font-roboto text-lg leading-8 text-neutral-600 md:text-xl md:leading-9">
+                  <p className="mt-5 max-w-xl font-poppins text-base leading-8 text-neutral-600 xl:text-lg xl:leading-8">
                     {step.description}
                   </p>
 
