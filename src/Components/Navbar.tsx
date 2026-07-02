@@ -110,7 +110,7 @@ const Navbar: React.FC = () => {
           : "bg-transparent border-b border-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-5 py-2 sm:px-6 lg:px-10 xl:px-16">
+      <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-5 py-1.5 sm:px-6 lg:px-10 xl:px-16">
         {/* Logo */}
         <Link
           href="/"
@@ -138,7 +138,7 @@ const Navbar: React.FC = () => {
                   key={link.href}
                   href={link.href}
                   aria-current={active ? "page" : undefined}
-                  className={`relative whitespace-nowrap transition-colors duration-300 ${
+                  className={`relative whitespace-nowrap py-1 transition-colors duration-300 ${
                     isDark
                       ? active
                         ? "text-white font-semibold"
@@ -148,18 +148,16 @@ const Navbar: React.FC = () => {
                         : "text-neutral-700 hover:text-neutral-950"
                   }`}
                 >
-                  {/* Active indicator: a small accent dot that slides between
+                  {link.label}
+                  {/* Active indicator: an accent underline that slides between
                       links via the shared layoutId. */}
                   {active && (
-                    <span className="pointer-events-none absolute -top-2.5 left-0 right-0 flex justify-center">
-                      <motion.span
-                        layoutId="nav-active-dot"
-                        transition={{ type: "spring", stiffness: 500, damping: 32 }}
-                        className="h-1.5 w-1.5 rounded-full bg-[var(--accent)]"
-                      />
-                    </span>
+                    <motion.span
+                      layoutId="nav-active-underline"
+                      transition={{ type: "spring", stiffness: 500, damping: 38 }}
+                      className="pointer-events-none absolute -bottom-0.5 left-0 right-0 h-0.5 rounded-full bg-[var(--accent)]"
+                    />
                   )}
-                  {link.label}
                 </Link>
               );
             })}
